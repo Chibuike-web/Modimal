@@ -1,5 +1,10 @@
 import "./globals.css";
+import LandingPage from "./LandingPage/LandingPage";
 
 export default function App() {
-	return <div className="bg-primary-25">Chibuike</div>;
+	return (
+		<div>
+			<LandingPage />
+		</div>
+	);
 }
