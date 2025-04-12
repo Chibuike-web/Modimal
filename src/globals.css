@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+@theme {
+	/* Brand Colours */
+	--color-primary-25: hsl(100, 10%, 94%);
+	--color-primary-50: hsl(108, 12%, 83%);
+	--color-primary-100: hsl(109, 11%, 72%);
+	--color-primary-200: hsl(111, 12%, 66%);
+	--color-primary-300: hsl(112, 11%, 61%);
+	--color-primary-400: hsl(113, 11%, 55%);
+	--color-primary: hsl(111, 11%, 49%);
+	--color-primary-600: hsl(112, 11%, 38%);
+	--color-primary-700: hsl(112, 11%, 27%);
+	--color-primary-750: hsl(110, 11%, 22%);
+	--color-primary-800: hsl(108, 12%, 16%);
+	--color-primary-900: hsl(159, 14%, 5%);
+
+	/* Neutral Colors */
+	--color-off-white: hsl(48, 33%, 97%);
+	--color-gray-100: hsl(0, 0%, 98%);
+	--color-gray-200: hsl(0, 0%, 93%);
+	--color-gray-300: hsl(0, 0%, 87%);
+	--color-gray-400: hsl(0, 0%, 80%);
+	--color-gray-500: hsl(0, 0%, 68%);
+	--color-gray-600: hsl(0, 0%, 53%);
+	--color-gray-700: hsl(0, 0%, 38%);
+	--color-gray-800: hsl(0, 0%, 25%);
+	--color-gray-900: hsl(0, 0%, 13%);
+	--color-dark-grey: hsl(0, 0%, 5%);
+
+	/* State Colors */
+	--color-error: hsl(0, 100%, 38%);
+	--color-error-light: hsl(0, 84%, 55%);
+	--color-error-bg: hsl(0, 100%, 97%);
+	--color-warning: hsl(35, 75%, 51%);
+	--color-warning-light: hsl(35, 75%, 70%);
+	--color-warning-bg: hsl(35, 74%, 88%);
+	--color-success: hsl(164, 100%, 29%);
+	--color-success-light: hsl(184, 100%, 36%);
+	--color-success-bg: hsl(162, 71%, 97%);
+}
