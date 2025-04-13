@@ -1,6 +1,5 @@
 import { BagIcon, HeartIcon, ProfileIcon, SearchIcon } from "../Icons";
 import { useState, useRef } from "react";
-import styles from "./Navbar.module.css";
 
 export default function Navbar() {
 	return (
@@ -29,44 +28,72 @@ const ListItems = () => {
 		<ul className=" flex gap-[20px]">
 			<div>
 				<li
+					className={`px-4 py-[0.5rem] rounded-full cursor-pointer ${
+						hover === "collection" && "bg-primary-25"
+					}`}
 					onMouseEnter={() => {
 						handleMouseEnter("collection");
 					}}
 					onMouseLeave={handleMouseLeave}
-					className={styles.navlink}
 				>
 					Collection
 				</li>
 				{hover === "collection" && (
-					<div className="absolute bottom-0 left-[50%] bg-primary w-full max-w-[1224px] -translate-x-1/2 ">
-						Collection
+					<div className="fixed top-[128px] justify-items-center bg-black/40 inset-0 w-full">
+						<div
+							className="bg-white w-full max-w-[1440px] px-[108px] flex gap-[54px] pt-8 pb-[56px]"
+							onMouseEnter={() => {
+								handleMouseEnter("collection");
+							}}
+							onMouseLeave={handleMouseLeave}
+						>
+							<div className="grid grid-cols-3 gap-6 w-full">
+								{collectionContent.map(({ id, heading, subheading }: CollectionContentItem) => (
+									<DropdownContent key={id} id={id} heading={heading} subheading={subheading} />
+								))}
+							</div>
+							<div className="flex gap-6">
+								<div>
+									<figure className="w-[288px] h-[420px] bg-primary"></figure>
+								</div>
+								<div>
+									<figure className="w-[288px] h-[420px] bg-primary"></figure>
+								</div>
+							</div>
+						</div>
 					</div>
 				)}
 			</div>
 
-			<div>
+			<div
+				onMouseEnter={() => {
+					handleMouseEnter("new-in");
+				}}
+				onMouseLeave={handleMouseLeave}
+			>
 				<li
-					onMouseEnter={() => {
-						handleMouseEnter("new-in");
-					}}
-					onMouseLeave={handleMouseLeave}
-					className={styles.navlink}
+					className={`px-4 py-[0.5rem] rounded-full cursor-pointer ${
+						hover === "new-in" && "bg-primary-25"
+					}`}
 				>
 					New In
 				</li>
 				{hover === "new-in" && (
-					<div className="absolute bottom-0 left-[50%] bg-primary w-full max-w-[1224px] -translate-x-1/2 ">
+					<div className="absolute bottom-[0px] left-[50%] bg-primary w-full max-w-[1224px] -translate-x-1/2 ">
 						New In
 					</div>
 				)}
 			</div>
-			<div>
+			<div
+				onMouseEnter={() => {
+					handleMouseEnter("modiweek");
+				}}
+				onMouseLeave={handleMouseLeave}
+			>
 				<li
-					onMouseEnter={() => {
-						handleMouseEnter("modiweek");
-					}}
-					onMouseLeave={handleMouseLeave}
-					className={styles.navlink}
+					className={`px-4 py-[0.5rem] rounded-full cursor-pointer ${
+						hover === "modiweek" && "bg-primary-25"
+					}`}
 				>
 					Modiweek
 				</li>
@@ -76,13 +103,16 @@ const ListItems = () => {
 					</div>
 				)}
 			</div>
-			<div>
+			<div
+				onMouseEnter={() => {
+					handleMouseEnter("plus-size");
+				}}
+				onMouseLeave={handleMouseLeave}
+			>
 				<li
-					onMouseEnter={() => {
-						handleMouseEnter("plus-size");
-					}}
-					onMouseLeave={handleMouseLeave}
-					className={styles.navlink}
+					className={`px-4 py-[0.5rem] rounded-full cursor-pointer ${
+						hover === "plus-size" && "bg-primary-25"
+					}`}
 				>
 					Plus Size
 				</li>
@@ -92,13 +122,16 @@ const ListItems = () => {
 					</div>
 				)}
 			</div>
-			<div>
+			<div
+				onMouseEnter={() => {
+					handleMouseEnter("sustainability");
+				}}
+				onMouseLeave={handleMouseLeave}
+			>
 				<li
-					onMouseEnter={() => {
-						handleMouseEnter("sustainability");
-					}}
-					onMouseLeave={handleMouseLeave}
-					className={styles.navlink}
+					className={`px-4 py-[0.5rem] rounded-full cursor-pointer ${
+						hover === "sustainabiity" && "bg-primary-25"
+					}`}
 				>
 					Sustainability
 				</li>
@@ -137,6 +170,54 @@ const DesktopNavbar = () => {
 				</div>
 			</nav>
 		</>
+	);
+};
+
+type CollectionContentItem = {
+	id: number;
+	heading: string;
+	subheading: string[];
+};
+
+const collectionContent: CollectionContentItem[] = [
+	{
+		id: 1,
+		heading: "Category",
+		subheading: [
+			"Shop all",
+			"Boluses & top",
+			"Pants",
+			"Dresses & jumpsuits",
+			"Outwear & jackets",
+			"Pullovers",
+			"Tees",
+			"Shorts & skirts",
+		],
+	},
+
+	{
+		id: 2,
+		heading: "Featured",
+		subheading: ["New in", "Modiweek", "Plus size", "Best seller"],
+	},
+
+	{
+		id: 3,
+		heading: "More",
+		subheading: ["Bundles", "Occasion wear", "Matching set", "Suiting"],
+	},
+];
+
+const DropdownContent = ({ id, heading, subheading }: CollectionContentItem) => {
+	return (
+		<div className="flex flex-col gap-6">
+			<h3 className="text-dark-grey font-semibold">{heading}</h3>
+			<div className="flex flex-col gap-[8px]">
+				{subheading.map((item) => (
+					<p className="text-gray-700 leading-[1.8]">{item}</p>
+				))}
+			</div>
+		</div>
 	);
 };
 
