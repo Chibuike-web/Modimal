@@ -1,5 +1,11 @@
 import { BagIcon, HeartIcon, ProfileIcon, SearchIcon } from "../Icons";
 import { useState, useRef } from "react";
+import CollectionImage1 from "../assets/CollectionImage1.png";
+import CollectionImage2 from "../assets/CollectionImage2.png";
+import NewInImage1 from "../assets/NewInImage1.png";
+import NewInImage2 from "../assets/NewInImage2.png";
+import NewInImage3 from "../assets/NewInImage3.png";
+import { collectionContent, newInContent, DropdownType } from "./utils";
 
 export default function Navbar() {
 	return (
@@ -29,7 +35,7 @@ const ListItems = () => {
 			<div>
 				<li
 					className={`px-4 py-[0.5rem] rounded-full cursor-pointer ${
-						hover === "collection" && "bg-primary-25"
+						hover === "collection" && "bg-primary-25 font-semibold"
 					}`}
 					onMouseEnter={() => {
 						handleMouseEnter("collection");
@@ -41,23 +47,29 @@ const ListItems = () => {
 				{hover === "collection" && (
 					<div className="fixed top-[128px] justify-items-center bg-black/40 inset-0 w-full">
 						<div
-							className="bg-white w-full max-w-[1440px] px-[108px] flex gap-[54px] pt-8 pb-[56px]"
+							className="bg-white w-full max-w-[1440px] px-[108px] flex justify-between pt-8 pb-[56px]"
 							onMouseEnter={() => {
 								handleMouseEnter("collection");
 							}}
 							onMouseLeave={handleMouseLeave}
 						>
-							<div className="grid grid-cols-3 gap-6 w-full">
-								{collectionContent.map(({ id, heading, subheading }: CollectionContentItem) => (
+							<div className="grid grid-cols-3 gap-6">
+								{collectionContent.map(({ id, heading, subheading }: DropdownType) => (
 									<DropdownContent key={id} id={id} heading={heading} subheading={subheading} />
 								))}
 							</div>
 							<div className="flex gap-6">
-								<div>
-									<figure className="w-[288px] h-[420px] bg-primary"></figure>
+								<div className="w-full max-w-[288px]">
+									<figure className="w-full">
+										<img src={CollectionImage1} alt="" className="w-full object-fill" />
+									</figure>
+									<p className="leading-[1.8] mt-[12px]">Blouses</p>
 								</div>
-								<div>
-									<figure className="w-[288px] h-[420px] bg-primary"></figure>
+								<div className="w-full max-w-[288px]">
+									<figure className="w-full">
+										<img src={CollectionImage2} alt="" className="w-full" />
+									</figure>
+									<p className="leading-[1.8] mt-[12px]">Plus Size</p>
 								</div>
 							</div>
 						</div>
@@ -65,22 +77,53 @@ const ListItems = () => {
 				)}
 			</div>
 
-			<div
-				onMouseEnter={() => {
-					handleMouseEnter("new-in");
-				}}
-				onMouseLeave={handleMouseLeave}
-			>
+			<div>
 				<li
 					className={`px-4 py-[0.5rem] rounded-full cursor-pointer ${
-						hover === "new-in" && "bg-primary-25"
+						hover === "new-in" && "bg-primary-25 font-semibold"
 					}`}
+					onMouseEnter={() => {
+						handleMouseEnter("new-in");
+					}}
+					onMouseLeave={handleMouseLeave}
 				>
 					New In
 				</li>
 				{hover === "new-in" && (
-					<div className="absolute bottom-[0px] left-[50%] bg-primary w-full max-w-[1224px] -translate-x-1/2 ">
-						New In
+					<div className="fixed top-[128px] justify-items-center bg-black/40 inset-0 w-full">
+						<div
+							className="bg-white w-full max-w-[1440px] px-[108px] flex justify-between pt-8 pb-[56px]"
+							onMouseEnter={() => {
+								handleMouseEnter("new-in");
+							}}
+							onMouseLeave={handleMouseLeave}
+						>
+							<div className="grid grid-cols-2 gap-6">
+								{newInContent.map(({ id, heading, subheading }: DropdownType) => (
+									<DropdownContent key={id} id={id} heading={heading} subheading={subheading} />
+								))}
+							</div>
+							<div className="flex gap-6">
+								<div className="w-full max-w-[208px]">
+									<figure className="w-full">
+										<img src={NewInImage1} alt="" className="w-full" />
+									</figure>
+									<p className="leading-[1.8] mt-[12px]">Blouses</p>
+								</div>
+								<div className="w-full max-w-[208px]">
+									<figure className="w-full">
+										<img src={NewInImage2} alt="" className="w-full" />
+									</figure>
+									<p className="leading-[1.8] mt-[12px]">Plus Size</p>
+								</div>
+								<div className="w-full max-w-[208px]">
+									<figure className="w-full">
+										<img src={NewInImage3} alt="" className="w-full" />
+									</figure>
+									<p className="leading-[1.8] mt-[12px]">Plus Size</p>
+								</div>
+							</div>
+						</div>
 					</div>
 				)}
 			</div>
@@ -173,48 +216,13 @@ const DesktopNavbar = () => {
 	);
 };
 
-type CollectionContentItem = {
-	id: number;
-	heading: string;
-	subheading: string[];
-};
-
-const collectionContent: CollectionContentItem[] = [
-	{
-		id: 1,
-		heading: "Category",
-		subheading: [
-			"Shop all",
-			"Boluses & top",
-			"Pants",
-			"Dresses & jumpsuits",
-			"Outwear & jackets",
-			"Pullovers",
-			"Tees",
-			"Shorts & skirts",
-		],
-	},
-
-	{
-		id: 2,
-		heading: "Featured",
-		subheading: ["New in", "Modiweek", "Plus size", "Best seller"],
-	},
-
-	{
-		id: 3,
-		heading: "More",
-		subheading: ["Bundles", "Occasion wear", "Matching set", "Suiting"],
-	},
-];
-
-const DropdownContent = ({ id, heading, subheading }: CollectionContentItem) => {
+const DropdownContent = ({ id, heading, subheading }: DropdownType) => {
 	return (
-		<div className="flex flex-col gap-6">
+		<div className={`flex flex-col gap-6 w-fit`}>
 			<h3 className="text-dark-grey font-semibold">{heading}</h3>
 			<div className="flex flex-col gap-[8px]">
 				{subheading.map((item) => (
-					<p className="text-gray-700 leading-[1.8]">{item}</p>
+					<p className="text-gray-700 leading-[1.8] text-nowrap">{item}</p>
 				))}
 			</div>
 		</div>
