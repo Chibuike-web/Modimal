@@ -5,7 +5,10 @@ import CollectionImage2 from "../assets/CollectionImage2.png";
 import NewInImage1 from "../assets/NewInImage1.png";
 import NewInImage2 from "../assets/NewInImage2.png";
 import NewInImage3 from "../assets/NewInImage3.png";
-import { collectionContent, newInContent, DropdownType } from "./utils";
+import ModiweekImage1 from "../assets/PlusSizeImage1.png";
+import ModiweekImage2 from "../assets/PlusSizeImage2.png";
+import ModiweekImage3 from "../assets/PlusSizeImage3.png";
+import { collectionContent, newInContent, plusSizeContent, DropdownType } from "./utils";
 
 export default function Navbar() {
 	return (
@@ -140,11 +143,6 @@ const ListItems = () => {
 				>
 					Modiweek
 				</li>
-				{hover === "modiweek" && (
-					<div className="absolute bottom-0 left-[50%] bg-primary w-full max-w-[1224px] -translate-x-1/2 ">
-						Modiweek
-					</div>
-				)}
 			</div>
 			<div
 				onMouseEnter={() => {
@@ -154,14 +152,46 @@ const ListItems = () => {
 			>
 				<li
 					className={`px-4 py-[0.5rem] rounded-full cursor-pointer ${
-						hover === "plus-size" && "bg-primary-25"
+						hover === "plus-size" && "bg-primary-25 font-semibold"
 					}`}
 				>
 					Plus Size
 				</li>
 				{hover === "plus-size" && (
-					<div className="absolute bottom-0 left-[50%] bg-primary w-full max-w-[1224px] -translate-x-1/2 ">
-						Plus Size
+					<div className="fixed top-[128px] justify-items-center bg-black/40 inset-0 w-full">
+						<div
+							className="bg-white w-full max-w-[1440px] px-[108px] flex justify-between pt-8 pb-[56px]"
+							onMouseEnter={() => {
+								handleMouseEnter("plus-size");
+							}}
+							onMouseLeave={handleMouseLeave}
+						>
+							<div className="grid grid-cols-2 gap-6">
+								{plusSizeContent.map(({ id, heading, subheading }: DropdownType) => (
+									<DropdownContent key={id} id={id} heading={heading} subheading={subheading} />
+								))}
+							</div>
+							<div className="flex gap-6">
+								<div className="w-full max-w-[208px]">
+									<figure className="w-full">
+										<img src={ModiweekImage1} alt="" className="w-full" />
+									</figure>
+									<p className="leading-[1.8] mt-[12px]">Pants</p>
+								</div>
+								<div className="w-full max-w-[208px]">
+									<figure className="w-full">
+										<img src={ModiweekImage2} alt="" className="w-full" />
+									</figure>
+									<p className="leading-[1.8] mt-[12px]">Dresses</p>
+								</div>
+								<div className="w-full max-w-[208px]">
+									<figure className="w-full">
+										<img src={ModiweekImage3} alt="" className="w-full" />
+									</figure>
+									<p className="leading-[1.8] mt-[12px]">Blouses</p>
+								</div>
+							</div>
+						</div>
 					</div>
 				)}
 			</div>
@@ -173,14 +203,46 @@ const ListItems = () => {
 			>
 				<li
 					className={`px-4 py-[0.5rem] rounded-full cursor-pointer ${
-						hover === "sustainabiity" && "bg-primary-25"
+						hover === "sustainability" && "bg-primary-25 font-semibold"
 					}`}
 				>
 					Sustainability
 				</li>
 				{hover === "sustainability" && (
-					<div className="absolute bottom-0 left-[50%] bg-primary w-full max-w-[1224px] -translate-x-1/2 ">
-						Sustainability
+					<div className="fixed top-[128px] justify-items-center bg-black/40 inset-0 w-full">
+						<div
+							className="bg-white w-full max-w-[1440px] px-[108px] flex justify-between pt-8 pb-[56px]"
+							onMouseEnter={() => {
+								handleMouseEnter("sustainability");
+							}}
+							onMouseLeave={handleMouseLeave}
+						>
+							<div className="grid grid-cols-2 gap-6">
+								{plusSizeContent.map(({ id, heading, subheading }: DropdownType) => (
+									<DropdownContent key={id} id={id} heading={heading} subheading={subheading} />
+								))}
+							</div>
+							<div className="flex gap-6">
+								<div className="w-full max-w-[208px]">
+									<figure className="w-full">
+										<img src={ModiweekImage1} alt="" className="w-full" />
+									</figure>
+									<p className="leading-[1.8] mt-[12px]">Pants</p>
+								</div>
+								<div className="w-full max-w-[208px]">
+									<figure className="w-full">
+										<img src={ModiweekImage2} alt="" className="w-full" />
+									</figure>
+									<p className="leading-[1.8] mt-[12px]">Dresses</p>
+								</div>
+								<div className="w-full max-w-[208px]">
+									<figure className="w-full">
+										<img src={ModiweekImage3} alt="" className="w-full" />
+									</figure>
+									<p className="leading-[1.8] mt-[12px]">Blouses</p>
+								</div>
+							</div>
+						</div>
 					</div>
 				)}
 			</div>

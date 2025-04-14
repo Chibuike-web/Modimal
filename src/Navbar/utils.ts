@@ -55,3 +55,20 @@ export const newInContent: DropdownType[] = [
 		subheading: ["Plus Size", "Fall Collection", "Modiweek"],
 	},
 ];
+
+export const plusSizeContent: DropdownType[] = [
+	{
+		id: 1,
+		heading: "Category",
+		subheading: [
+			"Shop all",
+			"Tops & Blouses",
+			"Tees",
+			"Pants",
+			"Jackets & Outwears",
+			"Pullovers",
+			"Dresses & Jumpsuits",
+			"Shorts & Skirts",
+		],
+	},
+];
