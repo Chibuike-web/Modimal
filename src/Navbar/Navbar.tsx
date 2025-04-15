@@ -1,15 +1,15 @@
 import { BagIcon, HeartIcon, ProfileIcon, SearchIcon } from "../Icons";
 import { useState, useRef } from "react";
-import CollectionImage1 from "../assets/CollectionImage1.png";
-import CollectionImage2 from "../assets/CollectionImage2.png";
-import NewInImage1 from "../assets/NewInImage1.png";
-import NewInImage2 from "../assets/NewInImage2.png";
-import NewInImage3 from "../assets/NewInImage3.png";
-import PlusSizeImage1 from "../assets/PlusSizeImage1.png";
-import PlusSizeImage2 from "../assets/PlusSizeImage2.png";
-import PlusSizeImage3 from "../assets/PlusSizeImage3.png";
-import SustainImage1 from "../assets/SustainImage1.png";
-import SustainImage2 from "../assets/SustainImage2.png";
+import CollectionImage1 from "../assets/Navbar/CollectionImage1.png";
+import CollectionImage2 from "../assets/Navbar/CollectionImage2.png";
+import NewInImage1 from "../assets/Navbar/NewInImage1.png";
+import NewInImage2 from "../assets/Navbar/NewInImage2.png";
+import NewInImage3 from "../assets/Navbar/NewInImage3.png";
+import PlusSizeImage1 from "../assets/Navbar/PlusSizeImage1.png";
+import PlusSizeImage2 from "../assets/Navbar/PlusSizeImage2.png";
+import PlusSizeImage3 from "../assets/Navbar/PlusSizeImage3.png";
+import SustainImage1 from "../assets/Navbar/SustainImage1.png";
+import SustainImage2 from "../assets/Navbar/SustainImage2.png";
 import { collectionContent, newInContent, plusSizeContent, DropdownType } from "./utils";
 
 export default function Navbar() {
@@ -168,29 +168,31 @@ const CollectionDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProp
 	return (
 		<div className="fixed top-[128px] justify-items-center bg-black/40 inset-0 w-full">
 			<div
-				className="bg-white w-full max-w-[1440px] h-[550px] px-[108px] flex justify-between pt-8"
+				className="bg-white w-full h-[550px] px-[108px] flex justify-between pt-8"
 				onMouseEnter={() => {
 					handleMouseEnter("collection");
 				}}
 				onMouseLeave={handleMouseLeave}
 			>
-				<div className="grid grid-cols-3 gap-6">
-					{collectionContent.map(({ id, heading, subheading }: DropdownType) => (
-						<DropdownContent key={id} id={id} heading={heading} subheading={subheading} />
-					))}
-				</div>
-				<div className="flex gap-6">
-					<div className="w-full max-w-[288px]">
-						<figure className="w-full">
-							<img src={CollectionImage1} alt="" className="w-full object-fill" />
-						</figure>
-						<p className="leading-[1.8] mt-[12px]">Blouses</p>
+				<div className="w-full flex justify-between max-w-[1224px] mx-auto">
+					<div className="grid grid-cols-3 gap-6">
+						{collectionContent.map(({ id, heading, subheading }: DropdownType) => (
+							<DropdownContent key={id} id={id} heading={heading} subheading={subheading} />
+						))}
 					</div>
-					<div className="w-full max-w-[288px]">
-						<figure className="w-full">
-							<img src={CollectionImage2} alt="" className="w-full" />
-						</figure>
-						<p className="leading-[1.8] mt-[12px]">Plus Size</p>
+					<div className="flex gap-6">
+						<div className="w-full max-w-[288px]">
+							<figure className="w-full">
+								<img src={CollectionImage1} alt="" className="w-full object-fill" />
+							</figure>
+							<p className="leading-[1.8] mt-[12px]">Blouses</p>
+						</div>
+						<div className="w-full max-w-[288px]">
+							<figure className="w-full">
+								<img src={CollectionImage2} alt="" className="w-full" />
+							</figure>
+							<p className="leading-[1.8] mt-[12px]">Plus Size</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -202,35 +204,37 @@ const NewInDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps) =>
 	return (
 		<div className="fixed top-[128px] justify-items-center bg-black/40 inset-0 w-full">
 			<div
-				className="bg-white w-full max-w-[1440px] h-[550px] px-[108px] flex justify-between pt-8"
+				className="bg-white w-full h-[550px] px-[108px] flex justify-between pt-8"
 				onMouseEnter={() => {
 					handleMouseEnter("new-in");
 				}}
 				onMouseLeave={handleMouseLeave}
 			>
-				<div className="grid grid-cols-2 gap-6">
-					{newInContent.map(({ id, heading, subheading }: DropdownType) => (
-						<DropdownContent key={id} id={id} heading={heading} subheading={subheading} />
-					))}
-				</div>
-				<div className="flex gap-6">
-					<div className="w-full max-w-[208px]">
-						<figure className="w-full">
-							<img src={NewInImage1} alt="" className="w-full" />
-						</figure>
-						<p className="leading-[1.8] mt-[12px]">Blouses</p>
+				<div className="w-full flex justify-between max-w-[1224px] mx-auto">
+					<div className="grid grid-cols-2 gap-6">
+						{newInContent.map(({ id, heading, subheading }: DropdownType) => (
+							<DropdownContent key={id} id={id} heading={heading} subheading={subheading} />
+						))}
 					</div>
-					<div className="w-full max-w-[208px]">
-						<figure className="w-full">
-							<img src={NewInImage2} alt="" className="w-full" />
-						</figure>
-						<p className="leading-[1.8] mt-[12px]">Plus Size</p>
-					</div>
-					<div className="w-full max-w-[208px]">
-						<figure className="w-full">
-							<img src={NewInImage3} alt="" className="w-full" />
-						</figure>
-						<p className="leading-[1.8] mt-[12px]">Plus Size</p>
+					<div className="flex gap-6">
+						<div className="w-full max-w-[208px]">
+							<figure className="w-full">
+								<img src={NewInImage1} alt="" className="w-full" />
+							</figure>
+							<p className="leading-[1.8] mt-[12px]">Blouses</p>
+						</div>
+						<div className="w-full max-w-[208px]">
+							<figure className="w-full">
+								<img src={NewInImage2} alt="" className="w-full" />
+							</figure>
+							<p className="leading-[1.8] mt-[12px]">Plus Size</p>
+						</div>
+						<div className="w-full max-w-[208px]">
+							<figure className="w-full">
+								<img src={NewInImage3} alt="" className="w-full" />
+							</figure>
+							<p className="leading-[1.8] mt-[12px]">Plus Size</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -242,35 +246,37 @@ const PlusSizeDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps)
 	return (
 		<div className="fixed top-[128px] justify-items-center bg-black/40 inset-0 w-full">
 			<div
-				className="bg-white w-full max-w-[1440px] h-[550px] px-[108px] flex justify-between pt-8"
+				className="bg-white w-full h-[550px] px-[108px] flex justify-between pt-8"
 				onMouseEnter={() => {
 					handleMouseEnter("plus-size");
 				}}
 				onMouseLeave={handleMouseLeave}
 			>
-				<div className="grid grid-cols-2 gap-6">
-					{plusSizeContent.map(({ id, heading, subheading }: DropdownType) => (
-						<DropdownContent key={id} id={id} heading={heading} subheading={subheading} />
-					))}
-				</div>
-				<div className="flex gap-6">
-					<div className="w-full max-w-[208px]">
-						<figure className="w-full">
-							<img src={PlusSizeImage1} alt="" className="w-full" />
-						</figure>
-						<p className="leading-[1.8] mt-[12px]">Pants</p>
+				<div className="w-full flex justify-between max-w-[1224px] mx-auto">
+					<div className="grid grid-cols-2 gap-6">
+						{plusSizeContent.map(({ id, heading, subheading }: DropdownType) => (
+							<DropdownContent key={id} id={id} heading={heading} subheading={subheading} />
+						))}
 					</div>
-					<div className="w-full max-w-[208px]">
-						<figure className="w-full">
-							<img src={PlusSizeImage2} alt="" className="w-full" />
-						</figure>
-						<p className="leading-[1.8] mt-[12px]">Dresses</p>
-					</div>
-					<div className="w-full max-w-[208px]">
-						<figure className="w-full">
-							<img src={PlusSizeImage3} alt="" className="w-full" />
-						</figure>
-						<p className="leading-[1.8] mt-[12px]">Blouses</p>
+					<div className="flex gap-6">
+						<div className="w-full max-w-[208px]">
+							<figure className="w-full">
+								<img src={PlusSizeImage1} alt="" className="w-full" />
+							</figure>
+							<p className="leading-[1.8] mt-[12px]">Pants</p>
+						</div>
+						<div className="w-full max-w-[208px]">
+							<figure className="w-full">
+								<img src={PlusSizeImage2} alt="" className="w-full" />
+							</figure>
+							<p className="leading-[1.8] mt-[12px]">Dresses</p>
+						</div>
+						<div className="w-full max-w-[208px]">
+							<figure className="w-full">
+								<img src={PlusSizeImage3} alt="" className="w-full" />
+							</figure>
+							<p className="leading-[1.8] mt-[12px]">Blouses</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -282,24 +288,26 @@ const SustainDropDown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps) 
 	return (
 		<div className="fixed top-[128px] justify-items-center bg-black/40 inset-0 w-full">
 			<div
-				className="bg-white w-full max-w-[1440px] h-[550px] px-[108px] flex justify-between pt-8"
+				className="bg-white w-full h-[550px] px-[108px] flex justify-between pt-8"
 				onMouseEnter={() => {
 					handleMouseEnter("sustainability");
 				}}
 				onMouseLeave={handleMouseLeave}
 			>
-				<div className="grid grid-cols-2 gap-6">
-					{plusSizeContent.map(({ id, heading, subheading }: DropdownType) => (
-						<DropdownContent key={id} id={id} heading={heading} subheading={subheading} />
-					))}
-				</div>
-				<div className="flex gap-6">
-					<figure className="w-full max-w-[392px]">
-						<img src={SustainImage1} alt="" className="w-full" />
-					</figure>
-					<figure className="w-full max-w-[392px]">
-						<img src={SustainImage2} alt="" className="w-full" />
-					</figure>
+				<div className="w-full flex justify-between max-w-[1224px] mx-auto">
+					<div className="grid grid-cols-2 gap-6">
+						{plusSizeContent.map(({ id, heading, subheading }: DropdownType) => (
+							<DropdownContent key={id} id={id} heading={heading} subheading={subheading} />
+						))}
+					</div>
+					<div className="flex gap-6">
+						<figure className="w-full max-w-[392px]">
+							<img src={SustainImage1} alt="" className="w-full" />
+						</figure>
+						<figure className="w-full max-w-[392px]">
+							<img src={SustainImage2} alt="" className="w-full" />
+						</figure>
+					</div>
 				</div>
 			</div>
 		</div>
