@@ -1,16 +1,17 @@
-import { BagIcon, HeartIcon, ProfileIcon, SearchIcon } from "../Icons";
+import { BagIcon, HeartIcon, ProfileIcon, SearchIcon } from "../../Icons";
 import { useState, useRef } from "react";
-import CollectionImage1 from "../assets/Navbar/CollectionImage1.png";
-import CollectionImage2 from "../assets/Navbar/CollectionImage2.png";
-import NewInImage1 from "../assets/Navbar/NewInImage1.png";
-import NewInImage2 from "../assets/Navbar/NewInImage2.png";
-import NewInImage3 from "../assets/Navbar/NewInImage3.png";
-import PlusSizeImage1 from "../assets/Navbar/PlusSizeImage1.png";
-import PlusSizeImage2 from "../assets/Navbar/PlusSizeImage2.png";
-import PlusSizeImage3 from "../assets/Navbar/PlusSizeImage3.png";
-import SustainImage1 from "../assets/Navbar/SustainImage1.png";
-import SustainImage2 from "../assets/Navbar/SustainImage2.png";
+import CollectionImage1 from "../../assets/Navbar/CollectionImage1.png";
+import CollectionImage2 from "../../assets/Navbar/CollectionImage2.png";
+import NewInImage1 from "../../assets/Navbar/NewInImage1.png";
+import NewInImage2 from "../../assets/Navbar/NewInImage2.png";
+import NewInImage3 from "../../assets/Navbar/NewInImage3.png";
+import PlusSizeImage1 from "../../assets/Navbar/PlusSizeImage1.png";
+import PlusSizeImage2 from "../../assets/Navbar/PlusSizeImage2.png";
+import PlusSizeImage3 from "../../assets/Navbar/PlusSizeImage3.png";
+import SustainImage1 from "../../assets/Navbar/SustainImage1.png";
+import SustainImage2 from "../../assets/Navbar/SustainImage2.png";
 import { collectionContent, newInContent, plusSizeContent, DropdownType } from "./utils";
+import { useDropdownHover } from "./Hooks";
 
 export default function Navbar() {
 	return (
@@ -21,24 +22,15 @@ export default function Navbar() {
 }
 
 const ListItems = () => {
-	const [hover, setHover] = useState("");
-	const timeoutRef = useRef<number | null>(null);
-	const handleMouseEnter = (item: string) => {
-		if (timeoutRef.current !== null) {
-			clearTimeout(timeoutRef.current);
-		}
-		setHover(item);
-	};
+	const { hover, handleMouseEnter, handleMouseLeave } = useDropdownHover();
 
-	const handleMouseLeave = () => {
-		timeoutRef.current = setTimeout(() => {
-			setHover("");
-		}, 150);
-	};
 	return (
-		<ul className=" flex gap-[20px]">
+		<ul className=" flex gap-[1.25rem]">
 			<div>
 				<li
+					role="menuitem"
+					aria-haspopup="true"
+					aria-expanded={hover === "collection"}
 					className={`px-4 py-[0.5rem] rounded-full cursor-pointer ${
 						hover === "collection" && "bg-primary-25 font-semibold"
 					}`}
@@ -59,6 +51,9 @@ const ListItems = () => {
 
 			<div>
 				<li
+					role="menuitem"
+					aria-haspopup="true"
+					aria-expanded={hover === "new-in"}
 					className={`px-4 py-[0.5rem] rounded-full cursor-pointer ${
 						hover === "new-in" && "bg-primary-25 font-semibold"
 					}`}
@@ -80,6 +75,9 @@ const ListItems = () => {
 				onMouseLeave={handleMouseLeave}
 			>
 				<li
+					role="menuitem"
+					aria-haspopup="true"
+					aria-expanded={hover === "modiweek"}
 					className={`px-4 py-[0.5rem] rounded-full cursor-pointer ${
 						hover === "modiweek" && "bg-primary-25 font-semibold"
 					}`}
@@ -94,6 +92,9 @@ const ListItems = () => {
 				onMouseLeave={handleMouseLeave}
 			>
 				<li
+					role="menuitem"
+					aria-haspopup="true"
+					aria-expanded={hover === "plus-size"}
 					className={`px-4 py-[0.5rem] rounded-full cursor-pointer ${
 						hover === "plus-size" && "bg-primary-25 font-semibold"
 					}`}
@@ -134,10 +135,10 @@ const ListItems = () => {
 const DesktopNavbar = () => {
 	return (
 		<>
-			<div className="bg-primary text-off-white text-center text-[12px] font-semibold py-[8px]">
+			<div className="bg-primary text-off-white text-center text-[0.75rem] font-semibold py-[0.5rem]">
 				<p>Enjoy Free Shipping On All Orders</p>
 			</div>
-			<nav className="w-full max-w-[1224px] mx-auto flex items-center justify-between py-6">
+			<nav className="w-full max-w-[76.5rem] mx-auto flex items-center justify-between py-6">
 				<img src="/Logo.svg" alt="Brand Logo" />
 				<ListItems />
 				<div className="flex gap-6">
@@ -166,15 +167,15 @@ type DropdownProps = {
 
 const CollectionDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps) => {
 	return (
-		<div className="fixed top-[128px] justify-items-center bg-black/40 inset-0 w-full">
+		<div className="fixed top-[8rem] justify-items-center bg-black/40 inset-0 w-full">
 			<div
-				className="bg-white w-full h-[550px] px-[108px] flex justify-between pt-8"
+				className="bg-white w-full h-[34.375rem] px-[6.75rem] flex justify-between pt-8"
 				onMouseEnter={() => {
 					handleMouseEnter("collection");
 				}}
 				onMouseLeave={handleMouseLeave}
 			>
-				<div className="w-full flex justify-between max-w-[1224px] mx-auto">
+				<div className="w-full flex justify-between max-w-[76.5rem] mx-auto">
 					<div className="grid grid-cols-3 gap-6">
 						{collectionContent.map(({ id, heading, subheading }: DropdownType) => (
 							<DropdownContent key={id} id={id} heading={heading} subheading={subheading} />
