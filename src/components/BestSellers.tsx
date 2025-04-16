@@ -1,10 +1,10 @@
-import ProductImage1 from "../../assets/BestSellers/ProductImage1.png";
-import ProductImage2 from "../../assets/BestSellers/ProductImage2.png";
-import ProductImage3 from "../../assets/BestSellers/ProductImage3.png";
+import ProductImage1 from "../assets/BestSellers/ProductImage1.png";
+import ProductImage2 from "../assets/BestSellers/ProductImage2.png";
+import ProductImage3 from "../assets/BestSellers/ProductImage3.png";
 
 export default function BestSellers() {
 	return (
-		<section className="mx-auto max-w-[76.5rem] mt-[88px]">
+		<section className="mx-auto max-w-[76.5rem] mt-[5.5rem]">
 			<div className="mb-6 flex justify-between items-end">
 				<h1 className="font-semibold text-[2rem]">Best Sellers</h1>
 				<p>View All</p>

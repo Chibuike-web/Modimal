@@ -1,10 +1,10 @@
 import "./globals.css";
-import LandingPage from "./LandingPage";
+import Landing from "./components/Landing";
 
 export default function App() {
 	return (
 		<div>
-			<LandingPage />
+			<Landing />
 		</div>
 	);
 }
