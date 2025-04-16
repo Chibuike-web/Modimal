@@ -78,6 +78,10 @@
 	--color-success: var(--color-success);
 	--color-success-light: var(--color-success-light);
 	--color-success-bg: var(--color-success-bg);
+
+	/* Typography */
+
+	--font-primary: "Gill Sans MT";
 }
 
 body {
