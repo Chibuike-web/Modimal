@@ -1,6 +1,7 @@
 import ProductImage1 from "../assets/BestSellers/ProductImage1.png";
 import ProductImage2 from "../assets/BestSellers/ProductImage2.png";
 import ProductImage3 from "../assets/BestSellers/ProductImage3.png";
+import { LikeIcon } from "../Icons";
 
 export default function BestSellers() {
 	return (
@@ -63,8 +64,9 @@ const CardComponent = ({ id, image, name, description, price }: Product) => {
 	const thirdCircle = `${id === 1 ? "bg-[#748C70]" : id === 2 ? "bg-[#909225]" : "bg-[#748C70]"}`;
 	return (
 		<article id={`card-${id}`}>
-			<figure>
+			<figure className="relative">
 				<img src={image} alt="" />
+				<LikeIcon className="absolute top-[1.5rem] right-[1.5rem]" />
 			</figure>
 			<div className="flex items-center justify-between">
 				<div className="mt-[0.5rem] flex flex-col gap-[0.5rem]">

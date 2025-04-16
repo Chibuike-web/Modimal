@@ -1,5 +1,4 @@
 import { BagIcon, HeartIcon, ProfileIcon, SearchIcon } from "../../Icons";
-import { useState, useRef } from "react";
 import CollectionImage1 from "../../assets/Navbar/CollectionImage1.png";
 import CollectionImage2 from "../../assets/Navbar/CollectionImage2.png";
 import NewInImage1 from "../../assets/Navbar/NewInImage1.png";
