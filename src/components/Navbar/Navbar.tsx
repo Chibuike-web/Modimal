@@ -14,7 +14,10 @@ import { useDropdownHover } from "./Hooks";
 
 export default function Navbar() {
 	return (
-		<section className="relative">
+		<section className="sticky top-0 z-[100]">
+			<div className="bg-primary text-off-white text-center text-[0.75rem] font-semibold py-[0.5rem]">
+				<p>Enjoy Free Shipping On All Orders</p>
+			</div>
 			<DesktopNavbar />
 		</section>
 	);
@@ -133,11 +136,8 @@ const ListItems = () => {
 
 const DesktopNavbar = () => {
 	return (
-		<>
-			<div className="bg-primary text-off-white text-center text-[0.75rem] font-semibold py-[0.5rem]">
-				<p>Enjoy Free Shipping On All Orders</p>
-			</div>
-			<nav className="w-full max-w-[76.5rem] mx-auto flex items-center justify-between py-6">
+		<nav className="w-full flex items-center justify-center py-6 bg-white">
+			<header className="flex items-center justify-between w-full  max-w-[76.5rem]">
 				<img src="/Logo.svg" alt="Brand Logo" />
 				<ListItems />
 				<div className="flex gap-6">
@@ -154,8 +154,8 @@ const DesktopNavbar = () => {
 						<BagIcon />
 					</button>
 				</div>
-			</nav>
-		</>
+			</header>
+		</nav>
 	);
 };
 
