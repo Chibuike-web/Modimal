@@ -1,5 +1,6 @@
 import BestSellers from "./BestSellers";
 import Collection from "./Collection";
+import Footer from "./Footer/Footer";
 import Grid from "./Grid/Grid";
 import Hero from "./Hero/Hero";
 import Modiweek from "./Modiweek";
@@ -16,6 +17,7 @@ export default function Landing() {
 			<Modiweek />
 			<Sustain />
 			<Grid />
+			<Footer />
 		</>
 	);
 }

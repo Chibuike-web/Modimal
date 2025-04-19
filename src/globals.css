@@ -82,9 +82,14 @@
 	/* Typography */
 
 	--font-primary: "Gill Sans MT";
+	--font-secondary: "Montserrat";
 }
 
 body {
 	font-family: Montserrat;
 	color: hsl(0, 0%, 5%);
+}
+
+input {
+	outline: none;
 }
