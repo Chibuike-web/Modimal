@@ -1,13 +1,13 @@
 import ProductImage1 from "../assets/BestSellers/ProductImage1.png";
 import ProductImage2 from "../assets/BestSellers/ProductImage2.png";
 import ProductImage3 from "../assets/BestSellers/ProductImage3.png";
-import LikeButton from "./LikeButton";
+import { LikeButton } from "./UiElements";
 
 export default function BestSellers() {
 	return (
-		<section className="mx-auto max-w-[76.5rem] mt-[5.5rem]">
+		<section className="mx-auto max-w-[76.5rem] mt-[5.5rem] max-xl:px-6">
 			<div className="mb-6 flex justify-between items-end">
-				<h1 className="font-semibold text-[2rem]">Best Sellers</h1>
+				<h1 className="font-semibold text-[2rem] max-md:text-[20px]">Best Sellers</h1>
 				<p>View All</p>
 			</div>
 			<div className=" flex gap-6">
@@ -63,7 +63,7 @@ const CardComponent = ({ id, image, name, description, price }: Product) => {
 	const secondCircle = `${id === 1 ? "bg-[#7DC3EB]" : id === 2 ? "bg-[#19418E]" : "bg-[#0C0C0C]"}`;
 	const thirdCircle = `${id === 1 ? "bg-[#748C70]" : id === 2 ? "bg-[#909225]" : "bg-[#748C70]"}`;
 	return (
-		<article id={`card-${id}`}>
+		<article id={`card-${id}`} className="w-full max-md:min-w-[152px]">
 			<figure className="relative">
 				<img src={image} alt="" />
 				<LikeButton />

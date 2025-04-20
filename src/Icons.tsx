@@ -82,8 +82,8 @@ export function LikeIcon({
 	stroke = "#0C0C0C",
 }: {
 	className?: string;
-	fill: string;
-	stroke: string;
+	fill?: string;
+	stroke?: string;
 }) {
 	return (
 		<svg
@@ -180,6 +180,57 @@ export function FooterChatBotIcon({ className = "" }: { className: string }) {
 			<path
 				d="M36 14H20.01C18.91 14 18.01 14.9 18.01 16L18 34L22 30H36C37.1 30 38 29.1 38 28V16C38 14.9 37.1 14 36 14ZM36 28H21.17L20 29.17V16H36V28ZM28 22C29.1 22 30 21.1 30 20C30 18.9 29.1 18 28 18C26.9 18 26 18.9 26 20C26 21.1 26.9 22 28 22ZM32 25.43C32 24.62 31.52 23.9 30.78 23.58C29.93 23.21 28.99 23 28 23C27.01 23 26.07 23.21 25.22 23.58C24.48 23.9 24 24.62 24 25.43V26H32V25.43Z"
 				fill="white"
+			/>
+		</svg>
+	);
+}
+
+export function MenuIcon({ className = "" }: { className?: string }) {
+	return (
+		<svg
+			className={className}
+			width="25"
+			height="24"
+			viewBox="0 0 25 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path d="M3.5 18H21.5V16H3.5V18ZM3.5 13H21.5V11H3.5V13ZM3.5 6V8H21.5V6H3.5Z" fill="#0C0C0C" />
+		</svg>
+	);
+}
+
+export function CancelIcon({ className = "" }: { className?: string }) {
+	return (
+		<svg
+			className={className}
+			width="25"
+			height="24"
+			viewBox="0 0 25 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				d="M19.5 6.41L18.09 5L12.5 10.59L6.91 5L5.5 6.41L11.09 12L5.5 17.59L6.91 19L12.5 13.41L18.09 19L19.5 17.59L13.91 12L19.5 6.41Z"
+				fill="#0C0C0C"
+			/>
+		</svg>
+	);
+}
+
+export function DownArrowIcon({ className = "" }: { className?: string }) {
+	return (
+		<svg
+			className={className}
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				d="M7.41 15.7049L12 11.1249L16.59 15.7049L18 14.2949L12 8.29492L6 14.2949L7.41 15.7049Z"
+				fill="#0C0C0C"
 			/>
 		</svg>
 	);

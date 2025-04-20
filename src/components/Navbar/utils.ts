@@ -72,3 +72,18 @@ export const plusSizeContent: DropdownType[] = [
 		],
 	},
 ];
+
+export const sustainContent: DropdownType[] = [
+	{
+		id: 1,
+		heading: "Sustainability",
+		subheading: [
+			"Mission",
+			"Processing",
+			"Materials",
+			"Packaging",
+			"Product Care",
+			"Our Suppliers",
+		],
+	},
+];
