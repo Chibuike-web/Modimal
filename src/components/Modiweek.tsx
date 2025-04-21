@@ -7,8 +7,8 @@ import { LikeButton } from "./UiElements";
 
 export default function Modiweek() {
 	return (
-		<section className="mx-auto max-w-[76.5rem] mt-[5.5rem]">
-			<h1 className="font-semibold text-[2rem]">Modiweek</h1>
+		<section className="mx-auto max-w-[76.5rem] mt-[5.5rem] max-md:px-6">
+			<h1 className="font-semibold text-[2rem] max-md:text-[20px] mb-6 ">Modiweek</h1>
 			<div className="flex gap-6 mt-6 pr-10 overflow-x-scroll">
 				<Card image={Modiweek1} text="Sunday" />
 				<Card image={Modiweek2} text="Monday" />
@@ -24,7 +24,7 @@ const Card = ({ image, text }: { image: string; text: string }) => {
 	return (
 		<div>
 			<figure className="relative w-full min-w-[288px]">
-				<img src={image} alt="" />
+				<img src={image} alt="" className="w-full" />
 				<LikeButton />
 			</figure>
 			<p className="font-bold pt-[38px]">{text}</p>

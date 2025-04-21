@@ -44,7 +44,7 @@ export default function Footer() {
 				</div>
 
 				<p className="mt-[29px]">2023 modimal. All Rights Reserved.</p>
-				<FooterChatBotIcon className="fixed bottom-[56px] right-[calc((100vw-76.5rem)/2)] max-md:right-[calc(100vw)/2" />
+				<FooterChatBotIcon className="fixed bottom-[56px] right-[calc((100vw-76.5rem)/2)] max-xl:right-[1.5rem]" />
 			</section>
 		</footer>
 	);
