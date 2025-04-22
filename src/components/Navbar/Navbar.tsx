@@ -28,6 +28,7 @@ import { useDropdownHover } from "./Hooks";
 import { useEffect, useState } from "react";
 import { DownArrowButton } from "../UiElements";
 import { motion, AnimatePresence } from "motion/react";
+import { useSearch } from "../store/useSearch";
 
 export default function Navbar() {
 	const [windowSize, setWindowSize] = useState(window.innerWidth);
@@ -52,7 +53,7 @@ export default function Navbar() {
 
 const ListItems = () => {
 	const { hover, handleMouseEnter, handleMouseLeave } = useDropdownHover();
-
+	const { isSearch } = useSearch();
 	return (
 		<ul className=" flex gap-[1.25rem]">
 			<div>
@@ -64,6 +65,7 @@ const ListItems = () => {
 						hover === "collection" && "bg-primary-25 font-semibold"
 					}`}
 					onMouseEnter={() => {
+						if (isSearch) return;
 						handleMouseEnter("collection");
 					}}
 					onMouseLeave={handleMouseLeave}
@@ -87,6 +89,7 @@ const ListItems = () => {
 						hover === "new-in" && "bg-primary-25 font-semibold"
 					}`}
 					onMouseEnter={() => {
+						if (isSearch) return;
 						handleMouseEnter("new-in");
 					}}
 					onMouseLeave={handleMouseLeave}
@@ -99,6 +102,7 @@ const ListItems = () => {
 			</div>
 			<div
 				onMouseEnter={() => {
+					if (isSearch) return;
 					handleMouseEnter("modiweek");
 				}}
 				onMouseLeave={handleMouseLeave}
@@ -116,6 +120,7 @@ const ListItems = () => {
 			</div>
 			<div
 				onMouseEnter={() => {
+					if (isSearch) return;
 					handleMouseEnter("plus-size");
 				}}
 				onMouseLeave={handleMouseLeave}
@@ -139,6 +144,7 @@ const ListItems = () => {
 			</div>
 			<div
 				onMouseEnter={() => {
+					if (isSearch) return;
 					handleMouseEnter("sustainability");
 				}}
 				onMouseLeave={handleMouseLeave}
@@ -162,13 +168,14 @@ const ListItems = () => {
 };
 
 const DesktopNavbar = () => {
+	const { isSearch, setIsSearch } = useSearch();
 	return (
-		<nav className="w-full flex items-center justify-center py-6 bg-white">
+		<nav className="w-full flex items-center justify-center py-6 bg-white relative">
 			<header className="flex items-center justify-between w-full  max-w-[76.5rem]">
 				<img src="/Logo.svg" alt="Brand Logo" />
 				<ListItems />
 				<div className="flex gap-6">
-					<button type="button">
+					<button type="button" onClick={() => setIsSearch(!isSearch)}>
 						<SearchIcon />
 					</button>
 					<button type="button">
@@ -182,7 +189,37 @@ const DesktopNavbar = () => {
 					</button>
 				</div>
 			</header>
+
+			<AnimatePresence>{isSearch ? <SearchBar /> : ""}</AnimatePresence>
 		</nav>
+	);
+};
+
+const SearchBar = () => {
+	return (
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0, y: -20 }}
+			transition={{ duration: 0.2 }}
+			className="fixed top-[8rem] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full"
+		>
+			<motion.div
+				initial={{ opacity: 0, height: 0 }}
+				animate={{ opacity: 1, height: "auto" }}
+				exit={{ opacity: 0, height: 0 }}
+				transition={{ duration: 0.2 }}
+				className="justify-items-center content-center w-full pt-8 pb-16 bg-white overflow-hidden"
+			>
+				<input
+					type="text"
+					name=""
+					id=""
+					placeholder="Search"
+					className="block w-full max-w-[76.5rem] border-b"
+				/>{" "}
+			</motion.div>
+		</motion.div>
 	);
 };
 
@@ -193,7 +230,7 @@ type DropdownProps = {
 
 const CollectionDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps) => {
 	return (
-		<div className="fixed top-[8rem] justify-items-center bg-black/40 inset-0 w-full">
+		<div className="fixed top-[8rem] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full">
 			<div
 				className="bg-white w-full h-[34.375rem] px-[6.75rem] flex justify-between pt-8"
 				onMouseEnter={() => {
@@ -229,7 +266,7 @@ const CollectionDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProp
 
 const NewInDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps) => {
 	return (
-		<div className="fixed top-[128px] justify-items-center bg-black/40 inset-0 w-full">
+		<div className="fixed top-[128px] justify-items-center bg-black/40 backdrop-blur-[0.5rem] inset-0 w-full">
 			<div
 				className="bg-white w-full h-[550px] px-[108px] flex justify-between pt-8"
 				onMouseEnter={() => {
@@ -271,7 +308,7 @@ const NewInDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps) =>
 
 const PlusSizeDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps) => {
 	return (
-		<div className="fixed top-[128px] justify-items-center bg-black/40 inset-0 w-full">
+		<div className="fixed top-[128px] justify-items-center bg-black/40 backdrop-blur-[0.5rem] inset-0 w-full">
 			<div
 				className="bg-white w-full h-[550px] px-[108px] flex justify-between pt-8"
 				onMouseEnter={() => {
@@ -313,7 +350,7 @@ const PlusSizeDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps)
 
 const SustainDropDown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps) => {
 	return (
-		<div className="fixed top-[128px] justify-items-center bg-black/40 inset-0 w-full">
+		<div className="fixed top-[128px] justify-items-center bg-black/40 backdrop-blur-[0.5rem] inset-0 w-full">
 			<div
 				className="bg-white w-full h-[550px] px-[108px] flex justify-between pt-8"
 				onMouseEnter={() => {
