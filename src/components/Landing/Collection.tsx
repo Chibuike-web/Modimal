@@ -1,7 +1,7 @@
-import Collection1 from "../assets/Collection/Collection1.png";
-import Collection2 from "../assets/Collection/Collection2.png";
-import Collection3 from "../assets/Collection/Collection3.png";
-import Collection4 from "../assets/Collection/Collection4.png";
+import Collection1 from "../../assets/Collection/Collection1.png";
+import Collection2 from "../../assets/Collection/Collection2.png";
+import Collection3 from "../../assets/Collection/Collection3.png";
+import Collection4 from "../../assets/Collection/Collection4.png";
 
 export default function Collection() {
 	return (

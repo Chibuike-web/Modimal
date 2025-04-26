@@ -1,9 +1,9 @@
-import Modiweek1 from "../assets/Modiweek/Modiweek1.png";
-import Modiweek2 from "../assets/Modiweek/Modiweek2.png";
-import Modiweek3 from "../assets/Modiweek/Modiweek3.png";
-import Modiweek4 from "../assets/Modiweek/Modiweek4.png";
-import Modiweek5 from "../assets/Modiweek/Modiweek5.png";
-import { LikeButton } from "./UiElements";
+import Modiweek1 from "../../assets/Modiweek/Modiweek1.png";
+import Modiweek2 from "../../assets/Modiweek/Modiweek2.png";
+import Modiweek3 from "../../assets/Modiweek/Modiweek3.png";
+import Modiweek4 from "../../assets/Modiweek/Modiweek4.png";
+import Modiweek5 from "../../assets/Modiweek/Modiweek5.png";
+import { LikeButton } from "../UiElements";
 
 export default function Modiweek() {
 	return (

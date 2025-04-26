@@ -4,7 +4,7 @@ import {
 	InstagramIcon,
 	PinterestIcon,
 	TiktokIcon,
-} from "../../Icons";
+} from "../Icons";
 
 export default function Footer() {
 	return (

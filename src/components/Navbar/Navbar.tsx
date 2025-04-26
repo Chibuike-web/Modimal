@@ -25,7 +25,7 @@ import {
 	sustainContent,
 } from "./utils";
 import { useDropdownHover } from "./Hooks";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { DownArrowButton } from "../UiElements";
 import { motion, AnimatePresence } from "motion/react";
 import { useSearch } from "../store/useSearch";
@@ -176,7 +176,7 @@ const DesktopNavbar = () => {
 				<ListItems />
 				<div className="flex gap-6">
 					<button type="button" onClick={() => setIsSearch(!isSearch)}>
-						<SearchIcon />
+						{isSearch ? <CancelIcon /> : <SearchIcon />}
 					</button>
 					<button type="button">
 						<ProfileIcon />
@@ -196,23 +196,30 @@ const DesktopNavbar = () => {
 };
 
 const SearchBar = () => {
+	const inputRef = useRef<HTMLInputElement>(null);
+
+	useEffect(() => {
+		inputRef.current?.focus();
+	}, []);
+
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0, y: -20 }}
 			transition={{ duration: 0.2 }}
-			className="fixed top-[8rem] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full"
+			className="fixed top-[8rem] max-md:top-[5rem] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full"
 		>
 			<motion.div
 				initial={{ opacity: 0, height: 0 }}
 				animate={{ opacity: 1, height: "auto" }}
 				exit={{ opacity: 0, height: 0 }}
 				transition={{ duration: 0.2 }}
-				className="justify-items-center content-center w-full pt-8 pb-16 bg-white overflow-hidden"
+				className="justify-items-center content-center w-full pt-8 pb-16 max-md:px-6 bg-white overflow-hidden"
 			>
 				<input
 					type="text"
+					ref={inputRef}
 					name=""
 					id=""
 					placeholder="Search"
@@ -395,6 +402,7 @@ const DropdownContent = ({ heading, subheading }: DropdownType) => {
 
 const MobileNavbar = () => {
 	const [showDropdown, setShowDropdown] = useState(false);
+	const { isSearch, setIsSearch } = useSearch();
 	return (
 		<>
 			<nav className="w-full flex items-center justify-center py-[8px] bg-white px-6">
@@ -407,7 +415,9 @@ const MobileNavbar = () => {
 						>
 							{showDropdown ? <CancelIcon /> : <MenuIcon />}
 						</figure>
-						<SearchIcon />
+						<button type="button" onClick={() => setIsSearch(!isSearch)}>
+							<SearchIcon />
+						</button>
 					</div>
 					<img src="/Logo.svg" alt="Brand Logo" className="w-full max-w-[130px]" />
 					<div className="flex gap-[8px] items-center">
@@ -417,6 +427,7 @@ const MobileNavbar = () => {
 				</header>
 			</nav>
 			<AnimatePresence>{showDropdown && <MobileDropdown />} </AnimatePresence>
+			<AnimatePresence>{isSearch ? <SearchBar /> : ""}</AnimatePresence>
 		</>
 	);
 };
