@@ -32,17 +32,23 @@ export type Product = {
 	description: string;
 	price: number;
 	colors?: string[];
+	search?: boolean;
 };
 
-export const CardComponent = ({ id, image, name, description, price, colors }: Product) => {
+export const CardComponent = ({ id, image, name, description, price, colors, search }: Product) => {
 	return (
-		<article id={`card-${id}`} className="w-full max-md:min-w-[152px]">
-			<figure className="relative">
-				<img src={image} alt="" />
+		<article
+			id={`card-${id}`}
+			className={`w-full flex flex-col gap-[1rem] max-w-[392px] ${
+				search ? "" : "max-md:min-w-[152px]"
+			}`}
+		>
+			<figure className="relative w-full ">
+				<img src={image} alt="" className="w-full h-full" />
 				<LikeButton />
 			</figure>
 			<div className="flex items-center justify-between">
-				<div className="mt-[0.5rem] flex flex-col gap-[0.5rem]">
+				<div className="flex flex-col gap-[0.5rem]">
 					<h3 className="font-bold">{name}</h3>
 					<p>{description}</p>
 					<div className="flex gap-[0.5rem]">
