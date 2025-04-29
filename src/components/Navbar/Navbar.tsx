@@ -439,7 +439,10 @@ const MobileDropdown = () => {
 			initial={{ opacity: 0, y: -50 }}
 			animate={{ opacity: 1, y: 0 }}
 			exit={{ opacity: 0, y: -50 }}
-			transition={{ duration: 0.3 }}
+			transition={{
+				y: { duration: 0.3, ease: "easeInOut" },
+				opacity: { duration: 0.2, ease: "easeOut", delay: 0.1 },
+			}}
 		>
 			<CollectionMobileMenu />
 			<NewInMobileMenu />

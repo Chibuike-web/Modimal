@@ -6,6 +6,7 @@ import ProductImage4 from "../../assets/Search/ProductImage4.png";
 import ProductImage5 from "../../assets/Search/ProductImage5.png";
 import ProductImage6 from "../../assets/Search/ProductImage6.png";
 import { CardComponent, Product } from "../UiElements";
+import { motion } from "motion/react";
 
 export default function SearchResults() {
 	const [searchParams] = useSearchParams();
@@ -46,20 +47,41 @@ const FilterButton = ({ item }: FilterButtonProps) => {
 	return <button>{item}</button>;
 };
 
+const fadeUp = {
+	initial: { opacity: 0, y: 100 },
+	animate: (i: number) => ({
+		opacity: 1,
+		y: 0,
+		transition: {
+			delay: i * 0.4,
+			duration: 0.8,
+			ease: "easeOut",
+		},
+	}),
+};
+
 const CardContainer = () => {
 	return (
 		<div className="grid grid-cols-2 gap-6 w-full">
-			{products.map(({ id, image, name, description, price, colors }: Product) => (
-				<CardComponent
-					key={id}
-					id={id}
-					image={image}
-					description={description}
-					name={name}
-					price={price}
-					colors={colors}
-					search
-				/>
+			{products.map(({ id, image, name, description, price, colors }: Product, index) => (
+				<motion.div
+					variants={fadeUp}
+					custom={index}
+					initial="initial"
+					whileInView="animate"
+					viewport={{ once: true, amount: 0.3 }}
+				>
+					<CardComponent
+						key={id}
+						id={id}
+						image={image}
+						description={description}
+						name={name}
+						price={price}
+						colors={colors}
+						search
+					/>
+				</motion.div>
 			))}
 		</div>
 	);

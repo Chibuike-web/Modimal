@@ -2,6 +2,20 @@ import ProductImage1 from "../../assets/BestSellers/ProductImage1.png";
 import ProductImage2 from "../../assets/BestSellers/ProductImage2.png";
 import ProductImage3 from "../../assets/BestSellers/ProductImage3.png";
 import { CardComponent, Product } from "../UiElements";
+import { motion } from "motion/react";
+
+const fadeUp = {
+	initial: { opacity: 0, y: 100 },
+	animate: (i: number) => ({
+		opacity: 1,
+		y: 0,
+		transition: {
+			delay: i * 0.4,
+			duration: 0.8,
+			ease: "easeOut",
+		},
+	}),
+};
 
 export default function BestSellers() {
 	return (
@@ -11,16 +25,24 @@ export default function BestSellers() {
 				<p>View All</p>
 			</div>
 			<div className=" flex gap-6">
-				{products.map(({ id, image, name, description, price, colors }) => (
-					<CardComponent
-						key={id}
-						id={id}
-						image={image}
-						name={name}
-						description={description}
-						price={price}
-						colors={colors}
-					/>
+				{products.map(({ id, image, name, description, price, colors }, index) => (
+					<motion.div
+						variants={fadeUp}
+						custom={index}
+						initial="initial"
+						whileInView="animate"
+						viewport={{ once: true, amount: 0.3 }}
+					>
+						<CardComponent
+							key={id}
+							id={id}
+							image={image}
+							name={name}
+							description={description}
+							price={price}
+							colors={colors}
+						/>
+					</motion.div>
 				))}
 			</div>
 		</section>

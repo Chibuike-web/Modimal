@@ -43,7 +43,7 @@ export const CardComponent = ({ id, image, name, description, price, colors, sea
 				search ? "" : "max-md:min-w-[152px]"
 			}`}
 		>
-			<figure className="relative w-full ">
+			<figure className="relative w-full flex ">
 				<img src={image} alt="" className="w-full h-full" />
 				<LikeButton />
 			</figure>
