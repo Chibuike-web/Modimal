@@ -87,7 +87,9 @@ const FooterLinks = ({ id, title, links }: FooterLinkSection) => {
 			<h3 className="text-[20px] font-bold">{title}</h3>
 			<div className="flex flex-col gap-[8px]">
 				{links.map((link) => (
-					<p className="text-[18px] leading-[1.8]">{link}</p>
+					<p key={link} className="text-[18px] leading-[1.8]">
+						{link}
+					</p>
 				))}
 			</div>
 		</div>

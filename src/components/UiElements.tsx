@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { DownArrowIcon, LikeIcon } from "../Icons";
+import { AddIcon, CheckIcon, DownArrowIcon, LikeIcon, MinusIcon } from "../Icons";
+import { AnimatePresence, motion } from "motion/react";
 
 export function LikeButton() {
 	const [isClicked, setIsClicked] = useState(false);
@@ -60,5 +61,78 @@ export const CardComponent = ({ id, image, name, description, price, colors, sea
 				<p className="font-bold">${price}</p>
 			</div>
 		</article>
+	);
+};
+
+interface FilterButtonProps {
+	id: number;
+	title: string;
+	list?: string[];
+}
+
+export const FilterButton = ({ id, title, list }: FilterButtonProps) => {
+	const [isShowDropdown, setIsShowDropdown] = useState(false);
+
+	return (
+		<>
+			<button
+				type="button"
+				className="bg-primary flex justify-between text-white font-bold px-4 py-[13px] items-center"
+				onClick={() => setIsShowDropdown(true)}
+			>
+				{title}{" "}
+				<span>
+					<AddIcon />
+				</span>{" "}
+			</button>
+			<AnimatePresence>
+				{isShowDropdown && (
+					<Dropdown title={title} list={list} setIsShowDropdown={setIsShowDropdown} />
+				)}
+			</AnimatePresence>
+		</>
+	);
+};
+
+type Dropdown = {
+	title: string;
+	list?: string[];
+	setIsShowDropdown: (value: boolean) => void;
+};
+
+const Dropdown = ({ title, list, setIsShowDropdown }: Dropdown) => {
+	return (
+		<motion.div
+			initial={{ opacity: 0, height: 0 }}
+			animate={{ opacity: 1, height: "auto" }}
+			exit={{ opacity: 0, height: 0 }}
+			transition={{ opacity: { duration: 0.3 }, height: { duration: 0.4 } }}
+			className="border border-primary"
+		>
+			<div className="flex justify-between items-center font-bold px-4 py-[13px]">
+				<h2 className="text-primary">{title}</h2>
+				<button type="button" onClick={() => setIsShowDropdown(false)}>
+					<MinusIcon />
+				</button>
+			</div>
+			<div className="px-4 py-[13px] flex flex-col">
+				{list?.map((listItem) => (
+					<SelectButton key={listItem} listItem={listItem} />
+				))}
+			</div>
+		</motion.div>
+	);
+};
+
+const SelectButton = ({ listItem }: { listItem: string }) => {
+	const [isChecked, setIsChecked] = useState(false);
+	return (
+		<button
+			className="w-full flex items-center gap-[0.5rem]"
+			onClick={() => setIsChecked(!isChecked)}
+		>
+			<CheckIcon fill={isChecked ? "#5A6D57" : "white"} />
+			{listItem}
+		</button>
 	);
 };

@@ -7,6 +7,7 @@ import ProductImage5 from "../../assets/Search/ProductImage5.png";
 import ProductImage6 from "../../assets/Search/ProductImage6.png";
 import { CardComponent, Product } from "../UiElements";
 import { motion } from "motion/react";
+import { FilterButton } from "../UiElements";
 
 export default function SearchResults() {
 	const [searchParams] = useSearchParams();
@@ -14,8 +15,8 @@ export default function SearchResults() {
 
 	return (
 		<div>
-			<h1>Search Results</h1>
-			<p>
+			<h1 className="text-center">Search Results</h1>
+			<p className="text-center mb-8">
 				Showing results for: <strong>{query}</strong>
 			</p>
 
@@ -29,22 +30,44 @@ export default function SearchResults() {
 	);
 }
 
-interface FilterButtonProps {
-	item: string;
-}
+const filterList = [
+	{
+		id: 1,
+		title: "Sort By",
+	},
+	{
+		id: 2,
+		title: "Size",
+		list: ["XS / US (0-4)", "S / US (4-6)", "M / US (6-10)", "L / US (10-14)", "XL / US (12-16)"],
+	},
+
+	{
+		id: 3,
+		title: "Color",
+	},
+	{
+		id: 4,
+		title: "Collection",
+		list: ["In Stock", "Out Of Stock"],
+	},
+	{
+		id: 5,
+		title: "Fabric",
+		list: ["Cotton", "Linen", "Wool", "Silk", "Cashmere"],
+	},
+];
 
 const Filter = () => {
 	return (
 		<div className="w-full max-w-[392px]">
-			{["Sort By", "Size", "Color", "Collection", "Fabric"].map((item) => (
-				<FilterButton key={item} item={item} />
-			))}
+			<h2 className="font-semibold text-gray-950 text-[2rem] mb-4">Filters</h2>
+			<div className="grid grid-cols-1 gap-4">
+				{filterList.map(({ id, title, list }) => (
+					<FilterButton key={id} id={id} title={title} list={list} />
+				))}
+			</div>
 		</div>
 	);
-};
-
-const FilterButton = ({ item }: FilterButtonProps) => {
-	return <button>{item}</button>;
 };
 
 const fadeUp = {
@@ -65,6 +88,7 @@ const CardContainer = () => {
 		<div className="grid grid-cols-2 gap-6 w-full">
 			{products.map(({ id, image, name, description, price, colors }: Product, index) => (
 				<motion.div
+					key={id}
 					variants={fadeUp}
 					custom={index}
 					initial="initial"
@@ -72,7 +96,6 @@ const CardContainer = () => {
 					viewport={{ once: true, amount: 0.3 }}
 				>
 					<CardComponent
-						key={id}
 						id={id}
 						image={image}
 						description={description}
