@@ -74,39 +74,42 @@ export const FilterButton = ({ id, title, list }: FilterButtonProps) => {
 	const [isShowDropdown, setIsShowDropdown] = useState(false);
 
 	return (
-		<motion.div
-			initial={{ opacity: 0, height: 0 }}
-			animate={{ opacity: 1, height: "auto" }}
-			exit={{ opacity: 0, height: 0 }}
-			transition={{ duration: 0.3 }}
+		<div
 			className={`${
-				isShowDropdown ? "bg-white text-gray-950 border" : "bg-primary text-white"
+				isShowDropdown ? "bg-white border" : "bg-primary text-white"
 			} flex flex-col px-4 py-[13px] `}
 		>
 			<div
-				className=" flex justify-between w-full items-center font-bold cursor-pointer"
+				className={`flex justify-between ${
+					isShowDropdown && "text-primary"
+				} w-full items-center font-bold cursor-pointer`}
 				onClick={() => setIsShowDropdown(!isShowDropdown)}
 			>
 				{title}
 				{isShowDropdown ? <MinusIcon /> : <AddIcon />}
 			</div>
-			<AnimatePresence>
+			<AnimatePresence mode="wait">
 				{isShowDropdown && (
 					<motion.div
 						key="dropdown"
-						className="py-[13px] flex flex-col gap-[4px]"
-						initial={{ opacity: 0, height: 0 }}
-						animate={{ opacity: 1, height: "auto" }}
-						exit={{ opacity: 0, height: 0 }}
-						transition={{ duration: 0.3 }}
+						className="flex flex-col gap-1 overflow-hidden"
+						initial={{ height: 0, opacity: 0 }}
+						animate={{ height: "auto", opacity: 1 }}
+						exit={{ height: 0, opacity: 0 }}
+						transition={{
+							duration: 0.1,
+							ease: "easeInOut",
+						}}
 					>
-						{list?.map((listItem) => (
-							<SelectButton key={listItem} listItem={listItem} />
-						))}
+						<div className="py-3">
+							{list?.map((listItem) => (
+								<SelectButton key={listItem} listItem={listItem} />
+							))}
+						</div>
 					</motion.div>
 				)}
 			</AnimatePresence>
-		</motion.div>
+		</div>
 	);
 };
 
