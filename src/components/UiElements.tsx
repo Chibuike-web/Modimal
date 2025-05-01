@@ -88,7 +88,7 @@ export const FilterButton = ({ id, title, list }: FilterButtonProps) => {
 				{title}
 				{isShowDropdown ? <MinusIcon /> : <AddIcon />}
 			</div>
-			<AnimatePresence mode="wait">
+			<AnimatePresence>
 				{isShowDropdown && (
 					<motion.div
 						key="dropdown"
@@ -97,7 +97,7 @@ export const FilterButton = ({ id, title, list }: FilterButtonProps) => {
 						animate={{ height: "auto", opacity: 1 }}
 						exit={{ height: 0, opacity: 0 }}
 						transition={{
-							duration: 0.1,
+							duration: 0.2,
 							ease: "easeInOut",
 						}}
 					>

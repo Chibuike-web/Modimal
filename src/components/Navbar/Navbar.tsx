@@ -416,7 +416,7 @@ const MobileNavbar = () => {
 							{showDropdown ? <CancelIcon /> : <MenuIcon />}
 						</figure>
 						<button type="button" onClick={() => setIsSearch(!isSearch)}>
-							<SearchIcon />
+							{isSearch ? <CancelIcon /> : <SearchIcon />}
 						</button>
 					</div>
 					<img src="/Logo.svg" alt="Brand Logo" className="w-full max-w-[130px]" />
