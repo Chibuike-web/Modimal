@@ -6,12 +6,15 @@ import ProductImage4 from "../../assets/Search/ProductImage4.png";
 import ProductImage5 from "../../assets/Search/ProductImage5.png";
 import ProductImage6 from "../../assets/Search/ProductImage6.png";
 import { CardComponent, Product } from "../UiElements";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { FilterButton } from "../UiElements";
+import { CancelIcon, FilterIcon } from "../../Icons";
+import { useState } from "react";
 
 export default function SearchResults() {
 	const [searchParams] = useSearchParams();
 	const query = searchParams.get("query");
+	const [isShowFilter, setIsShowFilter] = useState(false);
 
 	return (
 		<div>
@@ -20,12 +23,24 @@ export default function SearchResults() {
 				Showing results for: <strong>{query}</strong>
 			</p>
 
-			<section className=" mx-auto max-w-[76.5rem] ">
-				<div className="flex flex-col md:flex-row gap-6 w-full px-6 md:px-0">
-					<Filter />
+			<section className=" mx-auto max-w-[76.5rem] flex flex-col justify-center items-center ">
+				<button
+					type="button"
+					className="xl:hidden flex mb-4 w-full py-6 justify-center"
+					onClick={() => setIsShowFilter(!isShowFilter)}
+				>
+					<FilterIcon /> <p>Filter</p>
+				</button>
+				<div className="flex flex-col justify-center md:flex-row gap-6 w-full px-6 mt-6 xl:px-0">
+					<DesktopFilter />
 					<CardContainer />
 				</div>
 			</section>
+			<AnimatePresence>
+				{isShowFilter && (
+					<MobileFilter isShowFilter={isShowFilter} setIsShowFilter={setIsShowFilter} />
+				)}
+			</AnimatePresence>
 		</div>
 	);
 }
@@ -57,9 +72,9 @@ const filterList = [
 	},
 ];
 
-const Filter = () => {
+const DesktopFilter = () => {
 	return (
-		<div className="w-full max-w-[392px]">
+		<div className="w-full max-w-[392px] hidden xl:block">
 			<h2 className="font-semibold text-gray-950 text-[2rem] mb-4">Filters</h2>
 			<div className="grid grid-cols-1 gap-4">
 				{filterList.map(({ id, title, list }) => (
@@ -67,6 +82,36 @@ const Filter = () => {
 				))}
 			</div>
 		</div>
+	);
+};
+
+const MobileFilter = ({
+	isShowFilter,
+	setIsShowFilter,
+}: {
+	isShowFilter: boolean;
+	setIsShowFilter: (value: boolean) => void;
+}) => {
+	return (
+		<motion.div
+			initial={{ opacity: 0, x: 100 }}
+			animate={{ opacity: 1, x: 0 }}
+			exit={{ opacity: 0, x: 100 }}
+			transition={{ duration: 0.3 }}
+			className="w-full bg-white fixed top-0 z-100 inset-0 px-6 py-12 overflow-hidden"
+		>
+			<div className="flex justify-between items-center">
+				<h2 className="font-semibold text-gray-950 text-[2rem] mb-4">Filters</h2>
+				<button type="button" onClick={() => setIsShowFilter(!isShowFilter)}>
+					<CancelIcon />
+				</button>
+			</div>
+			<div className="grid grid-cols-1 gap-4">
+				{filterList.map(({ id, title, list }) => (
+					<FilterButton key={id} id={id} title={title} list={list} />
+				))}
+			</div>
+		</motion.div>
 	);
 };
 
@@ -85,7 +130,7 @@ const fadeUp = {
 
 const CardContainer = () => {
 	return (
-		<div className="grid grid-cols-2 gap-6 w-full">
+		<div className="grid grid-cols-2 max-w-[808px] xl:px-0 xl:w-full gap-6 w-full">
 			{products.map(({ id, image, name, description, price, colors }: Product, index) => (
 				<motion.div
 					key={id}

@@ -170,7 +170,7 @@ const ListItems = () => {
 const DesktopNavbar = () => {
 	const { isSearch, setIsSearch } = useSearch();
 	return (
-		<nav className="w-full flex items-center justify-center py-6 bg-white relative">
+		<nav className="w-full flex items-center justify-center py-6 bg-white relative px-6 xl:px-0">
 			<header className="flex items-center justify-between w-full  max-w-[76.5rem]">
 				<img src="/Logo.svg" alt="Brand Logo" />
 				<ListItems />

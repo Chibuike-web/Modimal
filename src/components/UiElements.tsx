@@ -74,52 +74,38 @@ export const FilterButton = ({ id, title, list }: FilterButtonProps) => {
 	const [isShowDropdown, setIsShowDropdown] = useState(false);
 
 	return (
-		<>
-			<button
-				type="button"
-				className="bg-primary flex justify-between text-white font-bold px-4 py-[13px] items-center"
-				onClick={() => setIsShowDropdown(true)}
-			>
-				{title}{" "}
-				<span>
-					<AddIcon />
-				</span>{" "}
-			</button>
-			<AnimatePresence>
-				{isShowDropdown && (
-					<Dropdown title={title} list={list} setIsShowDropdown={setIsShowDropdown} />
-				)}
-			</AnimatePresence>
-		</>
-	);
-};
-
-type Dropdown = {
-	title: string;
-	list?: string[];
-	setIsShowDropdown: (value: boolean) => void;
-};
-
-const Dropdown = ({ title, list, setIsShowDropdown }: Dropdown) => {
-	return (
 		<motion.div
 			initial={{ opacity: 0, height: 0 }}
 			animate={{ opacity: 1, height: "auto" }}
 			exit={{ opacity: 0, height: 0 }}
-			transition={{ opacity: { duration: 0.3 }, height: { duration: 0.4 } }}
-			className="border border-primary"
+			transition={{ duration: 0.3 }}
+			className={`${
+				isShowDropdown ? "bg-white text-gray-950 border" : "bg-primary text-white"
+			} flex flex-col px-4 py-[13px] `}
 		>
-			<div className="flex justify-between items-center font-bold px-4 py-[13px]">
-				<h2 className="text-primary">{title}</h2>
-				<button type="button" onClick={() => setIsShowDropdown(false)}>
-					<MinusIcon />
-				</button>
+			<div
+				className=" flex justify-between w-full items-center font-bold cursor-pointer"
+				onClick={() => setIsShowDropdown(!isShowDropdown)}
+			>
+				{title}
+				{isShowDropdown ? <MinusIcon /> : <AddIcon />}
 			</div>
-			<div className="px-4 py-[13px] flex flex-col">
-				{list?.map((listItem) => (
-					<SelectButton key={listItem} listItem={listItem} />
-				))}
-			</div>
+			<AnimatePresence>
+				{isShowDropdown && (
+					<motion.div
+						key="dropdown"
+						className="py-[13px] flex flex-col gap-[4px]"
+						initial={{ opacity: 0, height: 0 }}
+						animate={{ opacity: 1, height: "auto" }}
+						exit={{ opacity: 0, height: 0 }}
+						transition={{ duration: 0.3 }}
+					>
+						{list?.map((listItem) => (
+							<SelectButton key={listItem} listItem={listItem} />
+						))}
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</motion.div>
 	);
 };
@@ -128,7 +114,7 @@ const SelectButton = ({ listItem }: { listItem: string }) => {
 	const [isChecked, setIsChecked] = useState(false);
 	return (
 		<button
-			className="w-full flex items-center gap-[0.5rem]"
+			className="w-full flex items-center gap-[0.5rem] leading-[1.6]"
 			onClick={() => setIsChecked(!isChecked)}
 		>
 			<CheckIcon fill={isChecked ? "#5A6D57" : "white"} />
