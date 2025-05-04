@@ -17,3 +17,11 @@ export function useDropdownHover() {
 
 	return { hover, handleMouseEnter, handleMouseLeave };
 }
+
+export const useClicked = () => {
+	const [isClicked, setIsClicked] = useState(false);
+	return {
+		isClicked,
+		setIsClicked,
+	};
+};

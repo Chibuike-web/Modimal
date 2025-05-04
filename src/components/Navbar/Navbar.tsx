@@ -24,7 +24,7 @@ import {
 	DropdownType,
 	sustainContent,
 } from "./utils";
-import { useDropdownHover } from "./Hooks";
+import { useDropdownHover } from "../../Hooks";
 import { useEffect, useState, useRef } from "react";
 import { DownArrowButton } from "../UiElements";
 import { motion, AnimatePresence } from "motion/react";

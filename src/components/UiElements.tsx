@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { AddIcon, CheckIcon, DownArrowIcon, LikeIcon, MinusIcon } from "../Icons";
 import { AnimatePresence, motion } from "motion/react";
+import { useClicked } from "../Hooks";
+import { useChecked } from "./store/useChecked";
 
 export function LikeButton() {
 	const [isClicked, setIsClicked] = useState(false);
@@ -16,7 +18,7 @@ export function LikeButton() {
 }
 
 export function DownArrowButton() {
-	const [isClicked, setIsClicked] = useState(false);
+	const { isClicked, setIsClicked } = useClicked();
 	return (
 		<button type="button" onClick={() => (isClicked ? setIsClicked(false) : setIsClicked(true))}>
 			<DownArrowIcon
@@ -64,10 +66,15 @@ export const CardComponent = ({ id, image, name, description, price, colors, sea
 	);
 };
 
+interface List {
+	id: number;
+	label: string;
+}
+
 interface FilterButtonProps {
 	id: number;
 	title: string;
-	list?: string[];
+	list?: List[];
 }
 
 export const FilterButton = ({ id, title, list }: FilterButtonProps) => {
@@ -102,8 +109,8 @@ export const FilterButton = ({ id, title, list }: FilterButtonProps) => {
 						}}
 					>
 						<div className="py-3">
-							{list?.map((listItem) => (
-								<SelectButton key={listItem} listItem={listItem} />
+							{list?.map(({ id, label }: List) => (
+								<SelectButton key={id} id={id} label={label} />
 							))}
 						</div>
 					</motion.div>
@@ -113,15 +120,19 @@ export const FilterButton = ({ id, title, list }: FilterButtonProps) => {
 	);
 };
 
-const SelectButton = ({ listItem }: { listItem: string }) => {
-	const [isChecked, setIsChecked] = useState(false);
+const SelectButton = ({ id, label }: List) => {
+	const { selectedItems, toggleItem } = useChecked();
+	const isChecked = selectedItems[id] || false;
 	return (
 		<button
 			className="w-full flex items-center gap-[0.5rem] leading-[1.6]"
-			onClick={() => setIsChecked(!isChecked)}
+			onClick={() => {
+				toggleItem(id);
+				console.log(selectedItems);
+			}}
 		>
 			<CheckIcon fill={isChecked ? "#5A6D57" : "white"} />
-			{listItem}
+			{label}
 		</button>
 	);
 };

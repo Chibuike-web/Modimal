@@ -53,9 +53,14 @@ const filterList = [
 	{
 		id: 2,
 		title: "Size",
-		list: ["XS / US (0-4)", "S / US (4-6)", "M / US (6-10)", "L / US (10-14)", "XL / US (12-16)"],
+		list: [
+			{ id: 1, label: "XS / US (0-4)" },
+			{ id: 2, label: "S / US (4-6)" },
+			{ id: 3, label: "M / US (6-10)" },
+			{ id: 4, label: "L / US (10-14)" },
+			{ id: 5, label: "XL / US (12-16)" },
+		],
 	},
-
 	{
 		id: 3,
 		title: "Color",
@@ -63,12 +68,21 @@ const filterList = [
 	{
 		id: 4,
 		title: "Collection",
-		list: ["In Stock", "Out Of Stock"],
+		list: [
+			{ id: 6, label: "In Stock" },
+			{ id: 7, label: "Out Of Stock" },
+		],
 	},
 	{
 		id: 5,
 		title: "Fabric",
-		list: ["Cotton", "Linen", "Wool", "Silk", "Cashmere"],
+		list: [
+			{ id: 8, label: "Cotton" },
+			{ id: 9, label: "Linen" },
+			{ id: 10, label: "Wool" },
+			{ id: 11, label: "Silk" },
+			{ id: 12, label: "Cashmere" },
+		],
 	},
 ];
 
