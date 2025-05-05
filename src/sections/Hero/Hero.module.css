@@ -1,11 +1,11 @@
 .section {
-	background-image: url("../../../assets/Hero/Hero.png");
+	background-image: url("../../assets/Hero/Hero.png");
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 100%;
 	height: 600px;
 
 	@media (max-width: 900px) {
-		background-image: url("../../../assets/Hero/MobileHero.png");
+		background-image: url("../../assets/Hero/MobileHero.png");
 	}
 }
