@@ -1,8 +1,8 @@
-import GridImage1 from "../../assets/Grid/GridImage1.png";
-import GridImage2 from "../../assets/Grid/GridImage2.png";
-import GridImage3 from "../../assets/Grid/GridImage3.png";
-import GridImage4 from "../../assets/Grid/GridImage4.png";
-import GridImage5 from "../../assets/Grid/GridImage5.png";
+import GridImage1 from "../assets/Grid/GridImage1.png";
+import GridImage2 from "../assets/Grid/GridImage2.png";
+import GridImage3 from "../assets/Grid/GridImage3.png";
+import GridImage4 from "../assets/Grid/GridImage4.png";
+import GridImage5 from "../assets/Grid/GridImage5.png";
 
 export default function Grid() {
 	return (

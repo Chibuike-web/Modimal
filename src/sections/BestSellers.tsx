@@ -1,7 +1,7 @@
-import ProductImage1 from "../../assets/BestSellers/ProductImage1.png";
-import ProductImage2 from "../../assets/BestSellers/ProductImage2.png";
-import ProductImage3 from "../../assets/BestSellers/ProductImage3.png";
-import { CardComponent, Product } from "../UiElements";
+import ProductImage1 from "../assets/BestSellers/ProductImage1.png";
+import ProductImage2 from "../assets/BestSellers/ProductImage2.png";
+import ProductImage3 from "../assets/BestSellers/ProductImage3.png";
+import { CardComponent, Product } from "../Components";
 import { motion } from "motion/react";
 
 const fadeUp = {
@@ -10,8 +10,8 @@ const fadeUp = {
 		opacity: 1,
 		y: 0,
 		transition: {
-			delay: i * 0.4,
-			duration: 0.8,
+			delay: i * 0.5,
+			duration: 1,
 			ease: "easeOut",
 		},
 	}),

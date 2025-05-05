@@ -1,14 +1,14 @@
 import { useSearchParams } from "react-router-dom";
-import ProductImage1 from "../../assets/Search/ProductImage1.png";
-import ProductImage2 from "../../assets/Search/ProductImage2.png";
-import ProductImage3 from "../../assets/Search/ProductImage3.png";
-import ProductImage4 from "../../assets/Search/ProductImage4.png";
-import ProductImage5 from "../../assets/Search/ProductImage5.png";
-import ProductImage6 from "../../assets/Search/ProductImage6.png";
-import { CardComponent, Product } from "../UiElements";
+import ProductImage1 from "../assets/Search/ProductImage1.png";
+import ProductImage2 from "../assets/Search/ProductImage2.png";
+import ProductImage3 from "../assets/Search/ProductImage3.png";
+import ProductImage4 from "../assets/Search/ProductImage4.png";
+import ProductImage5 from "../assets/Search/ProductImage5.png";
+import ProductImage6 from "../assets/Search/ProductImage6.png";
+import { CardComponent, Product } from "../Components";
 import { AnimatePresence, motion } from "motion/react";
-import { FilterButton } from "../UiElements";
-import { CancelIcon, FilterIcon } from "../../Icons";
+import { FilterButton } from "../Components";
+import { CancelIcon, FilterIcon } from "../Icons";
 import { useState } from "react";
 
 export default function SearchResults() {

@@ -26,9 +26,9 @@ import {
 } from "./utils";
 import { useDropdownHover } from "../../Hooks";
 import { useEffect, useState, useRef } from "react";
-import { DownArrowButton } from "../UiElements";
+import { DownArrowButton } from "../../Components";
 import { motion, AnimatePresence } from "motion/react";
-import { useSearch } from "../store/useSearch";
+import { useSearch } from "../../store/useSearch";
 
 export default function Navbar() {
 	const [windowSize, setWindowSize] = useState(window.innerWidth);

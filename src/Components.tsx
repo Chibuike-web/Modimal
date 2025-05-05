@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { AddIcon, CheckIcon, DownArrowIcon, LikeIcon, MinusIcon } from "../Icons";
+import { AddIcon, CheckIcon, DownArrowIcon, LikeIcon, MinusIcon } from "./Icons";
 import { AnimatePresence, motion } from "motion/react";
-import { useClicked } from "../Hooks";
+import { useClicked } from "./Hooks";
 import { useChecked } from "./store/useChecked";
 
 export function LikeButton() {
