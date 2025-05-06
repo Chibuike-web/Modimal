@@ -10,6 +10,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { FilterButton } from "../Components";
 import { CancelIcon, FilterIcon } from "../Icons";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default function SearchResults() {
 	const [searchParams] = useSearchParams();
@@ -31,7 +32,7 @@ export default function SearchResults() {
 				>
 					<FilterIcon /> <p>Filter</p>
 				</button>
-				<div className="flex flex-col justify-center md:flex-row gap-6 w-full px-6 mt-6 xl:px-0">
+				<div className="flex flex-col items-start justify-center md:flex-row gap-6 w-full px-6 mt-6 xl:px-0">
 					<DesktopFilter />
 					<CardContainer />
 				</div>
@@ -47,53 +48,80 @@ export default function SearchResults() {
 
 const filterList = [
 	{
-		id: 1,
+		id: uuidv4(),
 		title: "Sort By",
+		list: [
+			{ id: uuidv4(), label: "Featured" },
+			{ id: uuidv4(), label: "Best Seller" },
+			{ id: uuidv4(), label: "Price: Low To High" },
+			{ id: uuidv4(), label: "Price: High To Low" },
+		],
 	},
 	{
-		id: 2,
+		id: uuidv4(),
 		title: "Size",
 		list: [
-			{ id: 1, label: "XS / US (0-4)" },
-			{ id: 2, label: "S / US (4-6)" },
-			{ id: 3, label: "M / US (6-10)" },
-			{ id: 4, label: "L / US (10-14)" },
-			{ id: 5, label: "XL / US (12-16)" },
+			{ id: uuidv4(), label: "XS / US (0-4)" },
+			{ id: uuidv4(), label: "S / US (4-6)" },
+			{ id: uuidv4(), label: "M / US (6-10)" },
+			{ id: uuidv4(), label: "L / US (10-14)" },
+			{ id: uuidv4(), label: "XL / US (12-16)" },
 		],
 	},
 	{
-		id: 3,
+		id: uuidv4(),
 		title: "Color",
+		list: [
+			{ id: uuidv4(), label: "Black" },
+			{ id: uuidv4(), label: "Red" },
+			{ id: uuidv4(), label: "Green" },
+			{ id: uuidv4(), label: "Yellow" },
+			{ id: uuidv4(), label: "Dark Blue" },
+			{ id: uuidv4(), label: "Purple" },
+			{ id: uuidv4(), label: "Pink" },
+			{ id: uuidv4(), label: "Light Blue" },
+			{ id: uuidv4(), label: "Orange" },
+			{ id: uuidv4(), label: "White" },
+		],
 	},
 	{
-		id: 4,
+		id: uuidv4(),
 		title: "Collection",
 		list: [
-			{ id: 6, label: "In Stock" },
-			{ id: 7, label: "Out Of Stock" },
+			{ id: uuidv4(), label: "In Stock" },
+			{ id: uuidv4(), label: "Out Of Stock" },
 		],
 	},
 	{
-		id: 5,
+		id: uuidv4(),
 		title: "Fabric",
 		list: [
-			{ id: 8, label: "Cotton" },
-			{ id: 9, label: "Linen" },
-			{ id: 10, label: "Wool" },
-			{ id: 11, label: "Silk" },
-			{ id: 12, label: "Cashmere" },
+			{ id: uuidv4(), label: "Cotton" },
+			{ id: uuidv4(), label: "Linen" },
+			{ id: uuidv4(), label: "Wool" },
+			{ id: uuidv4(), label: "Silk" },
+			{ id: uuidv4(), label: "Cashmere" },
 		],
 	},
 ];
 
 const DesktopFilter = () => {
 	return (
-		<div className="w-full max-w-[392px] hidden xl:block">
+		<div className="w-full max-w-[392px] hidden xl:block sticky h-screen top-[8rem]">
 			<h2 className="font-semibold text-gray-950 text-[2rem] mb-4">Filters</h2>
+
 			<div className="grid grid-cols-1 gap-4">
 				{filterList.map(({ id, title, list }) => (
 					<FilterButton key={id} id={id} title={title} list={list} />
 				))}
+			</div>
+			<div className="flex items-center w-full gap-6 mt-6">
+				<button type="button" className="w-full h-10">
+					Clear All Filters
+				</button>
+				<button type="button" className="bg-primary w-full h-10 text-white">
+					Apply Filters
+				</button>
 			</div>
 		</div>
 	);
@@ -112,18 +140,26 @@ const MobileFilter = ({
 			animate={{ opacity: 1, x: 0 }}
 			exit={{ opacity: 0, x: 100 }}
 			transition={{ duration: 0.3 }}
-			className="w-full bg-white fixed top-0 z-100 inset-0 px-6 py-12 overflow-hidden"
+			className=" bg-white fixed top-0 z-100 flex flex-col w-full h-screen px-6 py-12 overflow-y-auto"
 		>
-			<div className="flex justify-between items-center">
-				<h2 className="font-semibold text-gray-950 text-[2rem] mb-4">Filters</h2>
+			<div className="flex justify-between items-center mb-6">
+				<h2 className="font-semibold text-gray-950 text-[2rem]">Filters</h2>
 				<button type="button" onClick={() => setIsShowFilter(!isShowFilter)}>
 					<CancelIcon />
 				</button>
 			</div>
-			<div className="grid grid-cols-1 gap-4">
+			<div className="grid grid-cols-1 gap-4 mb-8">
 				{filterList.map(({ id, title, list }) => (
 					<FilterButton key={id} id={id} title={title} list={list} />
 				))}
+			</div>
+			<div className="flex items-center w-full gap-6 mt-auto">
+				<button type="button" className="w-full h-10">
+					Clear All Filters
+				</button>
+				<button type="button" className="bg-primary w-full h-10 text-white">
+					Apply Filters
+				</button>
 			</div>
 		</motion.div>
 	);

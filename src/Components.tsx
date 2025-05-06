@@ -67,12 +67,12 @@ export const CardComponent = ({ id, image, name, description, price, colors, sea
 };
 
 interface List {
-	id: number;
+	id: string;
 	label: string;
 }
 
 interface FilterButtonProps {
-	id: number;
+	id: string;
 	title: string;
 	list?: List[];
 }
@@ -108,7 +108,7 @@ export const FilterButton = ({ id, title, list }: FilterButtonProps) => {
 							ease: "easeInOut",
 						}}
 					>
-						<div className="py-3">
+						<div className="py-3 flex flex-col gap-[8px]">
 							{list?.map(({ id, label }: List) => (
 								<SelectButton key={id} id={id} label={label} />
 							))}

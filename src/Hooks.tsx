@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export function useDropdownHover() {
 	const [hover, setHover] = useState("");
@@ -31,6 +31,7 @@ export const useForm = () => {
 	const [lastName, setLastName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [isShowPassword, setIsShowPassword] = useState(false);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { id, value } = e.target;
@@ -45,11 +46,32 @@ export const useForm = () => {
 		}
 	};
 
+	const handleShowPassword = () => {
+		setIsShowPassword((prev) => !prev);
+	};
+
 	return {
 		firstName,
 		lastName,
 		email,
 		password,
 		handleChange,
+		isShowPassword,
+		handleShowPassword,
 	};
+};
+
+export const useWindowWidth = () => {
+	const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setWindowSize(window.innerWidth);
+		};
+
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
+	return windowSize;
 };

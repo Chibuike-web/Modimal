@@ -2,12 +2,12 @@ import { create } from "zustand";
 
 type CheckedState = {
 	selectedItems: Record<string, boolean>;
-	toggleItem: (index: number) => void;
+	toggleItem: (id: string) => void;
 };
 
 const useCheckedStore = create<CheckedState>((set) => ({
 	selectedItems: {},
-	toggleItem: (id: number) =>
+	toggleItem: (id: string) =>
 		set((state) => ({
 			selectedItems: {
 				...state.selectedItems,

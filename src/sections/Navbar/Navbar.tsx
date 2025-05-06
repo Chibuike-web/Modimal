@@ -24,32 +24,56 @@ import {
 	DropdownType,
 	sustainContent,
 } from "./utils";
-import { useDropdownHover } from "../../Hooks";
+import { useDropdownHover, useWindowWidth } from "../../Hooks";
 import { useEffect, useState, useRef } from "react";
 import { DownArrowButton } from "../../Components";
 import { motion, AnimatePresence } from "motion/react";
 import { useSearch } from "../../store/useSearch";
+import { useSignedIn } from "../../store/useSignIn";
 
 export default function Navbar() {
-	const [windowSize, setWindowSize] = useState(window.innerWidth);
+	const windowSize = useWindowWidth();
 
-	useEffect(() => {
-		const handleResize = () => {
-			setWindowSize(window.innerWidth);
-		};
-
-		window.addEventListener("resize", handleResize);
-		return () => window.removeEventListener("resize", handleResize);
-	}, []);
 	return (
 		<section className="sticky top-0 z-[100]">
 			<div className="bg-primary text-off-white text-center text-[0.75rem] font-semibold py-[0.5rem]">
 				<p>Enjoy Free Shipping On All Orders</p>
 			</div>
 			{windowSize < 1100 ? <MobileNavbar /> : <DesktopNavbar />}
+			<WelcomeModal />
 		</section>
 	);
 }
+
+const WelcomeModal = () => {
+	const { isSignedIn, setIsSignedIn } = useSignedIn();
+
+	if (!isSignedIn) {
+		return;
+	}
+	return (
+		<div className="fixed justify-items-center content-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full px-4">
+			<div className="w-full max-w-[854px] bg-white text-center py-8 px-6">
+				<button type="button" onClick={() => setIsSignedIn(isSignedIn)} className="w-full">
+					<CancelIcon />
+				</button>
+
+				<h2 className="w-full text-[20px] md:text-[2rem] font-bold leading-[1.4] mt-[50px] mb-8">
+					Welcome To Modimal
+				</h2>
+				<p className="leading-[1.8] font-primary italic  md:text-[24px] w-full mb-8">
+					Elegance in simplicity, Earth’s harmony
+				</p>
+				<p className="w-full md:text-[24px] font-semibold leading-[1.4] mb-8">
+					is it your first experience on modimal?
+				</p>
+				<button type="button" className="w-full max-w-[392px] h-10 bg-primary text-white mb-[50px]">
+					Create Your Own Style
+				</button>
+			</div>
+		</div>
+	);
+};
 
 const ListItems = () => {
 	const { hover, handleMouseEnter, handleMouseLeave } = useDropdownHover();
