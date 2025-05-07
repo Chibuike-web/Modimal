@@ -72,16 +72,16 @@ const filterList = [
 		id: uuidv4(),
 		title: "Color",
 		list: [
-			{ id: uuidv4(), label: "Black" },
-			{ id: uuidv4(), label: "Red" },
-			{ id: uuidv4(), label: "Green" },
-			{ id: uuidv4(), label: "Yellow" },
-			{ id: uuidv4(), label: "Dark Blue" },
-			{ id: uuidv4(), label: "Purple" },
-			{ id: uuidv4(), label: "Pink" },
-			{ id: uuidv4(), label: "Light Blue" },
-			{ id: uuidv4(), label: "Orange" },
-			{ id: uuidv4(), label: "White" },
+			{ id: uuidv4(), label: "Black", colorCode: "#000000" },
+			{ id: uuidv4(), label: "Red", colorCode: "#FF0000" },
+			{ id: uuidv4(), label: "Green", colorCode: "#00FF00" },
+			{ id: uuidv4(), label: "Yellow", colorCode: "#FFFF00" },
+			{ id: uuidv4(), label: "Dark Blue", colorCode: "#00008B" },
+			{ id: uuidv4(), label: "Purple", colorCode: "#800080" },
+			{ id: uuidv4(), label: "Pink", colorCode: "#FFC0CB" },
+			{ id: uuidv4(), label: "Light Blue", colorCode: "#ADD8E6" },
+			{ id: uuidv4(), label: "Orange", colorCode: "#FFA500" },
+			{ id: uuidv4(), label: "White", colorCode: "#FFFFFF" },
 		],
 	},
 	{
@@ -107,21 +107,20 @@ const filterList = [
 
 const DesktopFilter = () => {
 	return (
-		<div className="w-full max-w-[392px] hidden xl:block sticky h-screen top-[8rem]">
+		<div className="w-full max-w-[392px] hidden xl:block sticky max-h-[1411px] overflow-y-auto top-[8rem]">
 			<h2 className="font-semibold text-gray-950 text-[2rem] mb-4">Filters</h2>
-
-			<div className="grid grid-cols-1 gap-4">
-				{filterList.map(({ id, title, list }) => (
-					<FilterButton key={id} id={id} title={title} list={list} />
-				))}
-			</div>
-			<div className="flex items-center w-full gap-6 mt-6">
+			<div className="flex items-center w-full gap-6 mb-4">
 				<button type="button" className="w-full h-10">
 					Clear All Filters
 				</button>
 				<button type="button" className="bg-primary w-full h-10 text-white">
 					Apply Filters
 				</button>
+			</div>
+			<div className="grid grid-cols-1 gap-4">
+				{filterList.map(({ id, title, list }) => (
+					<FilterButton key={id} id={id} title={title} list={list} />
+				))}
 			</div>
 		</div>
 	);

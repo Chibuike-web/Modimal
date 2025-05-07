@@ -10,7 +10,7 @@ export const collectionContent: DropdownType[] = [
 		heading: "Category",
 		subheading: [
 			"Shop all",
-			"Blouses & Top",
+			"Top & Blouses",
 			"Pants",
 			"Dresses & Jumpsuits",
 			"Outwear & Jackets",

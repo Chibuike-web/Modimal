@@ -69,6 +69,11 @@ export const CardComponent = ({ id, image, name, description, price, colors, sea
 interface List {
 	id: string;
 	label: string;
+	colorCode?: string;
+}
+
+interface SelectButtonProps extends List {
+	title: string;
 }
 
 interface FilterButtonProps {
@@ -109,8 +114,8 @@ export const FilterButton = ({ id, title, list }: FilterButtonProps) => {
 						}}
 					>
 						<div className="py-3 flex flex-col gap-[8px]">
-							{list?.map(({ id, label }: List) => (
-								<SelectButton key={id} id={id} label={label} />
+							{list?.map(({ id, label, colorCode }: List) => (
+								<SelectButton key={id} id={id} label={label} title={title} colorCode={colorCode} />
 							))}
 						</div>
 					</motion.div>
@@ -120,9 +125,15 @@ export const FilterButton = ({ id, title, list }: FilterButtonProps) => {
 	);
 };
 
-const SelectButton = ({ id, label }: List) => {
+const SelectButton = ({
+	id,
+	label,
+	title,
+	colorCode,
+}: SelectButtonProps & { colorCode?: string }) => {
 	const { selectedItems, toggleItem } = useChecked();
 	const isChecked = selectedItems[id] || false;
+
 	return (
 		<button
 			className="w-full flex items-center gap-[0.5rem] leading-[1.6]"
@@ -132,6 +143,15 @@ const SelectButton = ({ id, label }: List) => {
 			}}
 		>
 			<CheckIcon fill={isChecked ? "#5A6D57" : "white"} />
+			{title === "Color" && colorCode && (
+				<span
+					className="block w-4 h-4 rounded-full"
+					style={{
+						backgroundColor: colorCode,
+						border: label === "White" ? "1px solid black" : "none",
+					}}
+				/>
+			)}
 			{label}
 		</button>
 	);
