@@ -1,6 +1,6 @@
 import ShopAllImage from "../assets/ShopAll/ShopAll.png";
 import { useShowFilter } from "../Hooks";
-import { AnimatePresence, motion } from "motion/react";
+
 import { FilterIcon } from "../Icons";
 import { DesktopFilter, MobileFilter, CardComponent } from "../Components";
 import { productsShopAll, Product } from "../utils";
@@ -28,53 +28,35 @@ export default function ShopAll() {
 					<CardContainer />
 				</div>
 			</div>
-			<AnimatePresence>
-				{isShowFilter && (
-					<MobileFilter isShowFilter={isShowFilter} setIsShowFilter={setIsShowFilter} />
-				)}
-			</AnimatePresence>
+
+			{isShowFilter && (
+				<MobileFilter isShowFilter={isShowFilter} setIsShowFilter={setIsShowFilter} />
+			)}
 		</section>
 	);
 }
 
-const fadeUp = {
-	initial: { opacity: 0, y: 100 },
-	animate: (i: number) => ({
-		opacity: 1,
-		y: 0,
-		transition: {
-			delay: i * 0.4,
-			duration: 0.8,
-			ease: "easeOut",
-		},
-	}),
-};
-
 const CardContainer = () => {
 	return (
-		<div className="grid grid-cols-2 max-w-[808px] xl:px-0 xl:w-full gap-6 w-full">
-			{productsShopAll.map(
-				({ id, image, name, description, price, colors, tag }: Product, index) => (
-					<motion.div
-						key={id}
-						variants={fadeUp}
-						custom={index}
-						initial="initial"
-						whileInView="animate"
-						viewport={{ once: true, amount: 0.3 }}
-					>
-						<CardComponent
-							id={id}
-							image={image}
-							description={description}
-							name={name}
-							price={price}
-							colors={colors}
-							tag={tag}
-						/>
-					</motion.div>
-				)
-			)}
-		</div>
+		<section className="flex flex-col items-center gap-12">
+			<div className="grid grid-cols-2 max-w-[808px] xl:px-0 xl:w-full gap-6 w-full">
+				{productsShopAll.map(
+					({ id, image, name, description, price, colors, tag }: Product, index) => (
+						<div>
+							<CardComponent
+								id={id}
+								image={image}
+								description={description}
+								name={name}
+								price={price}
+								colors={colors}
+								tag={tag}
+							/>
+						</div>
+					)
+				)}
+			</div>
+			<button className="border border-primary text-primary h-[40px] w-[184px]">Load More</button>
+		</section>
 	);
 };

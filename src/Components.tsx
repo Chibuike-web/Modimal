@@ -5,6 +5,7 @@ import { useClicked } from "./Hooks";
 import { useChecked } from "./store/useChecked";
 import { Product } from "./utils";
 import { filterList } from "./utils";
+import { Link } from "react-router-dom";
 
 export function LikeButton() {
 	const [isClicked, setIsClicked] = useState(false);
@@ -41,34 +42,36 @@ export const CardComponent = ({
 	tag,
 }: Product) => {
 	return (
-		<article
-			id={`card-${id}`}
-			className={`w-full flex flex-col gap-[1rem] max-w-[392px] ${
-				search ? "" : "max-md:min-w-[152px]"
-			}`}
-		>
-			<figure className="relative w-full flex ">
-				<img src={image} alt="" className="w-full h-full" />
-				<LikeButton />
-				{tag && (
-					<span className="w-[86px] h-[32px] absolute left-6 top-6 flex items-center justify-center bg-white">
-						{tag}
-					</span>
-				)}
-			</figure>
-			<div className="flex items-center justify-between">
-				<div className="flex flex-col gap-[0.5rem]">
-					<h3 className="font-bold">{name}</h3>
-					<p>{description}</p>
-					<div className="flex gap-[0.5rem]">
-						{colors?.map((color, index) => (
-							<span key={index} className={`block w-6 h-6 rounded-full ${color}`}></span>
-						))}
+		<Link to={`/collection/${id}`}>
+			<article
+				id={`card-${id}`}
+				className={`w-full flex flex-col gap-[1rem] max-w-[392px] ${
+					search ? "" : "max-md:min-w-[152px]"
+				}`}
+			>
+				<figure className="relative w-full flex ">
+					<img src={image} alt="" className="w-full h-full" />
+					<LikeButton />
+					{tag && (
+						<span className="w-[86px] h-[32px] absolute left-6 top-6 flex items-center justify-center bg-white">
+							{tag}
+						</span>
+					)}
+				</figure>
+				<div className="flex items-center justify-between px-[8px]">
+					<div className="flex flex-col gap-[0.5rem]">
+						<h3 className="font-bold">{name}</h3>
+						<p>{description}</p>
+						<div className="flex gap-[0.5rem]">
+							{colors?.map((color, index) => (
+								<span key={index} className={`block w-6 h-6 rounded-full ${color}`}></span>
+							))}
+						</div>
 					</div>
+					<p className="font-bold">${price}</p>
 				</div>
-				<p className="font-bold">${price}</p>
-			</div>
-		</article>
+			</article>
+		</Link>
 	);
 };
 
