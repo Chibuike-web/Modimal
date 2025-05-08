@@ -1,7 +1,8 @@
 import ProductImage1 from "../assets/BestSellers/ProductImage1.png";
 import ProductImage2 from "../assets/BestSellers/ProductImage2.png";
 import ProductImage3 from "../assets/BestSellers/ProductImage3.png";
-import { CardComponent, Product } from "../Components";
+import { CardComponent } from "../Components";
+import { Product } from "../utils";
 import { motion } from "motion/react";
 
 const fadeUp = {
@@ -27,6 +28,7 @@ export default function BestSellers() {
 			<div className=" flex gap-6">
 				{products.map(({ id, image, name, description, price, colors }, index) => (
 					<motion.div
+						key={id}
 						variants={fadeUp}
 						custom={index}
 						initial="initial"

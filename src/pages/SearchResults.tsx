@@ -5,17 +5,17 @@ import ProductImage3 from "../assets/Search/ProductImage3.png";
 import ProductImage4 from "../assets/Search/ProductImage4.png";
 import ProductImage5 from "../assets/Search/ProductImage5.png";
 import ProductImage6 from "../assets/Search/ProductImage6.png";
-import { CardComponent, Product } from "../Components";
+import { CardComponent } from "../Components";
 import { AnimatePresence, motion } from "motion/react";
-import { FilterButton } from "../Components";
-import { CancelIcon, FilterIcon } from "../Icons";
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { FilterIcon } from "../Icons";
+import { DesktopFilter, MobileFilter } from "../Components";
+import { Product } from "../utils";
+import { useShowFilter } from "../Hooks";
 
 export default function SearchResults() {
 	const [searchParams] = useSearchParams();
 	const query = searchParams.get("query");
-	const [isShowFilter, setIsShowFilter] = useState(false);
+	const { isShowFilter, setIsShowFilter } = useShowFilter();
 
 	return (
 		<div>
@@ -45,124 +45,6 @@ export default function SearchResults() {
 		</div>
 	);
 }
-
-const filterList = [
-	{
-		id: uuidv4(),
-		title: "Sort By",
-		list: [
-			{ id: uuidv4(), label: "Featured" },
-			{ id: uuidv4(), label: "Best Seller" },
-			{ id: uuidv4(), label: "Price: Low To High" },
-			{ id: uuidv4(), label: "Price: High To Low" },
-		],
-	},
-	{
-		id: uuidv4(),
-		title: "Size",
-		list: [
-			{ id: uuidv4(), label: "XS / US (0-4)" },
-			{ id: uuidv4(), label: "S / US (4-6)" },
-			{ id: uuidv4(), label: "M / US (6-10)" },
-			{ id: uuidv4(), label: "L / US (10-14)" },
-			{ id: uuidv4(), label: "XL / US (12-16)" },
-		],
-	},
-	{
-		id: uuidv4(),
-		title: "Color",
-		list: [
-			{ id: uuidv4(), label: "Black", colorCode: "#000000" },
-			{ id: uuidv4(), label: "Red", colorCode: "#FF0000" },
-			{ id: uuidv4(), label: "Green", colorCode: "#00FF00" },
-			{ id: uuidv4(), label: "Yellow", colorCode: "#FFFF00" },
-			{ id: uuidv4(), label: "Dark Blue", colorCode: "#00008B" },
-			{ id: uuidv4(), label: "Purple", colorCode: "#800080" },
-			{ id: uuidv4(), label: "Pink", colorCode: "#FFC0CB" },
-			{ id: uuidv4(), label: "Light Blue", colorCode: "#ADD8E6" },
-			{ id: uuidv4(), label: "Orange", colorCode: "#FFA500" },
-			{ id: uuidv4(), label: "White", colorCode: "#FFFFFF" },
-		],
-	},
-	{
-		id: uuidv4(),
-		title: "Collection",
-		list: [
-			{ id: uuidv4(), label: "In Stock" },
-			{ id: uuidv4(), label: "Out Of Stock" },
-		],
-	},
-	{
-		id: uuidv4(),
-		title: "Fabric",
-		list: [
-			{ id: uuidv4(), label: "Cotton" },
-			{ id: uuidv4(), label: "Linen" },
-			{ id: uuidv4(), label: "Wool" },
-			{ id: uuidv4(), label: "Silk" },
-			{ id: uuidv4(), label: "Cashmere" },
-		],
-	},
-];
-
-const DesktopFilter = () => {
-	return (
-		<div className="w-full max-w-[392px] hidden xl:block sticky max-h-[1411px] overflow-y-auto top-[8rem]">
-			<h2 className="font-semibold text-gray-950 text-[2rem] mb-4">Filters</h2>
-			<div className="flex items-center w-full gap-6 mb-4">
-				<button type="button" className="w-full h-10">
-					Clear All Filters
-				</button>
-				<button type="button" className="bg-primary w-full h-10 text-white">
-					Apply Filters
-				</button>
-			</div>
-			<div className="grid grid-cols-1 gap-4">
-				{filterList.map(({ id, title, list }) => (
-					<FilterButton key={id} id={id} title={title} list={list} />
-				))}
-			</div>
-		</div>
-	);
-};
-
-const MobileFilter = ({
-	isShowFilter,
-	setIsShowFilter,
-}: {
-	isShowFilter: boolean;
-	setIsShowFilter: (value: boolean) => void;
-}) => {
-	return (
-		<motion.div
-			initial={{ opacity: 0, x: 100 }}
-			animate={{ opacity: 1, x: 0 }}
-			exit={{ opacity: 0, x: 100 }}
-			transition={{ duration: 0.3 }}
-			className=" bg-white fixed top-0 z-100 flex flex-col w-full h-screen px-6 py-12 overflow-y-auto"
-		>
-			<div className="flex justify-between items-center mb-6">
-				<h2 className="font-semibold text-gray-950 text-[2rem]">Filters</h2>
-				<button type="button" onClick={() => setIsShowFilter(!isShowFilter)}>
-					<CancelIcon />
-				</button>
-			</div>
-			<div className="grid grid-cols-1 gap-4 mb-8">
-				{filterList.map(({ id, title, list }) => (
-					<FilterButton key={id} id={id} title={title} list={list} />
-				))}
-			</div>
-			<div className="flex items-center w-full gap-6 mt-auto">
-				<button type="button" className="w-full h-10">
-					Clear All Filters
-				</button>
-				<button type="button" className="bg-primary w-full h-10 text-white">
-					Apply Filters
-				</button>
-			</div>
-		</motion.div>
-	);
-};
 
 const fadeUp = {
 	initial: { opacity: 0, y: 100 },

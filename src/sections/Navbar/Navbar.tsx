@@ -23,7 +23,7 @@ import {
 	plusSizeContent,
 	DropdownType,
 	sustainContent,
-} from "./utils";
+} from "../../utils";
 import { useDropdownHover, useWindowWidth } from "../../Hooks";
 import { useEffect, useState, useRef } from "react";
 import { DownArrowButton } from "../../Components";

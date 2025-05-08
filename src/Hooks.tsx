@@ -75,3 +75,12 @@ export const useWindowWidth = () => {
 
 	return windowSize;
 };
+
+export const useShowFilter = () => {
+	const [isShowFilter, setIsShowFilter] = useState(false);
+
+	return {
+		isShowFilter,
+		setIsShowFilter,
+	};
+};

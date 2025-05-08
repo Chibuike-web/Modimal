@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { AddIcon, CheckIcon, DownArrowIcon, LikeIcon, MinusIcon } from "./Icons";
+import { AddIcon, CancelIcon, CheckIcon, DownArrowIcon, LikeIcon, MinusIcon } from "./Icons";
 import { AnimatePresence, motion } from "motion/react";
 import { useClicked } from "./Hooks";
 import { useChecked } from "./store/useChecked";
+import { Product } from "./utils";
+import { filterList } from "./utils";
 
 export function LikeButton() {
 	const [isClicked, setIsClicked] = useState(false);
 	return (
 		<button type="button" onClick={() => (isClicked ? setIsClicked(false) : setIsClicked(true))}>
 			<LikeIcon
-				className="absolute top-[1.5rem] right-[1.5rem] max-lg:top-[8px] max-lg:right-[8px] cursor-pointer"
+				className="absolute top-6 right-6 max-lg:top-[8px] max-lg:right-[8px] cursor-pointer"
 				fill={isClicked ? "red" : "white"}
 				stroke={isClicked ? "" : "#0C0C0C"}
 			/>
@@ -28,17 +30,16 @@ export function DownArrowButton() {
 	);
 }
 
-export type Product = {
-	id: number;
-	image: string;
-	name: string;
-	description: string;
-	price: number;
-	colors?: string[];
-	search?: boolean;
-};
-
-export const CardComponent = ({ id, image, name, description, price, colors, search }: Product) => {
+export const CardComponent = ({
+	id,
+	image,
+	name,
+	description,
+	price,
+	colors,
+	search,
+	tag,
+}: Product) => {
 	return (
 		<article
 			id={`card-${id}`}
@@ -49,14 +50,19 @@ export const CardComponent = ({ id, image, name, description, price, colors, sea
 			<figure className="relative w-full flex ">
 				<img src={image} alt="" className="w-full h-full" />
 				<LikeButton />
+				{tag && (
+					<span className="w-[86px] h-[32px] absolute left-6 top-6 flex items-center justify-center bg-white">
+						{tag}
+					</span>
+				)}
 			</figure>
 			<div className="flex items-center justify-between">
 				<div className="flex flex-col gap-[0.5rem]">
 					<h3 className="font-bold">{name}</h3>
 					<p>{description}</p>
 					<div className="flex gap-[0.5rem]">
-						{colors?.map((color) => (
-							<span key={color} className={`block w-6 h-6 rounded-full ${color}`}></span>
+						{colors?.map((color, index) => (
+							<span key={index} className={`block w-6 h-6 rounded-full ${color}`}></span>
 						))}
 					</div>
 				</div>
@@ -154,5 +160,64 @@ const SelectButton = ({
 			)}
 			{label}
 		</button>
+	);
+};
+
+export const DesktopFilter = () => {
+	return (
+		<div className="w-full max-w-[392px] hidden xl:block sticky max-h-[1411px] overflow-y-auto top-[8rem]">
+			<h2 className="font-semibold text-gray-950 text-[2rem] mb-4">Filters</h2>
+			<div className="flex items-center w-full gap-6 mb-4">
+				<button type="button" className="w-full h-10">
+					Clear All Filters
+				</button>
+				<button type="button" className="bg-primary w-full h-10 text-white">
+					Apply Filters
+				</button>
+			</div>
+			<div className="grid grid-cols-1 gap-4">
+				{filterList.map(({ id, title, list }) => (
+					<FilterButton key={id} id={id} title={title} list={list} />
+				))}
+			</div>
+		</div>
+	);
+};
+
+export const MobileFilter = ({
+	isShowFilter,
+	setIsShowFilter,
+}: {
+	isShowFilter: boolean;
+	setIsShowFilter: (value: boolean) => void;
+}) => {
+	return (
+		<motion.div
+			initial={{ opacity: 0, x: 100 }}
+			animate={{ opacity: 1, x: 0 }}
+			exit={{ opacity: 0, x: 100 }}
+			transition={{ duration: 0.3 }}
+			className=" bg-white fixed top-0 z-100 flex flex-col w-full h-screen px-6 py-12 overflow-y-auto"
+		>
+			<div className="flex justify-between items-center mb-6">
+				<h2 className="font-semibold text-gray-950 text-[2rem]">Filters</h2>
+				<button type="button" onClick={() => setIsShowFilter(!isShowFilter)}>
+					<CancelIcon />
+				</button>
+			</div>
+			<div className="grid grid-cols-1 gap-4 mb-8">
+				{filterList.map(({ id, title, list }) => (
+					<FilterButton key={id} id={id} title={title} list={list} />
+				))}
+			</div>
+			<div className="flex items-center w-full gap-6 mt-auto">
+				<button type="button" className="w-full h-10">
+					Clear All Filters
+				</button>
+				<button type="button" className="bg-primary w-full h-10 text-white">
+					Apply Filters
+				</button>
+			</div>
+		</motion.div>
 	);
 };
