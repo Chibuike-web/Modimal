@@ -145,15 +145,12 @@ const DropDown = ({
 }: DropDownProps): JSX.Element => {
 	const [isShow, setIsShow] = useState<boolean>(true);
 
-	const fittingStyles = isShow ? "border-b" : "";
-	const productDetailStyles = !isShow ? "border-b " : "";
-
 	return (
 		<div>
 			<button
 				type="button"
-				className={`
-			${fitting ? fittingStyles : productDetailStyles}
+				className={` ${productDetail ? "border-t border-b" : fitting ? "border-b" : ""}
+
 				border-gray-300 flex w-full justify-between items-center p-6 text-[20px] font-bold`}
 				onClick={() => setIsShow(true)}
 			>
