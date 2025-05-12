@@ -1,106 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
-import ShopAllProductImage1 from "./assets/ShopAll/ShopAllProductImage1.png";
-import ShopAllProductImage2 from "./assets/ShopAll/ShopAllProductImage2.png";
-import ShopAllProductImage3 from "./assets/ShopAll/ShopAllProductImage3.png";
-import ShopAllProductImage4 from "./assets/ShopAll/ShopAllProductImage4.png";
-import ShopAllProductImage5 from "./assets/ShopAll/ShopAllProductImage5.png";
-import ShopAllProductImage6 from "./assets/ShopAll/ShopAllProductImage6.png";
 import ProductImage1 from "./assets/Search/ProductImage1.png";
 import ProductImage2 from "./assets/Search/ProductImage2.png";
 import ProductImage3 from "./assets/Search/ProductImage3.png";
 import ProductImage4 from "./assets/Search/ProductImage4.png";
 import ProductImage5 from "./assets/Search/ProductImage5.png";
 import ProductImage6 from "./assets/Search/ProductImage6.png";
-
-export type DropdownType = {
-	id: number;
-	heading: string;
-	subheading: string[];
-};
-
-export const collectionContent: DropdownType[] = [
-	{
-		id: 1,
-		heading: "Category",
-		subheading: [
-			"Shop all",
-			"Top & Blouses",
-			"Pants",
-			"Dresses & Jumpsuits",
-			"Outwear & Jackets",
-			"Pullovers",
-			"Tees",
-			"Shorts & Skirts",
-		],
-	},
-
-	{
-		id: 2,
-		heading: "Featured",
-		subheading: ["New in", "Modiweek", "Plus Size", "Best Seller"],
-	},
-
-	{
-		id: 3,
-		heading: "More",
-		subheading: ["Bundles", "Occasion Wear", "Matching Set", "Suiting"],
-	},
-];
-
-export const newInContent: DropdownType[] = [
-	{
-		id: 1,
-		heading: "Category",
-		subheading: [
-			"Shop all",
-			"Tops & Blouses",
-			"Tees",
-			"Pants",
-			"Jackets & Outwears",
-			"Pullovers",
-			"Dresses & Jumpsuits",
-			"Shorts & Skirts",
-		],
-	},
-
-	{
-		id: 2,
-		heading: "Trending",
-		subheading: ["Plus Size", "Fall Collection", "Modiweek"],
-	},
-];
-
-export const plusSizeContent: DropdownType[] = [
-	{
-		id: 1,
-		heading: "Category",
-		subheading: [
-			"Shop all",
-			"Tops & Blouses",
-			"Tees",
-			"Pants",
-			"Jackets & Outwears",
-			"Pullovers",
-			"Dresses & Jumpsuits",
-			"Shorts & Skirts",
-		],
-	},
-];
-
-export const sustainContent: DropdownType[] = [
-	{
-		id: 1,
-		heading: "Sustainability",
-		subheading: [
-			"Mission",
-			"Processing",
-			"Materials",
-			"Packaging",
-			"Product Care",
-			"Our Suppliers",
-		],
-	},
-];
 
 export const filterList = [
 	{
@@ -171,59 +75,6 @@ export type Product = {
 	search?: boolean;
 	tag?: string;
 };
-
-export const productsShopAll: Product[] = [
-	{
-		id: uuidv4(),
-		image: ShopAllProductImage1,
-		name: "Chill Wrap top",
-		description: "Turn it Up Top",
-		price: 160,
-		colors: ["bg-[#909225]"],
-	},
-	{
-		id: uuidv4(),
-		image: ShopAllProductImage2,
-		name: "Essential T-shirt",
-		description: "Turn it Up T-Shirt",
-		price: 95,
-		colors: ["bg-[#0C0C0C]", "bg-[#7DC3EB]", "bg-[#748C70]"],
-		tag: "New",
-	},
-	{
-		id: uuidv4(),
-		image: ShopAllProductImage3,
-		name: "Shirt Dress",
-		description: "Turn It Up Dress",
-		price: 245,
-		colors: ["bg-[#0C0C0C]", "bg-[#7DC3EB]", "bg-[#748C70]"],
-	},
-	{
-		id: uuidv4(),
-		image: ShopAllProductImage4,
-		name: "Rule Zip Jacket",
-		description: "Turn It Up Jacket",
-		price: 199,
-		colors: ["bg-[#909225]", "bg-[#CA6D29]"],
-	},
-	{
-		id: uuidv4(),
-		image: ShopAllProductImage5,
-		name: "New Age Linen",
-		description: "Turn It Up Pants",
-		price: 180,
-		colors: ["bg-[#0C0C0C]", "bg-[#19418E]", "bg-[#748C70]"],
-	},
-	{
-		id: uuidv4(),
-		image: ShopAllProductImage6,
-		name: "Boss Pullover",
-		description: "Turn It Up Pullover",
-		price: 280,
-		colors: ["bg-[#0C0C0C]", "bg-[#748C70]"],
-		tag: "New",
-	},
-];
 
 export const productsSearchResult: Product[] = [
 	{

@@ -1,12 +1,12 @@
-import { useForm } from "../Hooks";
+import { useForm } from "../../Hooks";
 import {
 	AppleIcon,
 	ColouredFacebookIcon,
 	GoogleIcon,
 	VisibilityOffIcon,
 	VisibilityOnIcon,
-} from "../Icons";
-import Image from "../assets/SignUp/SIgnUp.png";
+} from "../../Icons";
+import Image from "../../assets/SignUp/SignUp.png";
 
 export default function SignUp() {
 	const { firstName, lastName, email, password, handleChange, isShowPassword, handleShowPassword } =

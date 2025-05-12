@@ -1,7 +1,7 @@
 import { useState, ReactNode } from "react";
 import { useParams } from "react-router-dom";
-import { productsShopAll } from "../utils";
-import { AddIcon, BusIcon, HeartIcon, MinusIcon } from "../Icons";
+import { productsShopAll } from "./utils";
+import { AddIcon, BusIcon, HeartIcon, MinusIcon } from "../../Icons";
 import { JSX } from "react";
 
 type Product = {

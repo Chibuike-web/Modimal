@@ -1,9 +1,9 @@
-import ShopAllImage from "../assets/ShopAll/ShopAll.png";
-import { useShowFilter } from "../Hooks";
-
-import { FilterIcon } from "../Icons";
-import { DesktopFilter, MobileFilter, CardComponent } from "../Components";
-import { productsShopAll, Product } from "../utils";
+import ShopAllImage from "../../assets/ShopAll/ShopAll.png";
+import { useShowFilter } from "../../Hooks";
+import { FilterIcon } from "../../Icons";
+import { DesktopFilter, MobileFilter, CardComponent } from "../../Components";
+import { productsShopAll } from "./utils";
+import { Product } from "../../types";
 
 export default function ShopAll() {
 	const { isShowFilter, setIsShowFilter } = useShowFilter();

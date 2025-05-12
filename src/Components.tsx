@@ -10,7 +10,13 @@ import { Link } from "react-router-dom";
 export function LikeButton() {
 	const [isClicked, setIsClicked] = useState(false);
 	return (
-		<button type="button" onClick={() => (isClicked ? setIsClicked(false) : setIsClicked(true))}>
+		<button
+			type="button"
+			onClick={(e) => {
+				e.stopPropagation();
+				isClicked ? setIsClicked(false) : setIsClicked(true);
+			}}
+		>
 			<LikeIcon
 				className="absolute top-6 right-6 max-lg:top-[8px] max-lg:right-[8px] cursor-pointer"
 				fill={isClicked ? "red" : "white"}
@@ -42,36 +48,36 @@ export const CardComponent = ({
 	tag,
 }: Product) => {
 	return (
-		<Link to={`/collection/${id}`}>
-			<article
-				id={`card-${id}`}
-				className={`w-full flex flex-col gap-[1rem] max-w-[392px] ${
-					search ? "" : "max-md:min-w-[152px]"
-				}`}
-			>
-				<figure className="relative w-full flex ">
-					<img src={image} alt="" className="w-full h-full" />
-					<LikeButton />
-					{tag && (
-						<span className="w-[86px] h-[32px] absolute left-6 top-6 flex items-center justify-center bg-white">
-							{tag}
-						</span>
-					)}
-				</figure>
-				<div className="flex items-center justify-between px-[8px]">
-					<div className="flex flex-col gap-[0.5rem]">
+		<article
+			id={`card-${id}`}
+			className={`w-full flex flex-col gap-[1rem] max-w-[392px] ${
+				search ? "" : "max-md:min-w-[152px]"
+			}`}
+		>
+			<figure className="relative w-full flex ">
+				<img src={image} alt="" className="w-full h-full" />
+				<LikeButton />
+				{tag && (
+					<span className="w-[86px] h-[32px] absolute left-6 top-6 flex items-center justify-center bg-white">
+						{tag}
+					</span>
+				)}
+			</figure>
+			<div className="flex items-center justify-between px-[8px]">
+				<div className="flex flex-col gap-[0.5rem]">
+					<Link to={`/collection/${id}`}>
 						<h3 className="font-bold">{name}</h3>
-						<p>{description}</p>
-						<div className="flex gap-[0.5rem]">
-							{colors?.map((color, index) => (
-								<span key={index} className={`block w-6 h-6 rounded-full ${color}`}></span>
-							))}
-						</div>
+					</Link>
+					<p>{description}</p>
+					<div className="flex gap-[0.5rem]">
+						{colors?.map((color, index) => (
+							<span key={index} className={`block w-6 h-6 rounded-full ${color}`}></span>
+						))}
 					</div>
-					<p className="font-bold">${price}</p>
 				</div>
-			</article>
-		</Link>
+				<p className="font-bold">${price}</p>
+			</div>
+		</article>
 	);
 };
 

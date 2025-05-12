@@ -17,13 +17,8 @@ import PlusSizeImage2 from "../../assets/Navbar/PlusSizeImage2.png";
 import PlusSizeImage3 from "../../assets/Navbar/PlusSizeImage3.png";
 import SustainImage1 from "../../assets/Navbar/SustainImage1.png";
 import SustainImage2 from "../../assets/Navbar/SustainImage2.png";
-import {
-	collectionContent,
-	newInContent,
-	plusSizeContent,
-	DropdownType,
-	sustainContent,
-} from "../../utils";
+import { collectionContent, newInContent, plusSizeContent, sustainContent } from "./utils";
+import { DropdownType } from "./types";
 import { useDropdownHover, useWindowWidth } from "../../Hooks";
 import { useEffect, useState, useRef } from "react";
 import { DownArrowButton } from "../../Components";

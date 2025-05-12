@@ -3,6 +3,7 @@ import ProductImage2 from "../assets/BestSellers/ProductImage2.png";
 import ProductImage3 from "../assets/BestSellers/ProductImage3.png";
 import { CardComponent } from "../Components";
 import { Product } from "../utils";
+import { v4 as uuidv4 } from "uuid";
 import { motion } from "motion/react";
 
 const fadeUp = {
@@ -53,7 +54,7 @@ export default function BestSellers() {
 
 const products: Product[] = [
 	{
-		id: 1,
+		id: uuidv4(),
 		image: ProductImage1,
 		name: "Tailored Stretch",
 		description: "Turn it Up Pants",
@@ -61,7 +62,7 @@ const products: Product[] = [
 		colors: ["bg-dark-grey", "bg-[#7DC3EB]", "bg-[#748C70]"],
 	},
 	{
-		id: 2,
+		id: uuidv4(),
 		image: ProductImage2,
 		name: "Technical Silk",
 		description: "Make A Splash",
@@ -69,7 +70,7 @@ const products: Product[] = [
 		colors: ["bg-[#909225]", "bg-[#19418E]", "bg-[#909225]"],
 	},
 	{
-		id: 3,
+		id: uuidv4(),
 		image: ProductImage3,
 		name: "Cool Weave",
 		description: "Anywhere Dress",
