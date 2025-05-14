@@ -25,6 +25,7 @@ import { DownArrowButton } from "../../Components";
 import { motion, AnimatePresence } from "motion/react";
 import { useSearch } from "../../store/useSearch";
 import { useSignedIn } from "../../store/useSignIn";
+import { Link } from "react-router";
 
 export default function Navbar() {
 	const windowSize = useWindowWidth();
@@ -200,9 +201,11 @@ const DesktopNavbar = () => {
 					<button type="button">
 						<ProfileIcon />
 					</button>
-					<button type="button">
-						<HeartIcon />
-					</button>
+					<Link to="/favourites">
+						<button type="button">
+							<HeartIcon />
+						</button>
+					</Link>
 					<button type="button">
 						<BagIcon />
 					</button>

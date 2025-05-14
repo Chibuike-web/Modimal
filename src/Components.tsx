@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AddIcon, CancelIcon, CheckIcon, DownArrowIcon, LikeIcon, MinusIcon } from "./Icons";
 import { AnimatePresence, motion } from "motion/react";
 import { useClicked } from "./Hooks";
@@ -6,17 +6,22 @@ import { useChecked } from "./store/useChecked";
 import { Product } from "./utils";
 import { filterList } from "./utils";
 import { Link } from "react-router-dom";
+import { useFavourites } from "./store/useFavourites";
 
-export function LikeButton() {
-	const [isClicked, setIsClicked] = useState(false);
+export function LikeButton({ product }: { product?: Product }) {
+	const { favourites, deleteFavourites, setFavourites } = useFavourites();
+
+	const isClicked = favourites.some((fav) => fav.id === product?.id);
+	const toggleButton = () => {
+		if (isClicked && product) {
+			deleteFavourites(product.id);
+		} else {
+			setFavourites(product);
+		}
+	};
+
 	return (
-		<button
-			type="button"
-			onClick={(e) => {
-				e.stopPropagation();
-				isClicked ? setIsClicked(false) : setIsClicked(true);
-			}}
-		>
+		<button type="button" onClick={toggleButton}>
 			<LikeIcon
 				className="absolute top-6 right-6 max-lg:top-[8px] max-lg:right-[8px] cursor-pointer"
 				fill={isClicked ? "red" : "white"}
@@ -56,7 +61,8 @@ export const CardComponent = ({
 		>
 			<figure className="relative w-full flex ">
 				<img src={image} alt="" className="w-full h-full" />
-				<LikeButton />
+				<LikeButton product={{ id, image, name, description, price, colors }} />
+
 				{tag && (
 					<span className="w-[86px] h-[32px] absolute left-6 top-6 flex items-center justify-center bg-white">
 						{tag}
