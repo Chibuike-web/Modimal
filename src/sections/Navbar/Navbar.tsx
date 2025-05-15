@@ -1,12 +1,4 @@
-import {
-	BagIcon,
-	CancelIcon,
-	HeartIcon,
-	LikeIcon,
-	MenuIcon,
-	ProfileIcon,
-	SearchIcon,
-} from "../../Icons";
+import { BagIcon, CancelIcon, HeartIcon, MenuIcon, ProfileIcon, SearchIcon } from "../../Icons";
 import CollectionImage1 from "../../assets/Navbar/CollectionImage1.png";
 import CollectionImage2 from "../../assets/Navbar/CollectionImage2.png";
 import NewInImage1 from "../../assets/Navbar/NewInImage1.png";
@@ -18,7 +10,7 @@ import PlusSizeImage3 from "../../assets/Navbar/PlusSizeImage3.png";
 import SustainImage1 from "../../assets/Navbar/SustainImage1.png";
 import SustainImage2 from "../../assets/Navbar/SustainImage2.png";
 import { collectionContent, newInContent, plusSizeContent, sustainContent } from "./utils";
-import { DropdownType } from "./types";
+import { DropdownType, DropdownProps } from "./types";
 import { useDropdownHover, useWindowWidth } from "../../Hooks";
 import { useEffect, useState, useRef } from "react";
 import { DownArrowButton } from "../../Components";
@@ -26,6 +18,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { useSearch } from "../../store/useSearch";
 import { useSignedIn } from "../../store/useSignIn";
 import { Link } from "react-router";
+import { useBag } from "../../store/useBag";
+import clsx from "clsx";
 
 export default function Navbar() {
 	const windowSize = useWindowWidth();
@@ -189,31 +183,69 @@ const ListItems = () => {
 
 const DesktopNavbar = () => {
 	const { isSearch, setIsSearch } = useSearch();
+	const { showBag, setShowBag } = useBag();
 	return (
 		<nav className="w-full flex items-center justify-center py-6 bg-white relative px-6 xl:px-0">
 			<header className="flex items-center justify-between w-full  max-w-[76.5rem]">
 				<img src="/Logo.svg" alt="Brand Logo" />
 				<ListItems />
 				<div className="flex gap-6">
-					<button type="button" onClick={() => setIsSearch(!isSearch)}>
+					<button type="button" onClick={setIsSearch}>
 						{isSearch ? <CancelIcon /> : <SearchIcon />}
 					</button>
 					<button type="button">
 						<ProfileIcon />
 					</button>
-					<Link to="/favourites">
-						<button type="button">
-							<HeartIcon />
-						</button>
+					<Link to="/favourites" className="flex items-center">
+						<HeartIcon />
 					</Link>
-					<button type="button">
+					<button type="button" onClick={setShowBag}>
 						<BagIcon />
 					</button>
 				</div>
 			</header>
-
+			{showBag && <BagModal />}
 			<AnimatePresence>{isSearch ? <SearchBar /> : ""}</AnimatePresence>
 		</nav>
+	);
+};
+
+const BagModal = () => {
+	const { setShowBag } = useBag();
+	const windowSize = useWindowWidth();
+	const styles = clsx(
+		"absolute bg-white flex flex-col py-8 px-6",
+		windowSize < 1100 ? "w-full h-screen" : "right-0 w-[392px] h-[660px]"
+	);
+	return (
+		<div className="fixed top-[8rem] max-lg:top-[5rem] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full">
+			<div className="relative max-w-[76.5rem] w-full">
+				<div className={styles}>
+					<button
+						type="button"
+						className={clsx(windowSize < 1100 ? "" : "flex self-end")}
+						onClick={setShowBag}
+					>
+						<CancelIcon />
+					</button>
+					<div className="flex items-center flex-col text-center mt-[96px]">
+						<h3 className="font-bold mb-6">Your shopping bag is empty</h3>
+						<p className="text-[14px] leadng-[1.4] w-full max-w-[232px] mb-[72px]">
+							discover modimal and add products to your Bag
+						</p>
+						<button type="button" className="bg-primary w-full max-w-[184px] h-10 mb-6 text-white">
+							Collection
+						</button>
+						<button type="button" className="bg-primary w-full max-w-[184px] h-10 mb-6 text-white">
+							New In
+						</button>
+						<button type="button" className="bg-primary w-full max-w-[184px] h-10 text-white">
+							Best Sellers
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	);
 };
 
@@ -230,7 +262,7 @@ const SearchBar = () => {
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0, y: -20 }}
 			transition={{ duration: 0.2 }}
-			className="fixed top-[8rem] max-md:top-[5rem] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full"
+			className="fixed top-[8rem] max-lg:top-[5rem] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full"
 		>
 			<motion.div
 				initial={{ opacity: 0, height: 0 }}
@@ -250,11 +282,6 @@ const SearchBar = () => {
 			</motion.div>
 		</motion.div>
 	);
-};
-
-type DropdownProps = {
-	handleMouseEnter: (value: string) => void;
-	handleMouseLeave: () => void;
 };
 
 const CollectionDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps) => {
@@ -425,6 +452,7 @@ const DropdownContent = ({ heading, subheading }: DropdownType) => {
 const MobileNavbar = () => {
 	const [showDropdown, setShowDropdown] = useState(false);
 	const { isSearch, setIsSearch } = useSearch();
+	const { showBag, setShowBag } = useBag();
 	return (
 		<>
 			<nav className="w-full flex items-center justify-center py-[8px] bg-white px-6">
@@ -437,19 +465,24 @@ const MobileNavbar = () => {
 						>
 							{showDropdown ? <CancelIcon /> : <MenuIcon />}
 						</figure>
-						<button type="button" onClick={() => setIsSearch(!isSearch)}>
+						<button type="button" onClick={setIsSearch}>
 							{isSearch ? <CancelIcon /> : <SearchIcon />}
 						</button>
 					</div>
 					<img src="/Logo.svg" alt="Brand Logo" className="w-full max-w-[130px]" />
 					<div className="flex gap-[8px] items-center">
-						<LikeIcon />
-						<BagIcon />
+						<Link to="/favourites" className="flex items-center">
+							<HeartIcon />
+						</Link>
+						<button type="button" onClick={setShowBag}>
+							<BagIcon />
+						</button>
 					</div>
 				</header>
 			</nav>
 			<AnimatePresence>{showDropdown && <MobileDropdown />} </AnimatePresence>
 			<AnimatePresence>{isSearch ? <SearchBar /> : ""}</AnimatePresence>
+			{showBag && <BagModal />}
 		</>
 	);
 };

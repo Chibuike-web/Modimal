@@ -5,6 +5,7 @@ import ProductImage3 from "./assets/Search/ProductImage3.png";
 import ProductImage4 from "./assets/Search/ProductImage4.png";
 import ProductImage5 from "./assets/Search/ProductImage5.png";
 import ProductImage6 from "./assets/Search/ProductImage6.png";
+import { Product } from "./types";
 
 export const filterList = [
 	{
@@ -65,17 +66,6 @@ export const filterList = [
 	},
 ];
 
-export type Product = {
-	id: string;
-	image: string;
-	name: string;
-	description: string;
-	price: number;
-	colors?: string[];
-	search?: boolean;
-	tag?: string;
-};
-
 export const productsSearchResult: Product[] = [
 	{
 		id: uuidv4(),
@@ -83,7 +73,10 @@ export const productsSearchResult: Product[] = [
 		name: "Elastic Waist",
 		description: "Turn it Up Pants",
 		price: 110,
-		colors: ["bg-[#7DC3EB]", "bg-[#748C70]"],
+		colors: [
+			{ id: uuidv4(), label: "Sky Blue", className: "bg-[#7DC3EB]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
 	},
 	{
 		id: uuidv4(),
@@ -91,7 +84,7 @@ export const productsSearchResult: Product[] = [
 		name: "Tailored Stretch",
 		description: "Make A Splash",
 		price: 150,
-		colors: ["bg-black"],
+		colors: [{ id: uuidv4(), label: "Black", className: "bg-black" }],
 	},
 	{
 		id: uuidv4(),
@@ -99,7 +92,11 @@ export const productsSearchResult: Product[] = [
 		name: "Tailored Stretch",
 		description: "Turn It Up Pants",
 		price: 140,
-		colors: ["bg-[#0C0C0C]", "bg-[#CA2929]", "bg-[#748C70]"],
+		colors: [
+			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Crimson", className: "bg-[#CA2929]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
 	},
 	{
 		id: uuidv4(),
@@ -107,7 +104,11 @@ export const productsSearchResult: Product[] = [
 		name: "High Tillie",
 		description: "Turn It Up Pants",
 		price: 110,
-		colors: ["bg-[#0C0C0C]", "bg-[#909225]", "bg-[#748C70]"],
+		colors: [
+			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
 	},
 	{
 		id: uuidv4(),
@@ -115,7 +116,10 @@ export const productsSearchResult: Product[] = [
 		name: "Casual wild leg",
 		description: "Turn It Up Pants",
 		price: 130,
-		colors: ["bg-[#0C0C0C]", "bg-[#748C70]"],
+		colors: [
+			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
 	},
 	{
 		id: uuidv4(),
@@ -123,6 +127,9 @@ export const productsSearchResult: Product[] = [
 		name: "Linen Wide Leg",
 		description: "Turn It Up Pants",
 		price: 180,
-		colors: ["bg-[#0C0C0C]", "bg-[#D0A5EA]"],
+		colors: [
+			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Lavender", className: "bg-[#D0A5EA]" },
+		],
 	},
 ];

@@ -4,7 +4,13 @@ export type Product = {
 	name: string;
 	description: string;
 	price: number;
-	colors?: string[];
+	colors?: Color[];
 	search?: boolean;
 	tag?: string;
+};
+
+export type Color = {
+	id: string;
+	label: string;
+	className: string;
 };

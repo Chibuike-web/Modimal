@@ -3,13 +3,7 @@ import { useParams } from "react-router-dom";
 import { productsShopAll } from "./utils";
 import { AddIcon, BusIcon, HeartIcon, MinusIcon } from "../../Icons";
 import { JSX } from "react";
-
-type Product = {
-	id: string;
-	name: string;
-	image: string;
-	colors?: string[];
-};
+import { Product } from "../../types";
 
 interface DropDownProps {
 	title: string;
@@ -51,8 +45,12 @@ export default function ProductDetails(): JSX.Element {
 					<div className="flex flex-col gap-[12px] mb-6">
 						<p>Colours</p>
 						<div className="flex gap-[8px]">
-							{product.colors?.map((color: string) => (
-								<span key={color} className={`${color} block w-6 h-6 rounded-full`} />
+							{product.colors?.map((color) => (
+								<span
+									key={color.id}
+									className={`${color.className} block w-6 h-6 rounded-full`}
+									title={color.label}
+								/>
 							))}
 						</div>
 					</div>

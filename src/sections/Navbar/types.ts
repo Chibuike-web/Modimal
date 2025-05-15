@@ -3,3 +3,8 @@ export type DropdownType = {
 	heading: string;
 	subheading: string[];
 };
+
+export type DropdownProps = {
+	handleMouseEnter: (value: string) => void;
+	handleMouseLeave: () => void;
+};

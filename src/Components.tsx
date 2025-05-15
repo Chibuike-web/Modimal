@@ -3,7 +3,7 @@ import { AddIcon, CancelIcon, CheckIcon, DownArrowIcon, LikeIcon, MinusIcon } fr
 import { AnimatePresence, motion } from "motion/react";
 import { useClicked } from "./Hooks";
 import { useChecked } from "./store/useChecked";
-import { Product } from "./utils";
+import { Product } from "./types";
 import { filterList } from "./utils";
 import { Link } from "react-router-dom";
 import { useFavourites } from "./store/useFavourites";
@@ -76,8 +76,12 @@ export const CardComponent = ({
 					</Link>
 					<p>{description}</p>
 					<div className="flex gap-[0.5rem]">
-						{colors?.map((color, index) => (
-							<span key={index} className={`block w-6 h-6 rounded-full ${color}`}></span>
+						{colors?.map((color) => (
+							<span
+								key={color.id}
+								className={`block w-6 h-6 rounded-full ${color.className}`}
+								title={color.label}
+							></span>
 						))}
 					</div>
 				</div>
@@ -103,7 +107,7 @@ interface FilterButtonProps {
 	list?: List[];
 }
 
-export const FilterButton = ({ id, title, list }: FilterButtonProps) => {
+export const FilterButton = ({ title, list }: FilterButtonProps) => {
 	const [isShowDropdown, setIsShowDropdown] = useState(false);
 
 	return (
@@ -180,7 +184,7 @@ const SelectButton = ({
 
 export const DesktopFilter = () => {
 	return (
-		<div className="w-full max-w-[392px] hidden xl:block sticky max-h-[1411px] overflow-y-auto top-[8rem]">
+		<div className="w-full max-w-[392px] hidden xl:block sticky overflow-y-auto top-[8rem]">
 			<h2 className="font-semibold text-gray-950 text-[2rem] mb-4">Filters</h2>
 			<div className="flex items-center w-full gap-6 mb-4">
 				<button type="button" className="w-full h-10">

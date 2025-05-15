@@ -2,9 +2,9 @@ import ProductImage1 from "../assets/BestSellers/ProductImage1.png";
 import ProductImage2 from "../assets/BestSellers/ProductImage2.png";
 import ProductImage3 from "../assets/BestSellers/ProductImage3.png";
 import { CardComponent } from "../Components";
-import { Product } from "../utils";
 import { v4 as uuidv4 } from "uuid";
 import { motion } from "motion/react";
+import { Product } from "../types";
 
 const fadeUp = {
 	initial: { opacity: 0, y: 100 },
@@ -26,7 +26,7 @@ export default function BestSellers() {
 				<h1 className="font-semibold text-[2rem] max-md:text-[20px]">Best Sellers</h1>
 				<p>View All</p>
 			</div>
-			<div className=" flex gap-6">
+			<div className=" flex gap-6 overflow-x-auto">
 				{products.map(({ id, image, name, description, price, colors }, index) => (
 					<motion.div
 						key={id}
@@ -59,7 +59,11 @@ const products: Product[] = [
 		name: "Tailored Stretch",
 		description: "Turn it Up Pants",
 		price: 180,
-		colors: ["bg-dark-grey", "bg-[#7DC3EB]", "bg-[#748C70]"],
+		colors: [
+			{ id: uuidv4(), label: "Dark Grey", className: "bg-[#0C0C0C]" }, // assumed fallback for "bg-dark-grey"
+			{ id: uuidv4(), label: "Sky Blue", className: "bg-[#7DC3EB]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
 	},
 	{
 		id: uuidv4(),
@@ -67,7 +71,11 @@ const products: Product[] = [
 		name: "Technical Silk",
 		description: "Make A Splash",
 		price: 120,
-		colors: ["bg-[#909225]", "bg-[#19418E]", "bg-[#909225]"],
+		colors: [
+			{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" },
+			{ id: uuidv4(), label: "Navy", className: "bg-[#19418E]" },
+			{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" }, // repeated color
+		],
 	},
 	{
 		id: uuidv4(),
@@ -75,6 +83,10 @@ const products: Product[] = [
 		name: "Cool Weave",
 		description: "Anywhere Dress",
 		price: 210,
-		colors: ["bg-[#D0A5EA]", "bg-[#0C0C0C]", "bg-[#748C70]"],
+		colors: [
+			{ id: uuidv4(), label: "Lavender", className: "bg-[#D0A5EA]" },
+			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
 	},
 ];

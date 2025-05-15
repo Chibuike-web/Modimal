@@ -14,7 +14,7 @@ export const productsShopAll: Product[] = [
 		name: "Chill Wrap top",
 		description: "Turn it Up Top",
 		price: 160,
-		colors: ["bg-[#909225]"],
+		colors: [{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" }],
 	},
 	{
 		id: uuidv4(),
@@ -22,7 +22,11 @@ export const productsShopAll: Product[] = [
 		name: "Essential T-shirt",
 		description: "Turn it Up T-Shirt",
 		price: 95,
-		colors: ["bg-[#0C0C0C]", "bg-[#7DC3EB]", "bg-[#748C70]"],
+		colors: [
+			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Sky Blue", className: "bg-[#7DC3EB]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
 		tag: "New",
 	},
 	{
@@ -31,7 +35,11 @@ export const productsShopAll: Product[] = [
 		name: "Shirt Dress",
 		description: "Turn It Up Dress",
 		price: 245,
-		colors: ["bg-[#0C0C0C]", "bg-[#7DC3EB]", "bg-[#748C70]"],
+		colors: [
+			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Sky Blue", className: "bg-[#7DC3EB]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
 	},
 	{
 		id: uuidv4(),
@@ -39,7 +47,10 @@ export const productsShopAll: Product[] = [
 		name: "Rule Zip Jacket",
 		description: "Turn It Up Jacket",
 		price: 199,
-		colors: ["bg-[#909225]", "bg-[#CA6D29]"],
+		colors: [
+			{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" },
+			{ id: uuidv4(), label: "Burnt Orange", className: "bg-[#CA6D29]" },
+		],
 	},
 	{
 		id: uuidv4(),
@@ -47,7 +58,11 @@ export const productsShopAll: Product[] = [
 		name: "New Age Linen",
 		description: "Turn It Up Pants",
 		price: 180,
-		colors: ["bg-[#0C0C0C]", "bg-[#19418E]", "bg-[#748C70]"],
+		colors: [
+			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Navy", className: "bg-[#19418E]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
 	},
 	{
 		id: uuidv4(),
@@ -55,7 +70,10 @@ export const productsShopAll: Product[] = [
 		name: "Boss Pullover",
 		description: "Turn It Up Pullover",
 		price: 280,
-		colors: ["bg-[#0C0C0C]", "bg-[#748C70]"],
+		colors: [
+			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
 		tag: "New",
 	},
 ];
