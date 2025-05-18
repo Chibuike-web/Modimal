@@ -1,6 +1,6 @@
 import { useState, ReactNode } from "react";
 import { useParams } from "react-router-dom";
-import { productsShopAll } from "./utils";
+import { productsShopAll } from "../ShopAll/utils";
 import { AddIcon, BusIcon, HeartIcon, MinusIcon } from "../../Icons";
 import { JSX } from "react";
 import { Product } from "../../types";
@@ -13,7 +13,7 @@ interface DropDownProps {
 	content: ReactNode;
 }
 
-export default function ProductDetails(): JSX.Element {
+export default function ProductDetails() {
 	const { id } = useParams<{ id: string }>();
 	const product = productsShopAll.find((p: Product) => p.id === id);
 

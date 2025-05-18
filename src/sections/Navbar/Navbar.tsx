@@ -12,14 +12,16 @@ import SustainImage2 from "../../assets/Navbar/SustainImage2.png";
 import { collectionContent, newInContent, plusSizeContent, sustainContent } from "./utils";
 import { DropdownType, DropdownProps } from "./types";
 import { useDropdownHover, useWindowWidth } from "../../Hooks";
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import { DownArrowButton } from "../../Components";
 import { motion, AnimatePresence } from "motion/react";
 import { useSearch } from "../../store/useSearch";
 import { useSignedIn } from "../../store/useSignIn";
 import { Link } from "react-router";
 import { useBag } from "../../store/useBag";
-import clsx from "clsx";
+import { BagModal } from "./Bags";
+
+import { SearchBar } from "../SearchBar";
 
 export default function Navbar() {
 	const windowSize = useWindowWidth();
@@ -68,6 +70,7 @@ const WelcomeModal = () => {
 const ListItems = () => {
 	const { hover, handleMouseEnter, handleMouseLeave } = useDropdownHover();
 	const { isSearch } = useSearch();
+	const { showBag } = useBag();
 	return (
 		<ul className=" flex gap-[1.25rem]">
 			<div>
@@ -79,7 +82,7 @@ const ListItems = () => {
 						hover === "collection" && "bg-primary-25 font-semibold"
 					}`}
 					onMouseEnter={() => {
-						if (isSearch) return;
+						if (isSearch || showBag) return;
 						handleMouseEnter("collection");
 					}}
 					onMouseLeave={handleMouseLeave}
@@ -103,7 +106,7 @@ const ListItems = () => {
 						hover === "new-in" && "bg-primary-25 font-semibold"
 					}`}
 					onMouseEnter={() => {
-						if (isSearch) return;
+						if (isSearch || showBag) return;
 						handleMouseEnter("new-in");
 					}}
 					onMouseLeave={handleMouseLeave}
@@ -116,7 +119,7 @@ const ListItems = () => {
 			</div>
 			<div
 				onMouseEnter={() => {
-					if (isSearch) return;
+					if (isSearch || showBag) return;
 					handleMouseEnter("modiweek");
 				}}
 				onMouseLeave={handleMouseLeave}
@@ -134,7 +137,7 @@ const ListItems = () => {
 			</div>
 			<div
 				onMouseEnter={() => {
-					if (isSearch) return;
+					if (isSearch || showBag) return;
 					handleMouseEnter("plus-size");
 				}}
 				onMouseLeave={handleMouseLeave}
@@ -158,7 +161,7 @@ const ListItems = () => {
 			</div>
 			<div
 				onMouseEnter={() => {
-					if (isSearch) return;
+					if (isSearch || showBag) return;
 					handleMouseEnter("sustainability");
 				}}
 				onMouseLeave={handleMouseLeave}
@@ -207,80 +210,6 @@ const DesktopNavbar = () => {
 			{showBag && <BagModal />}
 			<AnimatePresence>{isSearch ? <SearchBar /> : ""}</AnimatePresence>
 		</nav>
-	);
-};
-
-const BagModal = () => {
-	const { setShowBag } = useBag();
-	const windowSize = useWindowWidth();
-	const styles = clsx(
-		"absolute bg-white flex flex-col py-8 px-6",
-		windowSize < 1100 ? "w-full h-screen" : "right-0 w-[392px] h-[660px]"
-	);
-	return (
-		<div className="fixed top-[8rem] max-lg:top-[5rem] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full">
-			<div className="relative max-w-[76.5rem] w-full">
-				<div className={styles}>
-					<button
-						type="button"
-						className={clsx(windowSize < 1100 ? "" : "flex self-end")}
-						onClick={setShowBag}
-					>
-						<CancelIcon />
-					</button>
-					<div className="flex items-center flex-col text-center mt-[96px]">
-						<h3 className="font-bold mb-6">Your shopping bag is empty</h3>
-						<p className="text-[14px] leadng-[1.4] w-full max-w-[232px] mb-[72px]">
-							discover modimal and add products to your Bag
-						</p>
-						<button type="button" className="bg-primary w-full max-w-[184px] h-10 mb-6 text-white">
-							Collection
-						</button>
-						<button type="button" className="bg-primary w-full max-w-[184px] h-10 mb-6 text-white">
-							New In
-						</button>
-						<button type="button" className="bg-primary w-full max-w-[184px] h-10 text-white">
-							Best Sellers
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
-};
-
-const SearchBar = () => {
-	const inputRef = useRef<HTMLInputElement>(null);
-
-	useEffect(() => {
-		inputRef.current?.focus();
-	}, []);
-
-	return (
-		<motion.div
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			exit={{ opacity: 0, y: -20 }}
-			transition={{ duration: 0.2 }}
-			className="fixed top-[8rem] max-lg:top-[5rem] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full"
-		>
-			<motion.div
-				initial={{ opacity: 0, height: 0 }}
-				animate={{ opacity: 1, height: "auto" }}
-				exit={{ opacity: 0, height: 0 }}
-				transition={{ duration: 0.2 }}
-				className="justify-items-center content-center w-full pt-8 pb-16 max-md:px-6 bg-white overflow-hidden"
-			>
-				<input
-					type="text"
-					ref={inputRef}
-					name=""
-					id=""
-					placeholder="Search"
-					className="block w-full max-w-[76.5rem] border-b"
-				/>{" "}
-			</motion.div>
-		</motion.div>
 	);
 };
 

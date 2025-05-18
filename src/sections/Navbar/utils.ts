@@ -1,4 +1,4 @@
-import { DropdownType } from "./types";
+import type { DropdownType } from "./types";
 import { v4 as uuidv4 } from "uuid";
 import Bag1 from "../../assets/Bags/Bag1.png";
 import Bag2 from "../../assets/Bags/Bag2.png";
@@ -94,23 +94,23 @@ export const bagItems = [
 		image: Bag1,
 		name: "Wrap Top",
 		size: "S",
-		price: 180,
-		colors: "White",
+		price: 160,
+		color: "White",
 	},
 	{
 		id: uuidv4(),
 		image: Bag2,
-		name: "Tailored Stretch",
+		name: "Casual WIld Leg",
 		size: "S",
-		price: 180,
-		colors: "bg-[#748C70]",
+		price: 130,
+		color: "Dark Blue",
 	},
 	{
 		id: uuidv4(),
 		image: Bag3,
-		name: "Tailored Stretch",
-		size: "S",
+		name: "Essential Dress",
+		size: "2X",
 		price: 180,
-		colors: "bg-[#748C70]",
+		color: "Black",
 	},
 ];

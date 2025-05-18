@@ -15,18 +15,7 @@ export type Color = {
 	className: string;
 };
 
-export interface List {
-	id: string;
-	label: string;
-	colorCode?: string;
-}
-
-export interface SelectButtonProps extends List {
-	title: string;
-}
-
-export interface FilterButtonProps {
-	id: string;
-	title: string;
-	list?: List[];
-}
+export type CardProps = {
+	text: string;
+	image?: string;
+};

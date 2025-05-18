@@ -1,23 +1,8 @@
-import Modiweek1 from "../assets/Modiweek/Modiweek1.png";
-import Modiweek2 from "../assets/Modiweek/Modiweek2.png";
-import Modiweek3 from "../assets/Modiweek/Modiweek3.png";
-import Modiweek4 from "../assets/Modiweek/Modiweek4.png";
-import Modiweek5 from "../assets/Modiweek/Modiweek5.png";
-import { LikeButton } from "../Components";
 import { motion } from "motion/react";
+import { LikeButton } from "../Components";
+import { cardData } from "./utils";
+import { CardProps } from "./types";
 
-type CardProps = {
-	text: string;
-	image?: string;
-};
-
-const cardData: CardProps[] = [
-	{ text: "Sunday", image: Modiweek1 },
-	{ text: "Monday", image: Modiweek2 },
-	{ text: "Tuesday", image: Modiweek3 },
-	{ text: "Wednesday", image: Modiweek4 },
-	{ text: "Thursday", image: Modiweek5 },
-];
 export default function Modiweek() {
 	return (
 		<section className="mx-auto max-w-[76.5rem] mt-[5.5rem] max-md:px-6">

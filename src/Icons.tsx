@@ -238,19 +238,19 @@ export function DownArrowIcon({ className = "" }: { className?: string }) {
 
 export function AddIcon({ fill = "white" }: { fill?: string }) {
 	return (
-		<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
-				d="M13 8H8V13C8 13.55 7.55 14 7 14C6.45 14 6 13.55 6 13V8H1C0.45 8 0 7.55 0 7C0 6.45 0.45 6 1 6H6V1C6 0.45 6.45 0 7 0C7.55 0 8 0.45 8 1V6H13C13.55 6 14 6.45 14 7C14 7.55 13.55 8 13 8Z"
+				d="M15.8346 11.3337H10.8346V16.3337H9.16797V11.3337H4.16797V9.66699H9.16797V4.66699H10.8346V9.66699H15.8346V11.3337Z"
 				fill={fill}
 			/>
 		</svg>
 	);
 }
 
-export function MinusIcon({ className = "" }: { className?: string }) {
+export function MinusIcon({ fill = "#748C70" }: { fill?: string }) {
 	return (
 		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 11H18V13H6V11Z" fill="#748C70" />
+			<path d="M6 11H18V13H6V11Z" fill={fill} />
 		</svg>
 	);
 }

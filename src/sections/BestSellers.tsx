@@ -1,10 +1,6 @@
-import ProductImage1 from "../assets/BestSellers/ProductImage1.png";
-import ProductImage2 from "../assets/BestSellers/ProductImage2.png";
-import ProductImage3 from "../assets/BestSellers/ProductImage3.png";
 import { CardComponent } from "../Components";
-import { v4 as uuidv4 } from "uuid";
 import { motion } from "motion/react";
-import { Product } from "../types";
+import { products } from "./utils";
 
 const fadeUp = {
 	initial: { opacity: 0, y: 100 },
@@ -51,42 +47,3 @@ export default function BestSellers() {
 		</section>
 	);
 }
-
-const products: Product[] = [
-	{
-		id: uuidv4(),
-		image: ProductImage1,
-		name: "Tailored Stretch",
-		description: "Turn it Up Pants",
-		price: 180,
-		colors: [
-			{ id: uuidv4(), label: "Dark Grey", className: "bg-[#0C0C0C]" }, // assumed fallback for "bg-dark-grey"
-			{ id: uuidv4(), label: "Sky Blue", className: "bg-[#7DC3EB]" },
-			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
-		],
-	},
-	{
-		id: uuidv4(),
-		image: ProductImage2,
-		name: "Technical Silk",
-		description: "Make A Splash",
-		price: 120,
-		colors: [
-			{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" },
-			{ id: uuidv4(), label: "Navy", className: "bg-[#19418E]" },
-			{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" }, // repeated color
-		],
-	},
-	{
-		id: uuidv4(),
-		image: ProductImage3,
-		name: "Cool Weave",
-		description: "Anywhere Dress",
-		price: 210,
-		colors: [
-			{ id: uuidv4(), label: "Lavender", className: "bg-[#D0A5EA]" },
-			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
-			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
-		],
-	},
-];

@@ -83,6 +83,8 @@
 
 	--font-primary: "Gill Sans MT";
 	--font-secondary: "Montserrat";
+
+	--breakpoint-lg: 1100px;
 }
 
 body {

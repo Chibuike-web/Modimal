@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { AddIcon, CancelIcon, CheckIcon, DownArrowIcon, LikeIcon, MinusIcon } from "./Icons";
 import { AnimatePresence, motion } from "motion/react";
 import { useClicked } from "./Hooks";
 import { useChecked } from "./store/useChecked";
-import { Product } from "./types";
+import { Product, FilterButtonProps, SelectButtonProps, List } from "./types";
 import { filterList } from "./utils";
 import { Link } from "react-router-dom";
 import { useFavourites } from "./store/useFavourites";
@@ -90,22 +90,6 @@ export const CardComponent = ({
 		</article>
 	);
 };
-
-interface List {
-	id: string;
-	label: string;
-	colorCode?: string;
-}
-
-interface SelectButtonProps extends List {
-	title: string;
-}
-
-interface FilterButtonProps {
-	id: string;
-	title: string;
-	list?: List[];
-}
 
 export const FilterButton = ({ title, list }: FilterButtonProps) => {
 	const [isShowDropdown, setIsShowDropdown] = useState(false);
