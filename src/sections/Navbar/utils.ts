@@ -88,7 +88,7 @@ export const sustainContent: DropdownType[] = [
 	},
 ];
 
-export const bagItems = [
+export const cartItems = [
 	{
 		id: uuidv4(),
 		image: Bag1,

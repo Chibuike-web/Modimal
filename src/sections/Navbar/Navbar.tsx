@@ -18,9 +18,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { useSearch } from "../../store/useSearch";
 import { useSignedIn } from "../../store/useSignIn";
 import { Link } from "react-router";
-import { useBag } from "../../store/useBag";
-import { BagModal } from "./Bags";
-
+import { useCart } from "../../store/useCart";
+import { CartModal } from "./CartModal";
 import { SearchBar } from "../SearchBar";
 
 export default function Navbar() {
@@ -70,7 +69,7 @@ const WelcomeModal = () => {
 const ListItems = () => {
 	const { hover, handleMouseEnter, handleMouseLeave } = useDropdownHover();
 	const { isSearch } = useSearch();
-	const { showBag } = useBag();
+	const { showCart } = useCart();
 	return (
 		<ul className=" flex gap-[1.25rem]">
 			<div>
@@ -82,7 +81,7 @@ const ListItems = () => {
 						hover === "collection" && "bg-primary-25 font-semibold"
 					}`}
 					onMouseEnter={() => {
-						if (isSearch || showBag) return;
+						if (isSearch || showCart) return;
 						handleMouseEnter("collection");
 					}}
 					onMouseLeave={handleMouseLeave}
@@ -106,7 +105,7 @@ const ListItems = () => {
 						hover === "new-in" && "bg-primary-25 font-semibold"
 					}`}
 					onMouseEnter={() => {
-						if (isSearch || showBag) return;
+						if (isSearch || showCart) return;
 						handleMouseEnter("new-in");
 					}}
 					onMouseLeave={handleMouseLeave}
@@ -119,7 +118,7 @@ const ListItems = () => {
 			</div>
 			<div
 				onMouseEnter={() => {
-					if (isSearch || showBag) return;
+					if (isSearch || showCart) return;
 					handleMouseEnter("modiweek");
 				}}
 				onMouseLeave={handleMouseLeave}
@@ -137,7 +136,7 @@ const ListItems = () => {
 			</div>
 			<div
 				onMouseEnter={() => {
-					if (isSearch || showBag) return;
+					if (isSearch || showCart) return;
 					handleMouseEnter("plus-size");
 				}}
 				onMouseLeave={handleMouseLeave}
@@ -161,7 +160,7 @@ const ListItems = () => {
 			</div>
 			<div
 				onMouseEnter={() => {
-					if (isSearch || showBag) return;
+					if (isSearch || showCart) return;
 					handleMouseEnter("sustainability");
 				}}
 				onMouseLeave={handleMouseLeave}
@@ -186,7 +185,7 @@ const ListItems = () => {
 
 const DesktopNavbar = () => {
 	const { isSearch, setIsSearch } = useSearch();
-	const { showBag, setShowBag } = useBag();
+	const { showCart, setShowCart } = useCart();
 	return (
 		<nav className="w-full flex items-center justify-center py-6 bg-white relative px-6 xl:px-0">
 			<header className="flex items-center justify-between w-full  max-w-[76.5rem]">
@@ -202,12 +201,12 @@ const DesktopNavbar = () => {
 					<Link to="/favourites" className="flex items-center">
 						<HeartIcon />
 					</Link>
-					<button type="button" onClick={setShowBag}>
+					<button type="button" onClick={setShowCart}>
 						<BagIcon />
 					</button>
 				</div>
 			</header>
-			{showBag && <BagModal />}
+			{showCart && <CartModal />}
 			<AnimatePresence>{isSearch ? <SearchBar /> : ""}</AnimatePresence>
 		</nav>
 	);
@@ -381,7 +380,7 @@ const DropdownContent = ({ heading, subheading }: DropdownType) => {
 const MobileNavbar = () => {
 	const [showDropdown, setShowDropdown] = useState(false);
 	const { isSearch, setIsSearch } = useSearch();
-	const { showBag, setShowBag } = useBag();
+	const { showCart, setShowCart } = useCart();
 	return (
 		<>
 			<nav className="w-full flex items-center justify-center py-[8px] bg-white px-6">
@@ -403,7 +402,7 @@ const MobileNavbar = () => {
 						<Link to="/favourites" className="flex items-center">
 							<HeartIcon />
 						</Link>
-						<button type="button" onClick={setShowBag}>
+						<button type="button" onClick={setShowCart}>
 							<BagIcon />
 						</button>
 					</div>
@@ -411,7 +410,7 @@ const MobileNavbar = () => {
 			</nav>
 			<AnimatePresence>{showDropdown && <MobileDropdown />} </AnimatePresence>
 			<AnimatePresence>{isSearch ? <SearchBar /> : ""}</AnimatePresence>
-			{showBag && <BagModal />}
+			{showCart && <CartModal />}
 		</>
 	);
 };

@@ -9,11 +9,11 @@ export type DropdownProps = {
 	handleMouseLeave: () => void;
 };
 
-export type BagItems = {
+export type CartItemsTypes = {
 	id: string;
 	image: string;
 	name: string;
 	size: string;
-	price: number;
-	color: string;
+	price?: number;
+	color?: string;
 };

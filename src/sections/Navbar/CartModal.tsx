@@ -1,36 +1,36 @@
 import clsx from "clsx";
 import { twMerge } from "tailwind-merge";
 import { useWindowWidth } from "../../Hooks";
-import { useBag } from "../../store/useBag";
+import { useCart } from "../../store/useCart";
 import { AddIcon, CancelIcon, MinusIcon } from "../../Icons";
-import { bagItems } from "./utils";
-import type { BagItems } from "./types";
+import { cartItems } from "./utils";
+import type { CartItemsTypes } from "./types";
 
-export const BagModal = () => {
+export const CartModal = () => {
 	const windowSize = useWindowWidth();
-	const { setShowBag } = useBag();
+	const { setShowCart } = useCart();
 	const isMobile = windowSize < 1100;
-	const hasBags = bagItems.length > 0;
+	const hasItems = cartItems.length > 0;
 	const styles = twMerge(
 		"absolute bg-white flex flex-col items-center py-8 px-6 overflow-y-auto",
 		isMobile
 			? "w-full h-screen"
-			: hasBags
+			: hasItems
 			? "right-0 w-[628px] h-[914px]"
 			: "right-0 w-[392px] h-[660px]"
 	);
 	return (
 		<div className="fixed top-[8rem] max-lg:top-0 justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full">
 			<div className="relative max-w-[76.5rem] w-full">
-				{bagItems.length > 0 ? (
+				{cartItems.length > 0 ? (
 					<div className={styles}>
-						<button type="button" className="self-start" onClick={setShowBag}>
+						<button type="button" className="self-start" onClick={setShowCart}>
 							<CancelIcon />
 						</button>
 						<h2 className="font-bold text-[20px] text-center">Your Cart</h2>
 						<div className="flex flex-col gap-8 w-full mt-6">
-							{bagItems.map(({ id, image, name, size, price, color }) => (
-								<BagItem
+							{cartItems.map(({ id, image, name, size, price, color }) => (
+								<CartItem
 									key={id}
 									id={id}
 									image={image}
@@ -49,14 +49,14 @@ export const BagModal = () => {
 						</button>
 					</div>
 				) : (
-					<EmptyBag />
+					<EmptyCart />
 				)}
 			</div>
 		</div>
 	);
 };
 
-const BagItem = ({ image, name, size, price, color }: BagItems) => {
+const CartItem = ({ image, name, size, price, color }: CartItemsTypes) => {
 	return (
 		<div className="flex gap-[8px] w-full">
 			<figure>
@@ -88,8 +88,8 @@ const BagItem = ({ image, name, size, price, color }: BagItems) => {
 	);
 };
 
-const EmptyBag = () => {
-	const { setShowBag } = useBag();
+const EmptyCart = () => {
+	const { setShowCart } = useCart();
 	const windowSize = useWindowWidth();
 
 	const isMobile = windowSize < 1100;
@@ -102,7 +102,7 @@ const EmptyBag = () => {
 			<button
 				type="button"
 				className={clsx(windowSize < 1100 ? "" : "flex self-end")}
-				onClick={setShowBag}
+				onClick={setShowCart}
 			>
 				<CancelIcon />
 			</button>
