@@ -9,7 +9,10 @@ import SignUp from "./pages/Auth/SignUp";
 import SignIn from "./pages/Auth/SignIn";
 import ShopAll from "./pages/ShopAll/ShopAll";
 import ProductDetails from "./pages/Products/ProductDetails";
-import Checkout from "./pages/Checkout/Checkout";
+import Cart from "./pages/Checkout/Cart";
+import Container from "./pages/Checkout/Container";
+import Info from "./pages/Checkout/Info";
+import Shipping from "./pages/Checkout/Shipping";
 
 export default function App() {
 	return (
@@ -25,7 +28,11 @@ export default function App() {
 					<Route path="/shopall" element={<ShopAll />} />
 					<Route path="/collection/:id" element={<ProductDetails />} />
 				</Route>
-				<Route path="/checkout" element={<Checkout />} />
+				<Route path="/cart" element={<Cart />} />
+				<Route element={<Container />}>
+					<Route path="/info" element={<Info />} />
+					<Route path="/shipping" element={<Shipping />} />
+				</Route>
 			</Routes>
 		</Router>
 	);
