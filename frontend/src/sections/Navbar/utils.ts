@@ -96,14 +96,16 @@ export const cartItems = [
 		size: "S",
 		price: 160,
 		color: "White",
+		quantity: 1,
 	},
 	{
 		id: uuidv4(),
 		image: Bag2,
-		name: "Casual WIld Leg",
+		name: "Casual Wild Leg",
 		size: "S",
 		price: 130,
 		color: "Dark Blue",
+		quantity: 2,
 	},
 	{
 		id: uuidv4(),
@@ -112,5 +114,6 @@ export const cartItems = [
 		size: "2X",
 		price: 180,
 		color: "Black",
+		quantity: 1,
 	},
 ];

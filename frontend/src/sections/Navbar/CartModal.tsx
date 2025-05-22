@@ -29,7 +29,7 @@ export const CartModal = () => {
 						</button>
 						<h2 className="font-bold text-[20px] text-center">Your Cart</h2>
 						<div className="flex flex-col gap-8 w-full mt-6">
-							{cartItems.map(({ id, image, name, size, price, color }) => (
+							{cartItems.map(({ id, image, name, size, price, color, quantity }) => (
 								<CartItem
 									key={id}
 									id={id}
@@ -38,6 +38,7 @@ export const CartModal = () => {
 									size={size}
 									price={price}
 									color={color}
+									quantity={quantity}
 								/>
 							))}
 						</div>
@@ -56,7 +57,10 @@ export const CartModal = () => {
 	);
 };
 
-const CartItem = ({ image, name, size, price, color }: CartItemsTypes) => {
+const CartItem = ({ id, image, name, size, price, color, quantity }: CartItemsTypes) => {
+	const increaseQuantity = () => {
+		cartItems.map((item) => (id === item.id ? { ...item, quantity: item.quantity + 1 } : item));
+	};
 	return (
 		<div className="flex gap-[8px] w-full">
 			<figure>
@@ -74,10 +78,10 @@ const CartItem = ({ image, name, size, price, color }: CartItemsTypes) => {
 				<div className="flex items-center justify-between w-full">
 					<p className="font-semibold">${price} </p>
 					<div className="flex items-center bg-primary-50 gap-[8px]">
-						<button className="p-[4px]">
+						<button className="p-[4px]" onClick={increaseQuantity}>
 							<AddIcon fill="#404E3E" />
 						</button>
-						<p className="text-[#404E3E]">1</p>
+						<p className="text-[#404E3E]">{quantity}</p>
 						<button className="p-[4px]">
 							<MinusIcon fill="#404E3E" />
 						</button>
