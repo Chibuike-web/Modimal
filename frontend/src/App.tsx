@@ -13,6 +13,7 @@ import Cart from "./pages/Checkout/Cart";
 import Container from "./pages/Checkout/Container";
 import Info from "./pages/Checkout/Info";
 import Shipping from "./pages/Checkout/Shipping";
+import Payment from "./pages/Checkout/Payment";
 
 export default function App() {
 	return (
@@ -32,6 +33,7 @@ export default function App() {
 				<Route element={<Container />}>
 					<Route path="/checkout/info" element={<Info />} />
 					<Route path="/checkout/shipping" element={<Shipping />} />
+					<Route path="/checkout/payment" element={<Payment />} />
 				</Route>
 			</Routes>
 		</Router>

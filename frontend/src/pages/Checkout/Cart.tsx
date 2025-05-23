@@ -1,9 +1,10 @@
 import { useWindowWidth } from "../../Hooks";
 import { AddIcon, CancelIcon, MinusIcon } from "../../Icons";
-import { cartItems } from "../../sections/Navbar/utils";
 import type { ProductInfoTypes, ProductPriceDetailsTypes, OrderSummaryProps } from "./types";
 import { summaryItems } from "./utils";
-import { CartItemsTypes } from "../../sections/Navbar/types";
+import type { CartItemsTypes } from "../../sections/Navbar/types";
+import { useCartItem } from "../../store/useCartItems";
+import { Link } from "react-router";
 
 export default function Cart() {
 	const total = 523.8;
@@ -21,6 +22,7 @@ export default function Cart() {
 }
 
 const DesktopCart = ({ total }: { total: number }) => {
+	const { cartItems } = useCartItem();
 	return (
 		<div>
 			<div className="flex items-center text-[18px] gap-[128px] mt-10">
@@ -50,12 +52,14 @@ const DesktopCart = ({ total }: { total: number }) => {
 						The total amount you pay includes all applicable customs duties & taxes. We guarantee no
 						additional charges on delivery
 					</p>
-					<button
-						type="button"
-						className="w-full max-w-[184px] h-[40px] ml-auto mt-6 bg-primary flex items-center justify-center text-white"
-					>
-						Next
-					</button>
+					<Link to="/checkout/info">
+						<button
+							type="button"
+							className="w-full max-w-[184px] h-[40px] ml-auto mt-6 bg-primary flex items-center justify-center text-white"
+						>
+							Next
+						</button>
+					</Link>
 				</div>
 			</div>
 		</div>
@@ -63,6 +67,7 @@ const DesktopCart = ({ total }: { total: number }) => {
 };
 
 const MobileCart = ({ total }: { total: number }) => {
+	const { cartItems } = useCartItem();
 	return (
 		<div>
 			<p className="mt-8 mb-4">Order Summary</p>
@@ -81,11 +86,20 @@ const MobileCart = ({ total }: { total: number }) => {
 				))}
 			</div>
 			<OrderSummary items={summaryItems} total={total} />
+			<Link to="/checkout/info">
+				<button
+					type="button"
+					className="w-full h-[40px] mt-6 bg-primary flex items-center justify-center text-white"
+				>
+					Next
+				</button>
+			</Link>
 		</div>
 	);
 };
 
 const ProductInfo = ({ id, image, name, size, color }: ProductInfoTypes) => {
+	const { removeItemFromCart } = useCartItem();
 	return (
 		<div className="flex gap-[8px] w-full">
 			<figure>
@@ -94,7 +108,7 @@ const ProductInfo = ({ id, image, name, size, color }: ProductInfoTypes) => {
 			<div className="w-full flex flex-col justify-between">
 				<div className="flex items-center justify-between w-full">
 					<p className="font-bold leading-[1.4]">{name}</p>
-					<button type="button">
+					<button type="button" onClick={() => removeItemFromCart(id)}>
 						<CancelIcon />
 					</button>
 				</div>
@@ -105,17 +119,18 @@ const ProductInfo = ({ id, image, name, size, color }: ProductInfoTypes) => {
 	);
 };
 
-const ProductPriceDetails = ({ price, quantity }: ProductPriceDetailsTypes) => {
+const ProductPriceDetails = ({ id, price, quantity }: ProductPriceDetailsTypes) => {
 	const subtotal = price * quantity;
+	const { increaseItemQuantity, decreaseItemQuantity } = useCartItem();
 	return (
 		<div className="flex justify-between items-center">
 			<p className="w-[88px]">${price}</p>
 			<div className="flex items-center bg-primary-50 gap-[8px] w-[88px]">
-				<button className="p-[4px]">
+				<button className="p-[4px]" onClick={() => increaseItemQuantity(id)}>
 					<AddIcon fill="#404E3E" />
 				</button>
 				<p className="text-[#404E3E] w-[88px]">{quantity}</p>
-				<button className="p-[4px]">
+				<button className="p-[4px]" onClick={() => decreaseItemQuantity(id)}>
 					<MinusIcon fill="#404E3E" />
 				</button>
 			</div>{" "}
@@ -124,7 +139,7 @@ const ProductPriceDetails = ({ price, quantity }: ProductPriceDetailsTypes) => {
 	);
 };
 
-const OrderSummary = ({ items, total }: OrderSummaryProps) => {
+export const OrderSummary = ({ items, total }: OrderSummaryProps) => {
 	return (
 		<div className="text-sm mt-6 text-[18px] flex flex-col gap-[8px]">
 			{items.map(({ label, value }) => (
@@ -142,7 +157,8 @@ const OrderSummary = ({ items, total }: OrderSummaryProps) => {
 	);
 };
 
-const CartItem = ({ id, image, name, size, price, color, quantity }: CartItemsTypes) => {
+export const CartItem = ({ id, image, name, size, price, color, quantity }: CartItemsTypes) => {
+	const { increaseItemQuantity, decreaseItemQuantity, removeItemFromCart } = useCartItem();
 	return (
 		<div className="flex gap-[8px] w-full">
 			<figure>
@@ -151,7 +167,7 @@ const CartItem = ({ id, image, name, size, price, color, quantity }: CartItemsTy
 			<div className="w-full flex flex-col justify-between">
 				<div className="flex items-center justify-between w-full">
 					<p className="font-bold leading-[1.4]">{name}</p>
-					<button type="button">
+					<button type="button" onClick={() => removeItemFromCart(id)}>
 						<CancelIcon />
 					</button>
 				</div>
@@ -160,11 +176,11 @@ const CartItem = ({ id, image, name, size, price, color, quantity }: CartItemsTy
 				<div className="flex items-center justify-between w-full">
 					<p className="font-semibold">${price} </p>
 					<div className="flex items-center bg-primary-50 gap-[8px]">
-						<button className="p-[4px]">
+						<button className="p-[4px]" onClick={() => increaseItemQuantity(id)}>
 							<AddIcon fill="#404E3E" />
 						</button>
 						<p className="text-[#404E3E]">{quantity}</p>
-						<button className="p-[4px]">
+						<button className="p-[4px]" onClick={() => decreaseItemQuantity(id)}>
 							<MinusIcon fill="#404E3E" />
 						</button>
 					</div>

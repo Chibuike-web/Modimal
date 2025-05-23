@@ -5,6 +5,7 @@ import { useCart } from "../../store/useCart";
 import { AddIcon, CancelIcon, MinusIcon } from "../../Icons";
 import type { CartItemsTypes } from "./types";
 import { useCartItem } from "../../store/useCartItems";
+import { Link } from "react-router";
 
 export const CartModal = () => {
 	const windowSize = useWindowWidth();
@@ -43,12 +44,14 @@ export const CartModal = () => {
 								/>
 							))}
 						</div>
-						<button
-							type="button"
-							className="h-10 flex-shrink-0 w-full max-w-[392px] bg-primary text-white mt-8"
-						>
-							Check Out
-						</button>
+						<Link to="/checkout/cart" className="w-full max-w-[392px]">
+							<button
+								type="button"
+								className="h-10 flex-shrink-0 w-full bg-primary text-white mt-8"
+							>
+								Check Out
+							</button>
+						</Link>
 					</div>
 				) : (
 					<EmptyCart />
@@ -59,7 +62,7 @@ export const CartModal = () => {
 };
 
 const CartItem = ({ id, image, name, size, price, color, quantity }: CartItemsTypes) => {
-	const { increaseItemQuantity, decreaseItemQuantity } = useCartItem();
+	const { increaseItemQuantity, decreaseItemQuantity, removeItemFromCart } = useCartItem();
 	return (
 		<div className="flex gap-[8px] w-full">
 			<figure>
@@ -68,7 +71,7 @@ const CartItem = ({ id, image, name, size, price, color, quantity }: CartItemsTy
 			<div className="w-full flex flex-col justify-between">
 				<div className="flex items-center justify-between w-full">
 					<p className="font-bold leading-[1.4]">{name}</p>
-					<button type="button">
+					<button type="button" onClick={() => removeItemFromCart(id)}>
 						<CancelIcon />
 					</button>
 				</div>
