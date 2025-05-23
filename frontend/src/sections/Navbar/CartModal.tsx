@@ -3,11 +3,12 @@ import { twMerge } from "tailwind-merge";
 import { useWindowWidth } from "../../Hooks";
 import { useCart } from "../../store/useCart";
 import { AddIcon, CancelIcon, MinusIcon } from "../../Icons";
-import { cartItems } from "./utils";
 import type { CartItemsTypes } from "./types";
+import { useCartItem } from "../../store/useCartItems";
 
 export const CartModal = () => {
 	const windowSize = useWindowWidth();
+	const { cartItems } = useCartItem();
 	const { setShowCart } = useCart();
 	const isMobile = windowSize < 1100;
 	const hasItems = cartItems.length > 0;
@@ -58,9 +59,7 @@ export const CartModal = () => {
 };
 
 const CartItem = ({ id, image, name, size, price, color, quantity }: CartItemsTypes) => {
-	const increaseQuantity = () => {
-		cartItems.map((item) => (id === item.id ? { ...item, quantity: item.quantity + 1 } : item));
-	};
+	const { increaseItemQuantity, decreaseItemQuantity } = useCartItem();
 	return (
 		<div className="flex gap-[8px] w-full">
 			<figure>
@@ -78,11 +77,11 @@ const CartItem = ({ id, image, name, size, price, color, quantity }: CartItemsTy
 				<div className="flex items-center justify-between w-full">
 					<p className="font-semibold">${price} </p>
 					<div className="flex items-center bg-primary-50 gap-[8px]">
-						<button className="p-[4px]" onClick={increaseQuantity}>
+						<button className="p-[4px]" onClick={() => increaseItemQuantity(id)}>
 							<AddIcon fill="#404E3E" />
 						</button>
 						<p className="text-[#404E3E]">{quantity}</p>
-						<button className="p-[4px]">
+						<button className="p-[4px]" onClick={() => decreaseItemQuantity(id)}>
 							<MinusIcon fill="#404E3E" />
 						</button>
 					</div>

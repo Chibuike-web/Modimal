@@ -28,10 +28,10 @@ export default function App() {
 					<Route path="/shopall" element={<ShopAll />} />
 					<Route path="/collection/:id" element={<ProductDetails />} />
 				</Route>
-				<Route path="/cart" element={<Cart />} />
+				<Route path="/checkout/cart" element={<Cart />} />
 				<Route element={<Container />}>
-					<Route path="/info" element={<Info />} />
-					<Route path="/shipping" element={<Shipping />} />
+					<Route path="/checkout/info" element={<Info />} />
+					<Route path="/checkout/shipping" element={<Shipping />} />
 				</Route>
 			</Routes>
 		</Router>
