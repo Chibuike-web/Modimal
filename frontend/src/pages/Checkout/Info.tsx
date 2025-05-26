@@ -1,15 +1,11 @@
 import { LeftArrowIcon } from "../../Icons";
 import { Link } from "react-router";
-import { CartItem, OrderSummary } from "./Cart";
-import { useCartItem } from "../../store/useCartItems";
-import { summaryItems } from "./utils";
 
 export default function Info() {
 	return (
 		<div className="w-full max-w-[600px] flex flex-col max-xl:max-w-[800px] max-xl:items-center">
-			<MobileCart />
 			<ContactForm />
-			<div className="flex items-center w-full justify-between mt-24 gap-4 max-md:flex-col-reverse">
+			<div className="flex items-center w-full justify-between mt-24 mb-16 gap-4 max-md:flex-col-reverse">
 				<Link to="/checkout/cart" className="flex">
 					<LeftArrowIcon />
 					<span>Return To Cart</span>
@@ -125,32 +121,3 @@ function ContactForm() {
 		</div>
 	);
 }
-
-const MobileCart = () => {
-	const { cartItems } = useCartItem();
-	const total = 523.8;
-	return (
-		<div className="hidden max-xl:block w-full">
-			<p className="mt-8 mb-4">Order Summary</p>
-			<div className="flex flex-col gap-6">
-				{cartItems.map(({ id, image, name, size, price, color, quantity }) => (
-					<CartItem
-						key={id}
-						id={id}
-						image={image}
-						name={name}
-						size={size}
-						price={price}
-						color={color}
-						quantity={quantity}
-					/>
-				))}
-			</div>
-			<OrderSummary items={summaryItems} total={total} />
-			<p className="text-[12px] font-semibold w-full max-w-[496px] my-8 leading-[15px]">
-				The total amount you pay includes all applicable customs duties & taxes. We guarantee no
-				additional charges on delivery
-			</p>
-		</div>
-	);
-};

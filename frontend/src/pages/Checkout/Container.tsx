@@ -18,9 +18,9 @@ export default function Container() {
 	];
 	return (
 		<section className="mx-auto max-w-[1224px] w-full max-lg:px-6">
-			<div className="flex min-w-[1336px] gap-[104px] max-xl:min-w-0 max-xl:flex-col max-xl:items-center">
+			<img src="/Logo.svg" alt="Brand Logo" className="mt-8" />
+			<div className="flex min-w-[1336px] gap-[104px] max-xl:min-w-0 max-xl:flex-col-reverse max-xl:items-center max-xl:gap-8">
 				<aside className="w-full max-w-[600px] max-xl:max-w-[800px]">
-					<img src="/Logo.svg" alt="Brand Logo" />
 					<div className="flex gap-2 text-sm">
 						{steps.map((step, index) => (
 							<div className="flex items-center mt-6">
@@ -49,9 +49,9 @@ const CartItems = () => {
 	const { cartItems } = useCartItem();
 	const total = 523.8;
 	return (
-		<div className=" max-w-[628px] w-full gap-6 h-screen right-0 top-0 bg-[#F0F2EF] px-6 pt-8 max-xl:hidden">
+		<aside className=" max-w-[628px] fixed top-0 right-0 w-full gap-6 h-screen bg-[#F0F2EF] flex flex-col px-6 pt-8 max-xl:static max-xl:h-auto max-xl:bg-transparent max-xl:items-center max-xl:max-w-[800px] max-xl:px-0">
 			<h3 className="text-[20px] font-bold leading-[1.4] text-center mb-10">Your Cart</h3>
-			<div className="flex flex-col gap-8 w-full max-w-[496px] ">
+			<div className="flex flex-col gap-8 w-full max-w-[496px] max-xl:max-w-full">
 				{cartItems.map(({ id, image, name, size, price, color, quantity }: CartItemsTypes) => (
 					<CartItem
 						key={id}
@@ -67,10 +67,10 @@ const CartItems = () => {
 
 				<OrderSummary items={summaryItems} total={total} />
 			</div>
-			<p className="text-[12px] font-semibold w-full max-w-[496px] mt-[10px] leading-[15px]">
+			<p className="text-[12px] font-semibold w-full max-w-[496px] mt-[10px] leading-[15px] flex self-start">
 				The total amount you pay includes all applicable customs duties & taxes. We guarantee no
 				additional charges on delivery
 			</p>
-		</div>
+		</aside>
 	);
 };
