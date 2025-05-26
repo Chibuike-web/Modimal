@@ -17,22 +17,24 @@ export default function Container() {
 		{ label: "Payment", path: "/checkout/payment" },
 	];
 	return (
-		<section className="flex justify-center items-center w-full max-lg:pl-6 max-lg:flex-col-reverse">
-			<div className="flex w-full max-w-[76.5rem]">
-				<aside className="w-full max-w-[704px]">
+		<section className="mx-auto max-w-[1224px] w-full max-lg:px-6">
+			<div className="flex min-w-[1336px] gap-[104px] max-xl:min-w-0 max-xl:flex-col max-xl:items-center">
+				<aside className="w-full max-w-[600px] max-xl:max-w-[800px]">
 					<img src="/Logo.svg" alt="Brand Logo" />
 					<div className="flex gap-2 text-sm">
 						{steps.map((step, index) => (
-							<span
-								key={step.path}
-								className={clsx(
-									"text-sm",
-									pathname === step.path ? "text-gray-900 font-semibold" : "text-primary"
-								)}
-							>
-								{step.label}
+							<div className="flex items-center mt-6">
+								<span
+									key={step.path}
+									className={clsx(
+										"text-sm px-4 py-[4px] ",
+										pathname === step.path ? "text-gray-900 font-semibold" : "text-primary"
+									)}
+								>
+									{step.label}
+								</span>
 								{index < steps.length - 1 && <span className="text-gray-400">/</span>}
-							</span>
+							</div>
 						))}
 					</div>
 					<Outlet />
@@ -47,8 +49,8 @@ const CartItems = () => {
 	const { cartItems } = useCartItem();
 	const total = 523.8;
 	return (
-		<div className="flex flex-col w-full max-w-[628px] gap-6 h-screen right-0 top-0 bg-[#F0F2EF] px-6">
-			<h3 className="text-[20px] font-bold leading-[1.4] text-center mt-8">Your Cart</h3>
+		<div className=" max-w-[628px] w-full gap-6 h-screen right-0 top-0 bg-[#F0F2EF] px-6 pt-8 max-xl:hidden">
+			<h3 className="text-[20px] font-bold leading-[1.4] text-center mb-10">Your Cart</h3>
 			<div className="flex flex-col gap-8 w-full max-w-[496px] ">
 				{cartItems.map(({ id, image, name, size, price, color, quantity }: CartItemsTypes) => (
 					<CartItem
@@ -65,6 +67,10 @@ const CartItems = () => {
 
 				<OrderSummary items={summaryItems} total={total} />
 			</div>
+			<p className="text-[12px] font-semibold w-full max-w-[496px] mt-[10px] leading-[15px]">
+				The total amount you pay includes all applicable customs duties & taxes. We guarantee no
+				additional charges on delivery
+			</p>
 		</div>
 	);
 };

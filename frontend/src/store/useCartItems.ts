@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { cartItems, cartItems as initialItems } from "../sections/Navbar/utils";
+import { cartItems as initialItems } from "../sections/Navbar/utils";
 import { CartItemsTypes } from "../sections/Navbar/types";
 
 interface CartState {

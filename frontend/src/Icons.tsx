@@ -358,3 +358,14 @@ export function BusIcon() {
 		</svg>
 	);
 }
+
+export function LeftArrowIcon() {
+	return (
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M17.8341 3.86961L16.0541 2.09961L6.16406 11.9996L16.0641 21.8996L17.8341 20.1296L9.70406 11.9996L17.8341 3.86961Z"
+				fill="#5A6D57"
+			/>
+		</svg>
+	);
+}
