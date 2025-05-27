@@ -17,26 +17,26 @@ export default function Container() {
 		{ label: "Payment", path: "/checkout/payment" },
 	];
 	return (
-		<section className="mx-auto max-w-[1224px] w-full max-lg:px-6">
+		<section className="mx-auto max-w-[1224px] w-full max-xl:px-6">
 			<img src="/Logo.svg" alt="Brand Logo" className="mt-8" />
-			<div className="flex min-w-[1336px] gap-[104px] max-xl:min-w-0 max-xl:flex-col-reverse max-xl:items-center max-xl:gap-8">
-				<aside className="w-full max-w-[600px] max-xl:max-w-[800px]">
-					<div className="flex gap-2 text-sm">
-						{steps.map((step, index) => (
-							<div className="flex items-center mt-6">
-								<span
-									key={step.path}
-									className={clsx(
-										"text-sm px-4 py-[4px] ",
-										pathname === step.path ? "text-gray-900 font-semibold" : "text-primary"
-									)}
-								>
-									{step.label}
-								</span>
-								{index < steps.length - 1 && <span className="text-gray-400">/</span>}
-							</div>
-						))}
+			<div className="flex gap-2 text-sm">
+				{steps.map((step, index) => (
+					<div className="flex items-center mt-6">
+						<span
+							key={step.path}
+							className={clsx(
+								"text-sm px-4 py-[4px] ",
+								pathname === step.path ? "text-gray-900 font-semibold" : "text-primary"
+							)}
+						>
+							{step.label}
+						</span>
+						{index < steps.length - 1 && <span className="text-gray-400">/</span>}
 					</div>
+				))}
+			</div>
+			<div className="flex gap-16 max-lg:flex-col-reverse max-lg:items-center">
+				<aside className="w-full flex max-xl:justify-center">
 					<Outlet />
 				</aside>
 				{pathname !== "/checkout/payment" && <CartItems />}
@@ -49,7 +49,7 @@ const CartItems = () => {
 	const { cartItems } = useCartItem();
 	const total = 523.8;
 	return (
-		<aside className=" max-w-[628px] fixed top-0 right-0 w-full gap-6 h-screen bg-[#F0F2EF] flex flex-col px-6 pt-8 max-xl:static max-xl:h-auto max-xl:bg-transparent max-xl:items-center max-xl:max-w-[800px] max-xl:px-0">
+		<aside className=" max-w-[628px] fixed top-0 right-0 w-full gap-6 h-screen bg-[#F0F2EF] flex flex-col px-6 pt-8 max-xl:static max-lg:h-auto max-xl:bg-transparent max-lg:items-center max-xl:max-w-[800px] max-xl:px-0">
 			<h3 className="text-[20px] font-bold leading-[1.4] text-center mb-10">Your Cart</h3>
 			<div className="flex flex-col gap-8 w-full max-w-[496px] max-xl:max-w-full">
 				{cartItems.map(({ id, image, name, size, price, color, quantity }: CartItemsTypes) => (
