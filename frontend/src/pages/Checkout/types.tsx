@@ -4,6 +4,7 @@ export type ProductInfoTypes = {
 	name: string;
 	size: string;
 	color: string;
+	quantity: number;
 };
 export type ProductPriceDetailsTypes = {
 	id: string;

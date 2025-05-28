@@ -36,8 +36,16 @@ const DesktopCart = ({ total }: { total: number }) => {
 			<span className="w-full h-[1px] block bg-gray-300 mt-6 mb-8" />
 			<div className="flex w-full gap-[128px]">
 				<div className="w-full max-w-[600px] flex flex-col gap-8">
-					{cartItems.map(({ id, image, name, size, color }) => (
-						<ProductInfo key={id} id={id} image={image} name={name} size={size} color={color} />
+					{cartItems.map(({ id, image, name, size, color, quantity }) => (
+						<ProductInfo
+							key={id}
+							id={id}
+							image={image}
+							name={name}
+							size={size}
+							color={color}
+							quantity={quantity}
+						/>
 					))}
 				</div>
 				<div className="w-full max-w-[496px]">
@@ -98,11 +106,14 @@ const MobileCart = ({ total }: { total: number }) => {
 	);
 };
 
-const ProductInfo = ({ id, image, name, size, color }: ProductInfoTypes) => {
+const ProductInfo = ({ id, image, name, size, color, quantity }: ProductInfoTypes) => {
 	const { removeItemFromCart } = useCartItem();
 	return (
 		<div className="flex gap-[8px] w-full">
-			<figure>
+			<figure className="relative">
+				<span className="bg-white absolute flex items-center justify-center w-6 h-6 left-2 top-2 text-sm">
+					{quantity}
+				</span>
 				<img src={image} alt={`Image of a woman wearing ${name} `} />
 			</figure>
 			<div className="w-full flex flex-col justify-between">
@@ -161,7 +172,10 @@ export const CartItem = ({ id, image, name, size, price, color, quantity }: Cart
 	const { increaseItemQuantity, decreaseItemQuantity, removeItemFromCart } = useCartItem();
 	return (
 		<div className="flex gap-[8px] w-full">
-			<figure>
+			<figure className="relative">
+				<span className="bg-white absolute flex items-center justify-center w-6 h-6 left-2 top-2 text-sm">
+					{quantity}
+				</span>
 				<img src={image} alt={`Image of a woman wearing ${name} `} />
 			</figure>
 			<div className="w-full flex flex-col justify-between">

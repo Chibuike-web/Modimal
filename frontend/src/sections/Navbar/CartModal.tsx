@@ -65,7 +65,10 @@ const CartItem = ({ id, image, name, size, price, color, quantity }: CartItemsTy
 	const { increaseItemQuantity, decreaseItemQuantity, removeItemFromCart } = useCartItem();
 	return (
 		<div className="flex gap-[8px] w-full">
-			<figure>
+			<figure className="relative">
+				<span className="bg-white absolute flex items-center justify-center w-6 h-6 left-2 top-2 text-sm">
+					{quantity}
+				</span>
 				<img src={image} alt={`Image of a woman wearing ${name} `} />
 			</figure>
 			<div className="w-full flex flex-col justify-between">
