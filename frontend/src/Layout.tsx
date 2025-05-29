@@ -10,7 +10,7 @@ export default function Layout() {
 		<>
 			<Navbar />
 			<Outlet />
-			{pathname === "/success" || "/failed" ? "" : <Footer />}
+			{pathname === "/success" || pathname === "/failed" ? "" : <Footer />}
 		</>
 	);
 }

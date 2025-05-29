@@ -3,7 +3,8 @@ import { CardComponent } from "../Components";
 import { AnimatePresence, motion } from "motion/react";
 import { FilterIcon } from "../Icons";
 import { DesktopFilter, MobileFilter } from "../Components";
-import { Product, productsSearchResult } from "../utils";
+import { productsSearchResult } from "../utils";
+import { Product } from "../types";
 import { useShowFilter } from "../Hooks";
 
 export default function SearchResults() {
