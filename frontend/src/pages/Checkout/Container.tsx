@@ -5,10 +5,12 @@ import { useCartItem } from "../../store/useCartItems";
 import { CartItemsTypes } from "../../sections/Navbar/types";
 import { CartItem, OrderSummary } from "./Cart";
 import { summaryItems } from "./utils";
+import { useWindowWidth } from "../../Hooks";
 
 export default function Container() {
 	const location = useLocation();
 	const pathname = location.pathname;
+	const windowWidth = useWindowWidth();
 
 	const steps = [
 		{ label: "Cart", path: "/checkout/cart" },
@@ -19,7 +21,7 @@ export default function Container() {
 	return (
 		<section className="mx-auto max-w-[1224px] w-full max-xl:px-6">
 			<img src="/Logo.svg" alt="Brand Logo" className="mt-8" />
-			<div className="flex gap-2 text-sm">
+			<div className="flex gap-2 text-sm mb-8">
 				{steps.map((step, index) => (
 					<div className="flex items-center mt-6">
 						<span
@@ -39,7 +41,13 @@ export default function Container() {
 				<aside className="w-full flex max-xl:justify-center">
 					<Outlet />
 				</aside>
-				{pathname !== "/checkout/payment" && <CartItems />}
+				{pathname === "/checkout/payment" ? (
+					""
+				) : pathname === "/checkout/shipping" && windowWidth < 1100 ? (
+					""
+				) : (
+					<CartItems />
+				)}
 			</div>
 		</section>
 	);

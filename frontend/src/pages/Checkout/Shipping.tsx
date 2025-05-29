@@ -3,7 +3,7 @@ import { LeftArrowIcon } from "../../Icons";
 
 export default function Shipping() {
 	return (
-		<div className="w-full max-w-[624px] flex flex-col max-xl:max-w-[800px] xl:mt-12">
+		<div className="w-full max-w-[624px] flex flex-col max-xl:max-w-[800px]">
 			<div className="flex items-center w-full justify-between">
 				<p className="text-lg leading-[1.8]">Contact</p>
 				<span className="w-[124px] h-10 flex items-center justify-center text-sm text-primary">
@@ -74,7 +74,7 @@ export default function Shipping() {
 			<div className="flex items-center w-full justify-between mt-24 mb-16 gap-4 max-md:flex-col-reverse">
 				<Link to="/checkout/info" className="flex">
 					<LeftArrowIcon />
-					<span>Return To Cart</span>
+					<span>Return To Information</span>
 				</Link>
 
 				<Link to="/checkout/payment" className="w-full max-w-[184px] max-md:max-w-full">

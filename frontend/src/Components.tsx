@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AddIcon, CancelIcon, CheckIcon, DownArrowIcon, LikeIcon, MinusIcon } from "./Icons";
+import { AddIcon, CancelIcon, CheckBox, DownArrowIcon, LikeIcon, MinusIcon } from "./Icons";
 import { AnimatePresence, motion } from "motion/react";
 import { useClicked } from "./Hooks";
 import { useChecked } from "./store/useChecked";
@@ -151,7 +151,7 @@ const SelectButton = ({
 				console.log(selectedItems);
 			}}
 		>
-			<CheckIcon fill={isChecked ? "#5A6D57" : "white"} />
+			<CheckBox fill={isChecked ? "#5A6D57" : "white"} />
 			{title === "Color" && colorCode && (
 				<span
 					className="block w-4 h-4 rounded-full"

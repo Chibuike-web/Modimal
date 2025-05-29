@@ -29,7 +29,7 @@ function ContactForm() {
 		<div className="w-full mx-auto space-y-4 text-sm">
 			{/* Email Input */}
 			<div>
-				<div className="flex justify-between items-center mt-6 max-lg:mt-0">
+				<div className="flex justify-between items-center max-lg:mt-0">
 					<h2 className="text-lg leading-[1.8]">Contact</h2>
 					<p className="">
 						Have An Account?{" "}
