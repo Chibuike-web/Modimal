@@ -8,11 +8,11 @@ import { motion, AnimatePresence } from "motion/react";
 export default function FAQs() {
 	return (
 		<main className="mx-auto w-full max-w-[1224px] max-xl:px-6">
-			<nav className="flex space-x-2 py-1 px-4 text-sm text-gray-500">
-				<span>Home</span>
+			<div className="flex space-x-2 py-1 px-4 text-sm">
+				<span className="text-primary">Home</span>
 				<span>/</span>
 				<span className="font-medium text-black">FAQs</span>
-			</nav>
+			</div>
 			<Accordion />
 		</main>
 	);

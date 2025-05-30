@@ -188,7 +188,7 @@ const DesktopNavbar = () => {
 	const { showCart, setShowCart } = useCart();
 	return (
 		<nav className="w-full flex items-center justify-center py-6 bg-white relative px-6 xl:px-0">
-			<header className="flex items-center justify-between w-full  max-w-[76.5rem]">
+			<header className="flex items-center justify-between w-full max-w-[76.5rem]">
 				<img src="/Logo.svg" alt="Brand Logo" />
 				<ListItems />
 				<div className="flex gap-6">
@@ -214,7 +214,7 @@ const DesktopNavbar = () => {
 
 const CollectionDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps) => {
 	return (
-		<div className="fixed top-[8rem] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full">
+		<div className="fixed top-[110.76px] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full">
 			<div
 				className="bg-white w-full h-[34.375rem] px-[6.75rem] flex justify-between pt-8"
 				onMouseEnter={() => {
@@ -250,7 +250,7 @@ const CollectionDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProp
 
 const NewInDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps) => {
 	return (
-		<div className="fixed top-[128px] justify-items-center bg-black/40 backdrop-blur-[0.5rem] inset-0 w-full">
+		<div className="fixed top-[110.76px] justify-items-center bg-black/40 backdrop-blur-[0.5rem] inset-0 w-full">
 			<div
 				className="bg-white w-full h-[550px] px-[108px] flex justify-between pt-8"
 				onMouseEnter={() => {
@@ -292,7 +292,7 @@ const NewInDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps) =>
 
 const PlusSizeDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps) => {
 	return (
-		<div className="fixed top-[128px] justify-items-center bg-black/40 backdrop-blur-[0.5rem] inset-0 w-full">
+		<div className="fixed top-[110.76px] justify-items-center bg-black/40 backdrop-blur-[0.5rem] inset-0 w-full">
 			<div
 				className="bg-white w-full h-[550px] px-[108px] flex justify-between pt-8"
 				onMouseEnter={() => {
@@ -334,7 +334,7 @@ const PlusSizeDropdown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps)
 
 const SustainDropDown = ({ handleMouseEnter, handleMouseLeave }: DropdownProps) => {
 	return (
-		<div className="fixed top-[128px] justify-items-center bg-black/40 backdrop-blur-[0.5rem] inset-0 w-full">
+		<div className="fixed top-[110.76px] justify-items-center bg-black/40 backdrop-blur-[0.5rem] inset-0 w-full">
 			<div
 				className="bg-white w-full h-[550px] px-[108px] flex justify-between pt-8"
 				onMouseEnter={() => {
