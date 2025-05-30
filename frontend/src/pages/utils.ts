@@ -6,7 +6,7 @@ export const accordionData: AccordionItemType[] = [
 		id: uuidv4(),
 		title: "How do I contact your Customer Service?",
 		content:
-			"Our modimal Customer Service Team is available Monday through Friday, 9 am - 5 pm ET, excluding holidays. You can reach us via email at hello@modimal.com (preferred and our fastest response), via chat using the icon in the right bottom corner of our website, or via voicemail at +1(929) 460-3208. We will make sure to get back to you within 24 business hours.",
+			"Our modimal Customer Service Team is available Monday through Friday, 9 am - 5 pm ET, excluding holidays. You can reach us via email at hello@modimal.com (preferred and our fastest response), via chat using the icon in the right bottom cornern of our website, or via voicemail at +1(929) 460-3208. We will make sure to get back to you within 24 business hours.",
 	},
 	{
 		id: uuidv4(),
@@ -23,8 +23,18 @@ export const accordionData: AccordionItemType[] = [
 	{
 		id: uuidv4(),
 		title: "What are my shipping options?",
-		content:
-			"US:\n- Express via UPS 2nd Day (2 Business Days; Order by 12:30pm ET): $25\n- Overnight via UPS Overnight (1 Business Day; Order by 12:30pm ET): $35\n- FREE shipping with any order over $175 via DHL Expedited Max\n\nInternational:\n- DHL Air Express (3–8 business days depending on destination)",
+		content: `Modimal offers the following shipping options.
+Note: Orders are shipped on business days (Monday through Friday, excluding major holidays). Most orders are processed and shipped within 2–3 business days, depending on product availability. However, please allow for extended order processing time during peak periods, such as major holidays.
+US
+Express via UPS 2nd Day (2 Business Days; Order by 12:30pm ET): $25  
+Orders shipped with Express via UPS 2nd Day are typically delivered by the end of the second business day after they are shipped. Some locations in Alaska, Hawaii, and remote areas may require additional transit time. To be shipped the same day, your order must be submitted by no later than 12:30pm ET. All other orders will be shipped on the following business day.
+Overnight via UPS Overnight (1 Business Day; Order by 12:30pm ET): $35  
+Orders shipped with Overnight via UPS Overnight are typically delivered by 3pm (local time) the next business day after they are shipped. Shipments to some remote addresses are typically delivered by 4:30pm (local time) the next business day after they are shipped. Overnight via UPS Overnight is available for shipments to addresses within the 48 contiguous states, and to some addresses in Alaska and Hawaii. To be shipped the same day, your order must be submitted by no later than 12:30pm ET/9:30am PT. All other orders will be shipped on the following business day.
+FREE shipping with any order over $175!  
+We offer free shipping via DHL Expedited Max with any order over $175.
+International
+Internationally, we ship via DHL Air Express, so you can expect to receive your modimal within 3–8 business days depending on your shipping destination.
+`,
 	},
 	{
 		id: uuidv4(),

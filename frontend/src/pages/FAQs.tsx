@@ -52,7 +52,7 @@ const AccordionItem = ({ id, title, content, isExpanded, onToggle }: AccordionIt
 	);
 
 	return (
-		<article className="border-b border-gray-300 p-3 md:p-6">
+		<article className="border-b border-gray-300 py-4 md:p-6">
 			<h3>
 				<button
 					type="button"
@@ -75,13 +75,17 @@ const AccordionItem = ({ id, title, content, isExpanded, onToggle }: AccordionIt
 						initial={{ opacity: 0, height: 0 }}
 						animate={{ opacity: 1, height: "auto" }}
 						exit={{ opacity: 0, height: 0 }}
-						transition={{ duration: 0.6 }}
+						transition={{ duration: 0.2 }}
 						id={`accordion-panel-${id}`}
 						role="region"
 						aria-labelledby={`accordion-header-${id}`}
 						className=" overflow-hidden"
 					>
-						<p className="pt-2 md:pt-6 text-[12px] md:text-base text-gray-700">{content}</p>
+						{content.split("\n").map((line, index) => (
+							<p key={index} className="pt-2 md:pt-6 text-[12px] md:text-base text-gray-700">
+								{line}
+							</p>
+						))}
 					</motion.div>
 				)}
 			</AnimatePresence>
