@@ -18,6 +18,7 @@ import PaymentSuccess from "./pages/Checkout/PaymentSuccess";
 import PaymentFailed from "./pages/Checkout/PaymentFailed";
 import FAQs from "./pages/FAQs";
 import ContactUs from "./pages/ContactUs";
+import Sustainability from "./pages/Sustainability";
 
 export default function App() {
 	return (
@@ -36,6 +37,7 @@ export default function App() {
 					<Route path="/failed" element={<PaymentFailed />} />
 					<Route path="faqs" element={<FAQs />} />
 					<Route path="/contactus" element={<ContactUs />} />
+					<Route path="/sustainability" element={<Sustainability />} />
 				</Route>
 				<Route path="/checkout/cart" element={<Cart />} />
 				<Route element={<Container />}>

@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { AddIcon, MinusIcon } from "../Icons";
 import type { AccordionItemType } from "./types";
 import { accordionData } from "./utils";
 import { twMerge } from "tailwind-merge";
 import { motion, AnimatePresence } from "motion/react";
+import { useAccordion } from "../Hooks";
 
 export default function FAQs() {
 	return (
@@ -19,11 +19,7 @@ export default function FAQs() {
 }
 
 const Accordion = () => {
-	const [expandedId, setExpandedId] = useState<string>("");
-
-	const toggleExpand = (id: string) => {
-		setExpandedId((prev) => (prev === id ? "" : id));
-	};
+	const { expandedId, toggleExpand } = useAccordion();
 
 	return (
 		<div className="mx-auto w-full max-w-[1016px] mt-6">
@@ -64,7 +60,6 @@ const AccordionItem = ({ id, title, content, isExpanded, onToggle }: AccordionIt
 				>
 					<span className="text-sm md:text-[20px] font-bold ">{title}</span>
 					<span className="flex-shrink-0">
-						{" "}
 						{isExpanded ? <MinusIcon /> : <AddIcon fill="black" />}
 					</span>
 				</button>

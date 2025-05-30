@@ -84,3 +84,16 @@ export const useShowFilter = () => {
 		setIsShowFilter,
 	};
 };
+
+export const useAccordion = () => {
+	const [expandedId, setExpandedId] = useState<string>("");
+
+	const toggleExpand = (id: string) => {
+		setExpandedId((prev) => (prev === id ? "" : id));
+	};
+
+	return {
+		expandedId,
+		toggleExpand,
+	};
+};

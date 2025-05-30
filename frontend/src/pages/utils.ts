@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import type { AccordionItemType } from "./types";
+import type { AccordionItemType, Principle } from "./types";
 
 export const accordionData: AccordionItemType[] = [
 	{
@@ -70,5 +70,44 @@ What makes them the best? They’re perfectionists and innovators, and we like t
 		title: "How do your suppliers support their workers?",
 		content: `We only partner with factories and mills that put their workers first. We make sure they offer regular training, on-site services, employee benefits, clean and sanitary working environments and more. We visit all our factories and mills before working with them, and throughout our relationships, reviewing first hand how they support their employees.
 We require our factories and mills to sign our Commitment to People (as well as our Commitment to Planet) contract. The contract is in line with the International Labor Oganisation’s conventions, there is absolutely no subcontracting, discrimination or working above 60 hours per week, all overtime must be paid in a timely manner and at a premium rate. Our suppliers are required to advocate for education and sustainable solutions to eradicate child labor within their local region. We ask that all our suppliers work to incorporate diversity and inclusivity into the workplace, starting with unbiased hiring practices.`,
+	},
+];
+
+export const principles: Principle[] = [
+	{
+		id: uuidv4(),
+		title: "Minimalism",
+		description:
+			"We believe less is more. Our thoughtfully designed pieces embrace minimalism, ensuring each garment becomes a versatile and timeless addition to your wardrobe. By choosing quality over quantity, we encourage conscious consumption.",
+	},
+	{
+		id: uuidv4(),
+		title: "Circular",
+		description:
+			"Embracing the circular economy, we design with longevity in mind. Our pieces are intended to be treasured for years, encouraging a shift away from disposable fashion. When you invest in our clothing, you're investing in a more sustainable future.",
+	},
+	{
+		id: uuidv4(),
+		title: "Ethical",
+		description:
+			"Every stitch tells a story. Our garments are meticulously crafted by skilled artisans who share our values of ethical and fair labor practices. This dedication to craftsmanship not only ensures exceptional quality but also supports a network of talented individuals.",
+	},
+	{
+		id: uuidv4(),
+		title: "Transparency",
+		description:
+			"We value openness and transparency. We're on a journey to continuously improve our practices, and we're committed to sharing our progress with you. From sourcing to production, we want you to know the story behind each piece you wear. We update all information every six months.",
+	},
+	{
+		id: uuidv4(),
+		title: "Eco-Friendly Materials",
+		description:
+			"We are dedicated to reducing our environmental impact. Our clothing is made using sustainable materials, carefully sourced to minimize harm to the planet. From organic fabrics to innovative recycled materials, we aim to leave a lighter footprint.",
+	},
+	{
+		id: uuidv4(),
+		title: "Community and Empowerment",
+		description:
+			"Our brand is a part of a community that shares a vision for a better world. Through collaborations and initiatives, we aim to inspire and empower individuals to make conscious choices and contribute to positive change.",
 	},
 ];

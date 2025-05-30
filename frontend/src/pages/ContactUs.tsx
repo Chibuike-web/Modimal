@@ -3,11 +3,11 @@ import { CallUsIcon, ChatIcon, EmailIcon } from "../Icons";
 export default function ContactUs() {
 	return (
 		<main className="mx-auto w-full max-w-[1224px] max-xl:px-6">
-			<nav className="flex space-x-2 py-1 px-4 text-sm">
+			<div className="flex space-x-2 py-1 px-4 text-sm">
 				<span className="text-primary">Home</span>
 				<span>/</span>
 				<span className="font-medium text-black">Contact Us</span>
-			</nav>
+			</div>
 
 			<section className="mt-8">
 				<h1 className="mb-4 text-[1.5rem] md:text-[2rem] font-semibold leading-[1.4]">
