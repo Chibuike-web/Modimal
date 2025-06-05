@@ -11,6 +11,11 @@ import sustainppl4 from "../assets/Sustainability/Sustain ppl 4.png";
 import sustainppl5 from "../assets/Sustainability/Sustain ppl 5.png";
 import sustainppl6 from "../assets/Sustainability/Sustain ppl 6.png";
 import sustainppl7 from "../assets/Sustainability/Sustain ppl 7.png";
+import Cotton from "../assets/SustainabilityMaterials/Desktop Cotton Pic.png";
+import Wool from "../assets/SustainabilityMaterials/Desktop Wool Pic.png";
+import Linen from "../assets/SustainabilityMaterials/Desktop Linen Pic.png";
+import Silk from "../assets/SustainabilityMaterials/Desktop Silk Pic.png";
+import Cashmere from "../assets/SustainabilityMaterials/Desktop Cashmere Pic.png";
 
 export const accordionData: AccordionItemType[] = [
 	{
@@ -175,5 +180,47 @@ export const sustainabilityPeople = [
 	{
 		id: uuidv4(),
 		image: sustainppl7,
+	},
+];
+
+export const LayoutItems = [
+	{
+		image: Cotton,
+		id: "Cotton",
+		heading: "Cotton",
+		description:
+			"We source certified organic cotton, which is grown without the use of pesticides or synthetic fertilizers and requires less irrigation as it relies mainly on rainwater.",
+		points: [
+			"Avoiding harmful pesticides preserves soil biodiversity and protects the health of surrounding communities.",
+			"Our organic cotton fabrics are made using organic cotton yarns that are certified by the Global Organic Textile Standard (GOTS).",
+		],
+	},
+	{
+		image: Wool,
+		id: "Wool",
+		heading: "Wool",
+		description:
+			"Wool is a natural fiber with added performance attributes such as temperature regulation, durability, and natural water repellency. Considered a circular product by nature, wool can be recycled or biodegraded easily. Animal welfare is extremely important to us, and therefore we only source mulesing-free wool from producers that follow humane and eco-friendly processes aligned with our animal welfare guidelines.",
+	},
+	{
+		image: Linen,
+		id: "Linen",
+		heading: "Linen",
+		description:
+			"Found throughout our collections, linen is a sustainable fiber made from the flax plant. Flax is naturally pest resistant and requires less pesticides, water, and energy to produce compared to cotton and polyester. Flax aids in sequestering carbon into the soil, which removes carbon dioxide from the atmosphere and is beneficial for improving soil health.",
+	},
+	{
+		image: Silk,
+		id: "Silk",
+		heading: "Silk",
+		description:
+			"Organic silk is a more responsible alternative to making conventional silk through traditional methods. The silkworms are fed mulberry tree leaves from organic agriculture that uses no pesticides or harmful chemicals, resulting in a lustrous fabric that is gentle on both you and the environment. This responsibly sourced material epitomizes our dedication to creating exquisite clothing with a conscience.",
+	},
+	{
+		image: Cashmere,
+		id: "Cashmere",
+		heading: "Cashmere",
+		description:
+			"We’re proud to source our cashmere through the Good Cashmere Standard by the Aid by Trade Foundation (AbTF). This independent standard works to source traceable, sustainably certified cashmere that cares for the wellbeing of cashmere goats, protects the environment, and supports the herders that produce it.",
 	},
 ];

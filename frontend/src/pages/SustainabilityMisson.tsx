@@ -6,10 +6,10 @@ import { CardItems, principles, sustainabilityPeople } from "./utils";
 import { AddIcon, MinusIcon } from "../Icons";
 import { motion, AnimatePresence } from "motion/react";
 
-export default function Sustainability() {
+export default function SustainabilityMisson() {
 	return (
 		<main>
-			<section className="mx-auto max-w-[76.5rem] my-8 max-xl:px-6 flex space-x-2 py-1 px-4 text-sm">
+			<section className="mx-auto max-w-[76.5rem] my-8 xl:px-0 flex gap-2 px-6 text-sm">
 				<span className="text-primary">Home</span>
 				<span>/</span>
 				<span className="text-gray-900">Sustainability</span>
