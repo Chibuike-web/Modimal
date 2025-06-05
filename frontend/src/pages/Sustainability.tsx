@@ -1,8 +1,8 @@
 import { twMerge } from "tailwind-merge";
 import HeroImage from "../assets/Sustainability1.png";
 import { useAccordion, useWindowWidth } from "../Hooks";
-import { Principle } from "./types";
-import { principles } from "./utils";
+import { CardType, Principle } from "./types";
+import { CardItems, principles, sustainabilityPeople } from "./utils";
 import { AddIcon, MinusIcon } from "../Icons";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -33,14 +33,55 @@ export default function Sustainability() {
 					<h3 className="text-xl md:text-[1.5rem] font-bold leading-[1.4] mb-8 mt-12">
 						Our Mission, The Modimal Six:
 					</h3>
-					<DeskstopSection />
+					<Layout />
+				</div>
+				<div className="grid grid-cols-2 gap-6">
+					{CardItems.map((item) => (
+						<Card key={item.id} {...item} />
+					))}
+				</div>
+				<p className="text-[20px] mt-12">
+					"With every step, our quest for sustainability is fortified by our trusted suppliers,
+					united in our shared dedication to ethical craftsmanship and a more conscious future."
+				</p>
+				<div className="flex flex-col">
+					<h3 className="font-bold text-[1.5rem] leading-[1.4] mt-12 mb-6">People Beyond Us</h3>
+					<div className="grid grid-cols-3 md:grid-cols-5 grid-rows-[243px_283px] gap-6">
+						{sustainabilityPeople.map((item, index) => (
+							<figure
+								key={item.id}
+								className={twMerge(
+									index === 0 || index === 1
+										? "col-span-full md:col-span-0"
+										: index === 2
+										? "col-span-full md:col-span-2"
+										: index === 3
+										? "col-span-full md:col-span-2"
+										: ""
+								)}
+							>
+								<img src={item.image} alt="" className="w-full h-full object-cover" />
+							</figure>
+						))}
+					</div>
+					<button
+						type="button"
+						className="w-full self-center h-[40px] md:max-w-[600px] bg-primary text-white text-sm font-medium flex items-center justify-center mt-6 mb-12"
+					>
+						Our Suppliers
+					</button>
+					<p className="text-[20px]">
+						With Modimal, you're not just wearing fashion – you're making a statement. A statement
+						that elegance and sustainability can coexist, shaping a more responsible and beautiful
+						future for us all.
+					</p>
 				</div>
 			</section>
 		</main>
 	);
 }
 
-const DeskstopSection = () => {
+const Layout = () => {
 	const { expandedId, toggleExpand } = useAccordion();
 	const windowSize = useWindowWidth();
 
@@ -105,5 +146,21 @@ const MobileCard = ({ title, description, isExpanded, toggleExpand }: MobileCard
 				)}
 			</AnimatePresence>
 		</article>
+	);
+};
+
+const Card = ({ image, buttonText }: CardType) => {
+	return (
+		<div className="flex flex-col gap-4">
+			<figure className="w-full h-full">
+				<img src={image} alt="" className="w-full h-full object-cover" />
+			</figure>
+			<button
+				type="button"
+				className="w-full h-[40px] bg-primary text-white text-sm font-medium flex items-center justify-center"
+			>
+				{buttonText}
+			</button>
+		</div>
 	);
 };

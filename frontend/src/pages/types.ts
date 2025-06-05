@@ -9,3 +9,14 @@ export type Principle = {
 	title: string;
 	description: string;
 };
+
+export type CardType = {
+	id: string;
+	image: string;
+	buttonText: string;
+};
+
+export type sustainabilityPeopleType = {
+	id: string;
+	image: string;
+};

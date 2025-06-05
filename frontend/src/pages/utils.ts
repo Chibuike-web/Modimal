@@ -1,5 +1,16 @@
 import { v4 as uuidv4 } from "uuid";
-import type { AccordionItemType, Principle } from "./types";
+import type { AccordionItemType, CardType, Principle } from "./types";
+import Card1 from "../assets/Sustainability/First Image.png";
+import Card2 from "../assets/Sustainability/Second Image.png";
+import Card3 from "../assets/Sustainability/Third Image.png";
+import Card4 from "../assets/Sustainability/Fourth Image.png";
+import sustainppl1 from "../assets/Sustainability/Sustain ppl 1.png";
+import sustainppl2 from "../assets/Sustainability/Sustain ppl 2.png";
+import sustainppl3 from "../assets/Sustainability/Sustain ppl 3.png";
+import sustainppl4 from "../assets/Sustainability/Sustain ppl 4.png";
+import sustainppl5 from "../assets/Sustainability/Sustain ppl 5.png";
+import sustainppl6 from "../assets/Sustainability/Sustain ppl 6.png";
+import sustainppl7 from "../assets/Sustainability/Sustain ppl 7.png";
 
 export const accordionData: AccordionItemType[] = [
 	{
@@ -109,5 +120,60 @@ export const principles: Principle[] = [
 		title: "Community and Empowerment",
 		description:
 			"Our brand is a part of a community that shares a vision for a better world. Through collaborations and initiatives, we aim to inspire and empower individuals to make conscious choices and contribute to positive change.",
+	},
+];
+
+export const CardItems: CardType[] = [
+	{
+		id: uuidv4(),
+		image: Card1,
+		buttonText: "Processing",
+	},
+	{
+		id: uuidv4(),
+		image: Card2,
+		buttonText: "Materials",
+	},
+	{
+		id: uuidv4(),
+		image: Card3,
+		buttonText: "Packaging ",
+	},
+	{
+		id: uuidv4(),
+		image: Card4,
+		buttonText: "Product Caring",
+	},
+];
+
+export const sustainabilityPeople = [
+	{
+		id: uuidv4(),
+		image: sustainppl1,
+	},
+	{
+		id: uuidv4(),
+		image: sustainppl2,
+	},
+
+	{
+		id: uuidv4(),
+		image: sustainppl3,
+	},
+	{
+		id: uuidv4(),
+		image: sustainppl4,
+	},
+	{
+		id: uuidv4(),
+		image: sustainppl5,
+	},
+	{
+		id: uuidv4(),
+		image: sustainppl6,
+	},
+	{
+		id: uuidv4(),
+		image: sustainppl7,
 	},
 ];
