@@ -7,8 +7,7 @@ import NotFound from "./pages/NotFound";
 import Favourites from "./pages/Favourites";
 import SignUp from "./pages/Auth/SignUp";
 import SignIn from "./pages/Auth/SignIn";
-import ShopAll from "./pages/ShopAll/ShopAll";
-import ProductDetails from "./pages/Products/ProductDetails";
+import ShopAll from "./pages/ShopAll";
 import Cart from "./pages/Checkout/Cart";
 import Container from "./pages/Checkout/Container";
 import Info from "./pages/Checkout/Info";
@@ -20,6 +19,7 @@ import FAQs from "./pages/FAQs";
 import ContactUs from "./pages/ContactUs";
 import SustainabilityMission from "./pages/SustainabilityMisson";
 import SustainabilityMaterials from "./pages/SustainabilityMaterials";
+import ProductDetails from "./pages/ProductDetails";
 
 export default function App() {
 	return (

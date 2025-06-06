@@ -7,6 +7,7 @@ export type Product = {
 	colors?: Color[];
 	search?: boolean;
 	tag?: string;
+	categories?: string[];
 };
 
 export type Color = {

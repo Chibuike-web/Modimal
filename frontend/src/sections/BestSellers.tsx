@@ -1,6 +1,7 @@
 import { CardComponent } from "../Components";
 import { motion } from "motion/react";
-import { products } from "./utils";
+import { allProducts } from "../utils";
+import { Product } from "../types";
 
 const fadeUp = {
 	initial: { opacity: 0, y: 100 },
@@ -23,26 +24,28 @@ export default function BestSellers() {
 				<p>View All</p>
 			</div>
 			<div className=" flex gap-6 overflow-x-auto">
-				{products.map(({ id, image, name, description, price, colors }, index) => (
-					<motion.div
-						key={id}
-						variants={fadeUp}
-						custom={index}
-						initial="initial"
-						whileInView="animate"
-						viewport={{ once: true, amount: 0.3 }}
-					>
-						<CardComponent
+				{allProducts
+					.filter((item: Product) => item.categories?.includes("bestSellers"))
+					.map(({ id, image, name, description, price, colors }: Product, index: number) => (
+						<motion.div
 							key={id}
-							id={id}
-							image={image}
-							name={name}
-							description={description}
-							price={price}
-							colors={colors}
-						/>
-					</motion.div>
-				))}
+							variants={fadeUp}
+							custom={index}
+							initial="initial"
+							whileInView="animate"
+							viewport={{ once: true, amount: 0.3 }}
+						>
+							<CardComponent
+								key={id}
+								id={id}
+								image={image}
+								name={name}
+								description={description}
+								price={price}
+								colors={colors}
+							/>
+						</motion.div>
+					))}
 			</div>
 		</section>
 	);

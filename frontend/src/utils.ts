@@ -5,6 +5,15 @@ import ProductImage3 from "./assets/Search/ProductImage3.png";
 import ProductImage4 from "./assets/Search/ProductImage4.png";
 import ProductImage5 from "./assets/Search/ProductImage5.png";
 import ProductImage6 from "./assets/Search/ProductImage6.png";
+import ShopAllProductImage1 from "./assets/ShopAll/ShopAllProductImage1.png";
+import ShopAllProductImage2 from "./assets/ShopAll/ShopAllProductImage2.png";
+import ShopAllProductImage3 from "./assets/ShopAll/ShopAllProductImage3.png";
+import ShopAllProductImage4 from "./assets/ShopAll/ShopAllProductImage4.png";
+import ShopAllProductImage5 from "./assets/ShopAll/ShopAllProductImage5.png";
+import ShopAllProductImage6 from "./assets/ShopAll/ShopAllProductImage6.png";
+import BestSellers1 from "./assets/BestSellers/ProductImage1.png";
+import BestSellers2 from "./assets/BestSellers/ProductImage2.png";
+import BestSellers3 from "./assets/BestSellers/ProductImage3.png";
 import { Product } from "./types";
 
 export const filterList = [
@@ -131,5 +140,121 @@ export const productsSearchResult: Product[] = [
 			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
 			{ id: uuidv4(), label: "Lavender", className: "bg-[#D0A5EA]" },
 		],
+	},
+];
+
+export const allProducts = [
+	{
+		id: uuidv4(),
+		image: BestSellers1,
+		name: "Tailored Stretch",
+		description: "Turn it Up Pants",
+		price: 180,
+		colors: [
+			{ id: uuidv4(), label: "Dark Grey", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Sky Blue", className: "bg-[#7DC3EB]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
+		categories: ["bestSellers"],
+	},
+	{
+		id: uuidv4(),
+		image: BestSellers2,
+		name: "Technical Silk",
+		description: "Make A Splash",
+		price: 120,
+		colors: [
+			{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" },
+			{ id: uuidv4(), label: "Navy", className: "bg-[#19418E]" },
+			{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" },
+		],
+		categories: ["bestSellers"],
+	},
+	{
+		id: uuidv4(),
+		image: BestSellers3,
+		name: "Cool Weave",
+		description: "Anywhere Dress",
+		price: 210,
+		colors: [
+			{ id: uuidv4(), label: "Lavender", className: "bg-[#D0A5EA]" },
+			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
+		categories: ["bestSellers"],
+	},
+	{
+		id: uuidv4(),
+		image: ShopAllProductImage1,
+		name: "Chill Wrap top",
+		description: "Turn it Up Top",
+		price: 160,
+		colors: [{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" }],
+		categories: ["shopAll"],
+	},
+	{
+		id: uuidv4(),
+		image: ShopAllProductImage2,
+		name: "Essential T-shirt",
+		description: "Turn it Up T-Shirt",
+		price: 95,
+		colors: [
+			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Sky Blue", className: "bg-[#7DC3EB]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
+		tag: "New",
+		categories: ["shopAll"],
+	},
+	{
+		id: uuidv4(),
+		image: ShopAllProductImage3,
+		name: "Shirt Dress",
+		description: "Turn It Up Dress",
+		price: 245,
+		colors: [
+			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Sky Blue", className: "bg-[#7DC3EB]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
+		categories: ["shopAll"],
+	},
+	{
+		id: uuidv4(),
+		image: ShopAllProductImage4,
+		name: "Rule Zip Jacket",
+		description: "Turn It Up Jacket",
+		price: 199,
+		colors: [
+			{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" },
+			{ id: uuidv4(), label: "Burnt Orange", className: "bg-[#CA6D29]" },
+		],
+		categories: ["shopAll"],
+	},
+	{
+		id: uuidv4(),
+		image: ShopAllProductImage5,
+		name: "New Age Linen",
+		description: "Turn It Up Pants",
+		price: 180,
+		colors: [
+			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Navy", className: "bg-[#19418E]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
+		categories: ["shopAll"],
+	},
+	{
+		id: uuidv4(),
+		image: ShopAllProductImage6,
+		name: "Boss Pullover",
+		description: "Turn It Up Pullover",
+		price: 280,
+		colors: [
+			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
+			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+		],
+		tag: "New",
+		categories: ["shopAll"],
 	},
 ];

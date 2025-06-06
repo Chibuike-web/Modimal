@@ -1,9 +1,9 @@
 import { useState, ReactNode } from "react";
 import { useParams } from "react-router-dom";
-import { productsShopAll } from "../ShopAll/utils";
-import { AddIcon, BusIcon, HeartIcon, MinusIcon } from "../../Icons";
+import { AddIcon, BusIcon, HeartIcon, MinusIcon } from "../Icons";
 import { JSX } from "react";
-import { Product } from "../../types";
+import { Product } from "../types";
+import { allProducts } from "../utils";
 
 interface DropDownProps {
 	title: string;
@@ -15,7 +15,7 @@ interface DropDownProps {
 
 export default function ProductDetails() {
 	const { id } = useParams<{ id: string }>();
-	const product = productsShopAll.find((p: Product) => p.id === id);
+	const product = allProducts.find((p: Product) => p.id === id);
 
 	if (!product) {
 		return <div>Product not found.</div>;
