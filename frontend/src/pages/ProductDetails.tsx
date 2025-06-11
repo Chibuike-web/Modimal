@@ -1,10 +1,12 @@
 import { useState, ReactNode } from "react";
 import { useParams } from "react-router-dom";
-import { AddIcon, BusIcon, HeartIcon, MinusIcon } from "../Icons";
+import { AddIcon, BusIcon, HeartIcon, LikeIcon, MinusIcon } from "../Icons";
 import { JSX } from "react";
 import { Product } from "../types";
 import { allProducts } from "../utils";
 import { useWindowWidth } from "../Hooks";
+import { LikeButton } from "../Components";
+import { useFavourites } from "../store/useFavourites";
 
 interface DropDownProps {
 	title: string;
@@ -18,6 +20,7 @@ export default function ProductDetails() {
 	const { id } = useParams<{ id: string }>();
 	const windowSize = useWindowWidth();
 	const product = allProducts.find((p: Product) => p.id === id);
+	const { isClicked } = useFavourites();
 
 	if (!product) {
 		return <div>Product not found.</div>;
@@ -32,14 +35,14 @@ export default function ProductDetails() {
 			</div>
 
 			<section className="flex flex-col px-6 gap-6 mt-12 md:flex-row lg:px-0">
-				<aside className="w-full max-w-[600px] flex gap-4">
+				<aside className="w-full md:max-w-[600px] flex gap-4">
 					{windowSize > 768 ? (
 						<DesktopProductImages image={product.image} name={product.name} />
 					) : (
 						<MobileProductImages image={product.image} name={product.name} />
 					)}
 				</aside>
-				<aside className="w-full max-w-[600px]">
+				<aside className="w-full md:max-w-[600px]">
 					<h1 className="text-[32px] font-semibold leading-[1.4] mb-8">{product.name}</h1>
 					<p className="text-[18px mb-6]">
 						Versatile and universally flattering, our wrap blouse can be tied, draped, snapped and
@@ -71,15 +74,20 @@ export default function ProductDetails() {
 							<div className="flex items-center gap-[4px] ">
 								<BusIcon /> <p>Easy Return</p>
 							</div>
-							<button type="button" className="flex items-center">
-								<HeartIcon /> <p>Add To Wish List</p>
-							</button>
+							<LikeButton product={product} className="flex">
+								<LikeIcon
+									className="cursor-pointer"
+									fill={isClicked(product.id) ? "red" : "white"}
+									stroke={isClicked(product.id) ? "" : "#0C0C0C"}
+								/>{" "}
+								<p>Add To Wish List</p>
+							</LikeButton>
 						</div>
 					</div>
 				</aside>
 			</section>
 			<section className="flex flex-col px-6 items-start gap-6 mt-8 md:flex-row g:px-0">
-				<aside className="w-full max-w-[600px] bg-gray-200 border border-gray-300">
+				<aside className="w-full md:max-w-[600px] bg-gray-200 border border-gray-300">
 					<DropDown
 						title="Fitting"
 						subtitle="Fabric & Care"
@@ -112,7 +120,7 @@ export default function ProductDetails() {
 						productDetail
 					/>
 				</aside>
-				<aside className="w-full max-w-[600px] p-4 bg-gray-200 border border-gray-300">
+				<aside className="w-full md:max-w-[600px] p-4 bg-gray-200 border border-gray-300">
 					<h3>Silk</h3>
 					<span className=" h-[0.5px] w-full bg-gray-300 block" />
 					<p className="mt-6 text-[18px] leading-[1.8] mb-10">
@@ -187,8 +195,8 @@ const DesktopProductImages = ({ image, name }: { image: string; name: string }) 
 
 const MobileProductImages = ({ image, name }: { image: string; name: string }) => {
 	return (
-		<>
-			<figure className="h-[512px] w-full max-w-[427px] ">
+		<div className="flex flex-col">
+			<figure className="w-full">
 				<img src={image} alt={name} className="w-full h-full object-cover" />
 			</figure>
 			<div>
@@ -197,6 +205,6 @@ const MobileProductImages = ({ image, name }: { image: string; name: string }) =
 				<span></span>
 				<span></span>
 			</div>
-		</>
+		</div>
 	);
 };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { AddIcon, CancelIcon, CheckBox, DownArrowIcon, LikeIcon, MinusIcon } from "./Icons";
 import { AnimatePresence, motion } from "motion/react";
 import { useClicked } from "./Hooks";
@@ -8,25 +8,30 @@ import { filterList } from "./utils";
 import { Link } from "react-router-dom";
 import { useFavourites } from "./store/useFavourites";
 
-export function LikeButton({ product }: { product?: Product }) {
-	const { favourites, deleteFavourites, setFavourites } = useFavourites();
+export function LikeButton({
+	product,
+	className,
+	children,
+}: {
+	product?: Product;
+	className?: string;
+	children: ReactNode;
+}) {
+	const { deleteFavourites, setFavourites, isClicked } = useFavourites();
 
-	const isClicked = favourites.some((fav) => fav.id === product?.id);
 	const toggleButton = () => {
-		if (isClicked && product) {
-			deleteFavourites(product.id);
-		} else {
-			setFavourites(product);
+		if (product) {
+			if (isClicked(product.id)) {
+				deleteFavourites(product.id);
+			} else {
+				setFavourites(product);
+			}
 		}
 	};
 
 	return (
-		<button type="button" onClick={toggleButton}>
-			<LikeIcon
-				className="absolute top-6 right-6 max-lg:top-[8px] max-lg:right-[8px] cursor-pointer"
-				fill={isClicked ? "red" : "white"}
-				stroke={isClicked ? "" : "#0C0C0C"}
-			/>
+		<button type="button" onClick={toggleButton} className={className}>
+			{children}
 		</button>
 	);
 }
@@ -43,11 +48,19 @@ export function DownArrowButton() {
 }
 
 export const CardComponent = ({ id, image, name, description, price, colors, tag }: Product) => {
+	const { isClicked } = useFavourites();
+
 	return (
 		<article id={`card-${id}`} className="w-full flex flex-col gap-[1rem] max-w-[392px]">
 			<figure className="relative w-full flex ">
 				<img src={image} alt="" className="w-full h-full" />
-				<LikeButton product={{ id, image, name, description, price, colors }} />
+				<LikeButton product={{ id, image, name, description, price, colors, tag }}>
+					<LikeIcon
+						className="absolute top-6 right-6 max-lg:top-[8px] max-lg:right-[8px] cursor-pointer"
+						fill={isClicked(id) ? "red" : "white"}
+						stroke={isClicked(id) ? "" : "#0C0C0C"}
+					/>
+				</LikeButton>
 
 				{tag && (
 					<span className="w-[86px] h-[32px] absolute left-6 top-6 flex items-center justify-center bg-white">
