@@ -22,8 +22,11 @@ export const CartModal = () => {
 			: "right-0 w-[392px] h-[660px]"
 	);
 	return (
-		<div className="fixed top-[8rem] max-lg:top-0 justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full">
-			<div className="relative max-w-[76.5rem] w-full">
+		<div
+			className="fixed top-[7.6rem] max-lg:top-0 justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full"
+			onClick={setShowCart}
+		>
+			<div className="relative max-w-[76.5rem] w-full" onClick={(e) => e.stopPropagation()}>
 				{cartItems.length > 0 ? (
 					<div className={styles}>
 						<button type="button" className="self-start" onClick={setShowCart}>

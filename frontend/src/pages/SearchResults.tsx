@@ -3,15 +3,14 @@ import { CardComponent } from "../Components";
 import { AnimatePresence, motion } from "motion/react";
 import { FilterIcon } from "../Icons";
 import { DesktopFilter, MobileFilter } from "../Components";
-import { productsSearchResult } from "../utils";
+import { allProducts } from "../utils";
 import { Product } from "../types";
 import { useShowFilter } from "../Hooks";
 
 export default function SearchResults() {
-	const [searchParams] = useSearchParams();
-	const query = searchParams.get("query");
 	const { isShowFilter, setIsShowFilter } = useShowFilter();
-
+	const [searchParams] = useSearchParams();
+	const query = searchParams.get("q");
 	return (
 		<div>
 			<h1 className="text-center">Search Results</h1>
@@ -55,30 +54,30 @@ const fadeUp = {
 };
 
 const CardContainer = () => {
+	const [searchParams] = useSearchParams();
+	const query = searchParams.get("q");
+	const searchResults = allProducts.filter((item) => item.categories.includes(`${query}`));
 	return (
 		<div className="grid grid-cols-2 max-w-[808px] xl:px-0 xl:w-full gap-6 w-full">
-			{productsSearchResult.map(
-				({ id, image, name, description, price, colors }: Product, index) => (
-					<motion.div
-						key={id}
-						variants={fadeUp}
-						custom={index}
-						initial="initial"
-						whileInView="animate"
-						viewport={{ once: true, amount: 0.3 }}
-					>
-						<CardComponent
-							id={id}
-							image={image}
-							description={description}
-							name={name}
-							price={price}
-							colors={colors}
-							search
-						/>
-					</motion.div>
-				)
-			)}
+			{searchResults.map(({ id, image, name, description, price, colors }: Product, index) => (
+				<motion.div
+					key={id}
+					variants={fadeUp}
+					custom={index}
+					initial="initial"
+					whileInView="animate"
+					viewport={{ once: true, amount: 0.3 }}
+				>
+					<CardComponent
+						id={id}
+						image={image}
+						description={description}
+						name={name}
+						price={price}
+						colors={colors}
+					/>
+				</motion.div>
+			))}
 		</div>
 	);
 };

@@ -42,23 +42,9 @@ export function DownArrowButton() {
 	);
 }
 
-export const CardComponent = ({
-	id,
-	image,
-	name,
-	description,
-	price,
-	colors,
-	search,
-	tag,
-}: Product) => {
+export const CardComponent = ({ id, image, name, description, price, colors, tag }: Product) => {
 	return (
-		<article
-			id={`card-${id}`}
-			className={`w-full flex flex-col gap-[1rem] max-w-[392px] ${
-				search ? "" : "max-md:min-w-[152px]"
-			}`}
-		>
+		<article id={`card-${id}`} className="w-full flex flex-col gap-[1rem] max-w-[392px]">
 			<figure className="relative w-full flex ">
 				<img src={image} alt="" className="w-full h-full" />
 				<LikeButton product={{ id, image, name, description, price, colors }} />

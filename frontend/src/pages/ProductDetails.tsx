@@ -4,6 +4,7 @@ import { AddIcon, BusIcon, HeartIcon, MinusIcon } from "../Icons";
 import { JSX } from "react";
 import { Product } from "../types";
 import { allProducts } from "../utils";
+import { useWindowWidth } from "../Hooks";
 
 interface DropDownProps {
 	title: string;
@@ -15,6 +16,7 @@ interface DropDownProps {
 
 export default function ProductDetails() {
 	const { id } = useParams<{ id: string }>();
+	const windowSize = useWindowWidth();
 	const product = allProducts.find((p: Product) => p.id === id);
 
 	if (!product) {
@@ -29,12 +31,13 @@ export default function ProductDetails() {
 				<p>{product.name}</p>
 			</div>
 
-			<section className="flex gap-6 mt-12">
+			<section className="flex flex-col px-6 gap-6 mt-12 md:flex-row lg:px-0">
 				<aside className="w-full max-w-[600px] flex gap-4">
-					<div className="w-full max-w-[157px] h-[512px] bg-primary"></div>
-					<figure className="h-[512px] w-full max-w-[427px] ">
-						<img src={product.image} alt={product.name} className="w-full h-full object-cover" />
-					</figure>
+					{windowSize > 768 ? (
+						<DesktopProductImages image={product.image} name={product.name} />
+					) : (
+						<MobileProductImages image={product.image} name={product.name} />
+					)}
 				</aside>
 				<aside className="w-full max-w-[600px]">
 					<h1 className="text-[32px] font-semibold leading-[1.4] mb-8">{product.name}</h1>
@@ -75,7 +78,7 @@ export default function ProductDetails() {
 					</div>
 				</aside>
 			</section>
-			<section className="flex items-start gap-6 mt-8">
+			<section className="flex flex-col px-6 items-start gap-6 mt-8 md:flex-row g:px-0">
 				<aside className="w-full max-w-[600px] bg-gray-200 border border-gray-300">
 					<DropDown
 						title="Fitting"
@@ -168,5 +171,32 @@ const DropDown = ({
 				</div>
 			)}
 		</div>
+	);
+};
+
+const DesktopProductImages = ({ image, name }: { image: string; name: string }) => {
+	return (
+		<>
+			<div className="w-full max-w-[157px] h-[512px] bg-primary"></div>
+			<figure className="h-[512px] w-full max-w-[427px] ">
+				<img src={image} alt={name} className="w-full h-full object-cover" />
+			</figure>
+		</>
+	);
+};
+
+const MobileProductImages = ({ image, name }: { image: string; name: string }) => {
+	return (
+		<>
+			<figure className="h-[512px] w-full max-w-[427px] ">
+				<img src={image} alt={name} className="w-full h-full object-cover" />
+			</figure>
+			<div>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</>
 	);
 };

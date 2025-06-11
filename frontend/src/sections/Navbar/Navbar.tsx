@@ -192,7 +192,7 @@ const DesktopNavbar = () => {
 				<img src="/Logo.svg" alt="Brand Logo" />
 				<ListItems />
 				<div className="flex gap-6">
-					<button type="button" onClick={setIsSearch}>
+					<button type="button" onClick={() => !showCart && setIsSearch()}>
 						{isSearch ? <CancelIcon /> : <SearchIcon />}
 					</button>
 					<button type="button">
@@ -201,7 +201,7 @@ const DesktopNavbar = () => {
 					<Link to="/favourites" className="flex items-center">
 						<HeartIcon />
 					</Link>
-					<button type="button" onClick={setShowCart}>
+					<button type="button" onClick={() => !isSearch && setShowCart()}>
 						<BagIcon />
 					</button>
 				</div>
@@ -388,12 +388,12 @@ const MobileNavbar = () => {
 					<div className="flex gap-[8px] items-center">
 						<figure
 							onClick={() => {
-								setShowDropdown(!showDropdown);
+								!isSearch && !showCart && setShowDropdown(!showDropdown);
 							}}
 						>
 							{showDropdown ? <CancelIcon /> : <MenuIcon />}
 						</figure>
-						<button type="button" onClick={setIsSearch}>
+						<button type="button" onClick={() => !showCart && !showDropdown && setIsSearch()}>
 							{isSearch ? <CancelIcon /> : <SearchIcon />}
 						</button>
 					</div>
@@ -402,7 +402,7 @@ const MobileNavbar = () => {
 						<Link to="/favourites" className="flex items-center">
 							<HeartIcon />
 						</Link>
-						<button type="button" onClick={setShowCart}>
+						<button type="button" onClick={() => !isSearch && !showDropdown && setShowCart()}>
 							<BagIcon />
 						</button>
 					</div>

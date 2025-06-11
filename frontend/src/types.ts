@@ -1,14 +1,14 @@
-export type Product = {
+export interface Product {
 	id: string;
 	image: string;
 	name: string;
 	description: string;
 	price: number;
-	colors?: Color[];
-	search?: boolean;
-	tag?: string;
-	categories?: string[];
-};
+	colors: { id: string; label: string; className: string }[];
+	tag?: string; // "New", "Sale", etc.
+	categories?: string[]; // e.g., ["shopAll", "bestSellers"]
+	keywords?: string[]; // for search indexing
+}
 
 export type Color = {
 	id: string;
