@@ -1,7 +1,6 @@
 import { CardComponent } from "../Components";
 import { motion } from "motion/react";
 import { allProducts } from "../utils";
-import { Product } from "../types";
 
 const fadeUp = {
 	initial: { opacity: 0, y: 100 },
@@ -25,7 +24,7 @@ export default function BestSellers() {
 			</div>
 			<div className=" flex gap-6 overflow-x-auto">
 				{allProducts
-					.filter((item) => item.categories?.includes("bestSellers"))
+					.filter((item) => item.categories?.includes("Best Seller"))
 					.map((item, index) => (
 						<motion.div
 							key={item.id}

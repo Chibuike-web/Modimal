@@ -185,7 +185,7 @@ export const allProducts = [
 			{ id: uuidv4(), label: "Sky Blue", className: "bg-[#7DC3EB]" },
 			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
 		],
-		categories: ["bestSellers"],
+		categories: ["Best Seller"],
 		keywords: [
 			"tailored",
 			"stretch",
@@ -201,12 +201,13 @@ export const allProducts = [
 		name: "Technical Silk",
 		description: "Make A Splash",
 		image: BestSellers2,
+
 		price: 120,
 		colors: [
 			{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" },
 			{ id: uuidv4(), label: "Navy", className: "bg-[#19418E]" },
 		],
-		categories: ["bestSellers"],
+		categories: ["Best Seller"],
 		keywords: ["technical silk", "silky pants", "olive", "navy", "smooth fabric", "splash"],
 	},
 	{
@@ -221,7 +222,7 @@ export const allProducts = [
 			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
 		],
 		tag: "",
-		categories: ["bestSellers"],
+		categories: ["Best Seller"],
 		keywords: [
 			"cool weave",
 			"dress",

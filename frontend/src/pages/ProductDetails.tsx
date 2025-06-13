@@ -1,17 +1,18 @@
 import { useState, ReactNode } from "react";
 import { useParams } from "react-router-dom";
-import { AddIcon, BusIcon, HeartIcon, LikeIcon, MinusIcon } from "../Icons";
+import { AddIcon, BusIcon, LikeIcon, MinusIcon } from "../Icons";
 import { JSX } from "react";
 import { Product } from "../types";
 import { allProducts } from "../utils";
 import { useWindowWidth } from "../Hooks";
 import { LikeButton } from "../Components";
 import { useFavourites } from "../store/useFavourites";
+import clsx from "clsx";
+import { useCartItem } from "../store/useCartItems";
 
 interface DropDownProps {
 	title: string;
 	subtitle: string;
-	fitting?: boolean;
 	productDetail?: boolean;
 	content: ReactNode;
 }
@@ -21,10 +22,29 @@ export default function ProductDetails() {
 	const windowSize = useWindowWidth();
 	const product = allProducts.find((p: Product) => p.id === id);
 	const { isClicked } = useFavourites();
+	const { updateCartItems } = useCartItem();
+	const [selectedSize, setSelectedSize] = useState<string>("");
+	const [added, setAdded] = useState(false);
 
 	if (!product) {
 		return <div>Product not found.</div>;
 	}
+
+	const handleAddToCart = () => {
+		if (!selectedSize) return;
+
+		updateCartItems({
+			id: product.id,
+			image: product.image,
+			name: product.name,
+			size: selectedSize,
+			price: product.price,
+			color: product.colors[0].label,
+			quantity: 1,
+		});
+		setAdded(true);
+		setTimeout(() => setAdded(false), 2000); // Reset state after 2s
+	};
 
 	return (
 		<main className="w-full max-w-[76.5rem] mx-auto my-10">
@@ -34,7 +54,7 @@ export default function ProductDetails() {
 				<p>{product.name}</p>
 			</div>
 
-			<section className="flex flex-col px-6 gap-6 mt-12 md:flex-row lg:px-0">
+			<section className="flex flex-col px-6 gap-6 mt-12 md:flex-row xl:px-0">
 				<aside className="w-full md:max-w-[600px] md:flex gap-4">
 					{windowSize > 768 ? (
 						<DesktopProductImages image={product.image} name={product.name} />
@@ -60,33 +80,61 @@ export default function ProductDetails() {
 							))}
 						</div>
 					</div>
-					<div>
-						<div className="w-full flex flex-col items-end mt-4">
-							<label htmlFor="size-select">Size Guide</label>
-							<select id="size-select" className="w-full border border-[#DFDFDF] h-10 mb-4">
-								<option value="">Size</option>
+
+					<div className="mt-6">
+						<div className="w-full flex flex-col gap-2 mb-4">
+							<label htmlFor="size-select" className="text-sm text-gray-700 font-medium">
+								Select Size <span className="text-red-500">*</span>
+							</label>
+							<select
+								id="size-select"
+								value={selectedSize}
+								onChange={(e) => setSelectedSize(e.target.value)}
+								className="w-full border border-[#DFDFDF] h-10 px-4 text-sm rounded focus:outline-none focus:ring-1 focus:ring-primary"
+							>
+								<option value="">-- Choose a size --</option>
+								<option value="S">Small</option>
+								<option value="M">Medium</option>
+								<option value="L">Large</option>
+								{/* Add other sizes dynamically if needed */}
 							</select>
 						</div>
-						<button type="button" className="w-full bg-primary h-10 mb-[36px] text-white">
-							Add To Cart
+
+						<button
+							type="button"
+							disabled={!selectedSize || added}
+							onClick={handleAddToCart}
+							className={`w-full h-10 text-white font-medium rounded ${
+								added
+									? "bg-gray-500 cursor-default"
+									: selectedSize
+									? "bg-primary hover:opacity-90"
+									: "bg-gray-300 cursor-not-allowed"
+							}`}
+						>
+							{added ? "Added" : "Add to Cart"}
 						</button>
-						<div className="flex items-center justify-between w-full">
-							<div className="flex items-center gap-[4px] ">
-								<BusIcon /> <p>Easy Return</p>
+
+						<div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-200">
+							<div className="flex items-center gap-[6px] text-sm text-gray-700">
+								<BusIcon /> <span>Easy Returns</span>
 							</div>
-							<LikeButton product={product} className="flex">
+							<LikeButton
+								product={product}
+								className="flex items-center gap-2 text-sm font-medium text-gray-800"
+							>
 								<LikeIcon
 									className="cursor-pointer"
 									fill={isClicked(product.id) ? "red" : "white"}
 									stroke={isClicked(product.id) ? "" : "#0C0C0C"}
-								/>{" "}
-								<p>Add To Wish List</p>
+								/>
+								<span>Add to Wishlist</span>
 							</LikeButton>
 						</div>
 					</div>
 				</aside>
 			</section>
-			<section className="flex flex-col px-6 items-start gap-6 mt-8 md:flex-row lg:px-0">
+			<section className="flex flex-col px-6 items-start gap-6 mt-8 md:flex-row xl:px-0">
 				<aside className="w-full md:max-w-[600px] bg-gray-200 border border-gray-300">
 					<DropDown
 						title="Fitting"
@@ -103,7 +151,6 @@ export default function ProductDetails() {
 								Softener
 							</p>
 						}
-						fitting
 					/>
 					<DropDown
 						title="Product Detail"
@@ -121,14 +168,14 @@ export default function ProductDetails() {
 					/>
 				</aside>
 				<aside className="w-full md:max-w-[600px] p-4 bg-gray-200 border border-gray-300">
-					<h3>Silk</h3>
-					<span className=" h-[0.5px] w-full bg-gray-300 block" />
+					<h3 className="border-b border-gray-300 py-4">Silk</h3>
+
 					<p className="mt-6 text-[18px] leading-[1.8] mb-10">
 						This material is our signature high-stretch fabric that drapes like silk and is soft to
 						the touch. Silk is OEKO-TEX® certified and made in Italy in a mill 100% powered by
 						renewable energy (solar and biomass)
 					</p>
-					<div className="flex gap-[12px] text-[14px]">
+					<div className="flex flex-col sm:flex-row gap-[12px] text-[14px]">
 						<span className="bg-white h-[40px] w-full max-w-[94px] flex justify-center items-center">
 							Quick Dry
 						</span>
@@ -145,23 +192,18 @@ export default function ProductDetails() {
 	);
 }
 
-const DropDown = ({
-	title,
-	subtitle,
-	content,
-	productDetail,
-	fitting,
-}: DropDownProps): JSX.Element => {
+const DropDown = ({ title, subtitle, content, productDetail }: DropDownProps): JSX.Element => {
 	const [isShow, setIsShow] = useState<boolean>(true);
 
 	return (
 		<div>
 			<button
 				type="button"
-				className={` ${productDetail ? "border-t border-b" : fitting ? "border-b" : ""}
-
-				border-gray-300 flex w-full justify-between items-center p-6 text-[20px] font-bold`}
-				onClick={() => setIsShow(true)}
+				className={clsx(
+					productDetail && "border-t border-gray-300",
+					"shadow-[0px_1px_0px_rgba(0,0,0,0.1)] flex w-full justify-between items-center p-6 text-[20px] font-bold"
+				)}
+				onClick={() => setIsShow((prev) => !prev)}
 			>
 				{title} <AddIcon fill="black" />
 			</button>

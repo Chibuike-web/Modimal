@@ -77,7 +77,7 @@ const CartItem = ({ id, image, name, size, price, color, quantity }: CartItemsTy
 			<div className="w-full flex flex-col justify-between">
 				<div className="flex items-center justify-between w-full">
 					<p className="font-bold leading-[1.4]">{name}</p>
-					<button type="button" onClick={() => removeItemFromCart(id)}>
+					<button type="button" onClick={() => removeItemFromCart(id, size)}>
 						<CancelIcon />
 					</button>
 				</div>
@@ -86,11 +86,11 @@ const CartItem = ({ id, image, name, size, price, color, quantity }: CartItemsTy
 				<div className="flex items-center justify-between w-full">
 					<p className="font-semibold">${price} </p>
 					<div className="flex items-center bg-primary-50 gap-[8px]">
-						<button className="p-[4px]" onClick={() => increaseItemQuantity(id)}>
+						<button className="p-[4px]" onClick={() => increaseItemQuantity(id, size)}>
 							<AddIcon fill="#404E3E" />
 						</button>
 						<p className="text-[#404E3E]">{quantity}</p>
-						<button className="p-[4px]" onClick={() => decreaseItemQuantity(id)}>
+						<button className="p-[4px]" onClick={() => decreaseItemQuantity(id, size)}>
 							<MinusIcon fill="#404E3E" />
 						</button>
 					</div>
