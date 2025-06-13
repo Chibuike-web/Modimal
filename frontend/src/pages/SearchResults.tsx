@@ -56,26 +56,19 @@ const fadeUp = {
 const CardContainer = () => {
 	const [searchParams] = useSearchParams();
 	const query = searchParams.get("q");
-	const searchResults = allProducts.filter((item) => item.categories.includes(`${query}`));
+	const searchResults = allProducts.filter((item) => item.keywords.includes(`${query}`));
 	return (
 		<div className="grid grid-cols-2 max-w-[808px] xl:px-0 xl:w-full gap-6 w-full">
-			{searchResults.map(({ id, image, name, description, price, colors }: Product, index) => (
+			{searchResults.map((item: Product, index) => (
 				<motion.div
-					key={id}
+					key={item.id}
 					variants={fadeUp}
 					custom={index}
 					initial="initial"
 					whileInView="animate"
 					viewport={{ once: true, amount: 0.3 }}
 				>
-					<CardComponent
-						id={id}
-						image={image}
-						description={description}
-						name={name}
-						price={price}
-						colors={colors}
-					/>
+					<CardComponent {...item} />
 				</motion.div>
 			))}
 		</div>

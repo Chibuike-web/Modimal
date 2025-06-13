@@ -25,25 +25,17 @@ export default function BestSellers() {
 			</div>
 			<div className=" flex gap-6 overflow-x-auto">
 				{allProducts
-					.filter((item: Product) => item.categories?.includes("bestSellers"))
-					.map(({ id, image, name, description, price, colors }: Product, index: number) => (
+					.filter((item) => item.categories?.includes("bestSellers"))
+					.map((item, index) => (
 						<motion.div
-							key={id}
+							key={item.id}
 							variants={fadeUp}
 							custom={index}
 							initial="initial"
 							whileInView="animate"
 							viewport={{ once: true, amount: 0.3 }}
 						>
-							<CardComponent
-								key={id}
-								id={id}
-								image={image}
-								name={name}
-								description={description}
-								price={price}
-								colors={colors}
-							/>
+							<CardComponent {...item} />
 						</motion.div>
 					))}
 			</div>

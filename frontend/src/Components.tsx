@@ -47,35 +47,35 @@ export function DownArrowButton() {
 	);
 }
 
-export const CardComponent = ({ id, image, name, description, price, colors, tag }: Product) => {
+export const CardComponent = (item: Product) => {
 	const { isClicked } = useFavourites();
 
 	return (
-		<article id={`card-${id}`} className="w-full flex flex-col gap-[1rem] max-w-[392px]">
+		<article id={`card-${item.id}`} className="w-full flex flex-col gap-[1rem] max-w-[392px]">
 			<figure className="relative w-full flex ">
-				<img src={image} alt="" className="w-full h-full" />
-				<LikeButton product={{ id, image, name, description, price, colors, tag }}>
+				<img src={item.image} alt="" className="w-full h-full" />
+				<LikeButton product={item}>
 					<LikeIcon
 						className="absolute top-6 right-6 max-lg:top-[8px] max-lg:right-[8px] cursor-pointer"
-						fill={isClicked(id) ? "red" : "white"}
-						stroke={isClicked(id) ? "" : "#0C0C0C"}
+						fill={isClicked(item.id) ? "red" : "white"}
+						stroke={isClicked(item.id) ? "" : "#0C0C0C"}
 					/>
 				</LikeButton>
 
-				{tag && (
+				{item.tag && (
 					<span className="w-[86px] h-[32px] absolute left-6 top-6 flex items-center justify-center bg-white">
-						{tag}
+						{item.tag}
 					</span>
 				)}
 			</figure>
 			<div className="flex items-center justify-between px-[8px]">
 				<div className="flex flex-col gap-[0.5rem]">
-					<Link to={`/collection/${id}`}>
-						<h3 className="font-bold">{name}</h3>
+					<Link to={`/collection/${item.id}`}>
+						<h3 className="font-bold">{item.name}</h3>
 					</Link>
-					<p>{description}</p>
+					<p>{item.description}</p>
 					<div className="flex gap-[0.5rem]">
-						{colors?.map((color) => (
+						{item.colors?.map((color) => (
 							<span
 								key={color.id}
 								className={`block w-6 h-6 rounded-full ${color.className}`}
@@ -84,7 +84,7 @@ export const CardComponent = ({ id, image, name, description, price, colors, tag
 						))}
 					</div>
 				</div>
-				<p className="font-bold">${price}</p>
+				<p className="font-bold">${item.price}</p>
 			</div>
 		</article>
 	);

@@ -35,7 +35,7 @@ export default function ProductDetails() {
 			</div>
 
 			<section className="flex flex-col px-6 gap-6 mt-12 md:flex-row lg:px-0">
-				<aside className="w-full md:max-w-[600px] flex gap-4">
+				<aside className="w-full md:max-w-[600px] md:flex gap-4">
 					{windowSize > 768 ? (
 						<DesktopProductImages image={product.image} name={product.name} />
 					) : (
@@ -86,7 +86,7 @@ export default function ProductDetails() {
 					</div>
 				</aside>
 			</section>
-			<section className="flex flex-col px-6 items-start gap-6 mt-8 md:flex-row g:px-0">
+			<section className="flex flex-col px-6 items-start gap-6 mt-8 md:flex-row lg:px-0">
 				<aside className="w-full md:max-w-[600px] bg-gray-200 border border-gray-300">
 					<DropDown
 						title="Fitting"

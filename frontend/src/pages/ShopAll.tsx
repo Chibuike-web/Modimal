@@ -42,18 +42,8 @@ const CardContainer = () => {
 			<div className="grid grid-cols-2 max-w-[808px] xl:px-0 xl:w-full gap-6 w-full">
 				{allProducts
 					.filter((item) => item.categories?.includes("shopAll"))
-					.map(({ id, image, name, description, price, colors, tag }: Product) => (
-						<div>
-							<CardComponent
-								id={id}
-								image={image}
-								description={description}
-								name={name}
-								price={price}
-								colors={colors}
-								tag={tag}
-							/>
-						</div>
+					.map((item) => (
+						<CardComponent key={item.id} {...item} />
 					))}
 			</div>
 			<button className="border border-primary text-primary h-[40px] w-[184px]">Load More</button>

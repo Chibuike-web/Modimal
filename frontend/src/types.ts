@@ -5,9 +5,9 @@ export interface Product {
 	description: string;
 	price: number;
 	colors: { id: string; label: string; className: string }[];
-	tag?: string; // "New", "Sale", etc.
-	categories?: string[]; // e.g., ["shopAll", "bestSellers"]
-	keywords?: string[]; // for search indexing
+	tag?: string;
+	categories?: string[];
+	keywords: string[];
 }
 
 export type Color = {
