@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import { CardComponent } from "../Components";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, Variants } from "motion/react";
 import { FilterIcon } from "../Icons";
 import { DesktopFilter, MobileFilter } from "../Components";
 import { allProducts } from "../utils";
@@ -56,13 +56,15 @@ const fadeUp = {
 const CardContainer = () => {
 	const [searchParams] = useSearchParams();
 	const query = searchParams.get("q");
-	const searchResults = allProducts.filter((item) => item.keywords.includes(`${query}`));
+	const searchResults = allProducts.filter((item) =>
+		item.keywords.some((keyword) => keyword.includes(`${query}`))
+	);
 	return (
 		<div className="grid grid-cols-2 max-w-[808px] xl:px-0 xl:w-full gap-6 w-full">
 			{searchResults.map((item: Product, index) => (
 				<motion.div
 					key={item.id}
-					variants={fadeUp}
+					variants={fadeUp as Variants}
 					custom={index}
 					initial="initial"
 					whileInView="animate"

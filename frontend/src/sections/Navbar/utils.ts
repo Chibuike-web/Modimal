@@ -87,33 +87,3 @@ export const sustainContent: DropdownType[] = [
 		],
 	},
 ];
-
-// export const cartItems = [
-// 	{
-// 		id: uuidv4(),
-// 		image: Bag1,
-// 		name: "Wrap Top",
-// 		size: "S",
-// 		price: 160,
-// 		color: "White",
-// 		quantity: 1,
-// 	},
-// 	{
-// 		id: uuidv4(),
-// 		image: Bag2,
-// 		name: "Casual Wild Leg",
-// 		size: "S",
-// 		price: 130,
-// 		color: "Dark Blue",
-// 		quantity: 2,
-// 	},
-// 	{
-// 		id: uuidv4(),
-// 		image: Bag3,
-// 		name: "Essential Dress",
-// 		size: "2X",
-// 		price: 180,
-// 		color: "Black",
-// 		quantity: 1,
-// 	},
-// ];

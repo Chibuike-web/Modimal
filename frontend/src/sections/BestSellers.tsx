@@ -1,14 +1,14 @@
 import { CardComponent } from "../Components";
-import { motion } from "motion/react";
+import { motion, Variants } from "motion/react";
 import { allProducts } from "../utils";
 
 const fadeUp = {
 	initial: { opacity: 0, y: 100 },
-	animate: (i: number) => ({
+	animate: (custom: number) => ({
 		opacity: 1,
 		y: 0,
 		transition: {
-			delay: i * 0.5,
+			delay: custom * 0.5,
 			duration: 1,
 			ease: "easeOut",
 		},
@@ -28,7 +28,7 @@ export default function BestSellers() {
 					.map((item, index) => (
 						<motion.div
 							key={item.id}
-							variants={fadeUp}
+							variants={fadeUp as Variants}
 							custom={index}
 							initial="initial"
 							whileInView="animate"

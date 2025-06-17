@@ -8,6 +8,8 @@ export interface Product {
 	tag?: string;
 	categories?: string[];
 	keywords: string[];
+	sizes: { value: string; label: string }[];
+	fabric: string;
 }
 
 export type Color = {

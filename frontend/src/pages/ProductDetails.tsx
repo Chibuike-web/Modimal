@@ -43,7 +43,7 @@ export default function ProductDetails() {
 			quantity: 1,
 		});
 		setAdded(true);
-		setTimeout(() => setAdded(false), 2000); // Reset state after 2s
+		setTimeout(() => setAdded(false), 2000);
 	};
 
 	return (
@@ -93,10 +93,11 @@ export default function ProductDetails() {
 								className="w-full border border-[#DFDFDF] h-10 px-4 text-sm rounded focus:outline-none focus:ring-1 focus:ring-primary"
 							>
 								<option value="">-- Choose a size --</option>
-								<option value="S">Small</option>
-								<option value="M">Medium</option>
-								<option value="L">Large</option>
-								{/* Add other sizes dynamically if needed */}
+								{product.sizes.map((size) => (
+									<option key={size.value} value={`${size.value}`}>
+										{size.label}
+									</option>
+								))}
 							</select>
 						</div>
 

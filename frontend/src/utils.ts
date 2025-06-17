@@ -14,6 +14,7 @@ import ShopAllProductImage6 from "./assets/ShopAll/ShopAllProductImage6.png";
 import BestSellers1 from "./assets/BestSellers/ProductImage1.png";
 import BestSellers2 from "./assets/BestSellers/ProductImage2.png";
 import BestSellers3 from "./assets/BestSellers/ProductImage3.png";
+import { Product } from "./types";
 
 export const filterList = [
 	{
@@ -74,7 +75,7 @@ export const filterList = [
 	},
 ];
 
-export const allProducts = [
+export const allProducts: Product[] = [
 	{
 		id: uuidv4(),
 		name: "Elastic Waist",
@@ -93,6 +94,15 @@ export const allProducts = [
 			"comfortable",
 			"relaxed fit",
 		],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+
+		fabric: "Cotton",
 	},
 	{
 		id: uuidv4(),
@@ -102,6 +112,14 @@ export const allProducts = [
 		price: 150,
 		colors: [{ id: uuidv4(), label: "Black", className: "bg-black" }],
 		keywords: ["tailored pants", "stretch pants", "fitted pants", "black pants", "formal pants"],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+		fabric: "Cotton",
 	},
 	{
 		id: uuidv4(),
@@ -122,6 +140,14 @@ export const allProducts = [
 			"black pants",
 			"crimson pants",
 		],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+		fabric: "Cashmere",
 	},
 	{
 		id: uuidv4(),
@@ -142,6 +168,14 @@ export const allProducts = [
 			"olive pants",
 			"black trousers",
 		],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+		fabric: "Silk",
 	},
 	{
 		id: uuidv4(),
@@ -154,6 +188,14 @@ export const allProducts = [
 			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
 		],
 		keywords: ["casual pants", "wide leg", "wild leg", "turn it up", "black pants", "sage pants"],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+		fabric: "Wool",
 	},
 	{
 		id: uuidv4(),
@@ -173,6 +215,14 @@ export const allProducts = [
 			"relaxed fit",
 			"summer pants",
 		],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+		fabric: "Linen",
 	},
 	{
 		id: uuidv4(),
@@ -195,6 +245,14 @@ export const allProducts = [
 			"sage pants",
 			"dark grey pants",
 		],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+		fabric: "Wool",
 	},
 	{
 		id: uuidv4(),
@@ -209,6 +267,14 @@ export const allProducts = [
 		],
 		categories: ["Best Seller"],
 		keywords: ["technical silk", "silky pants", "olive", "navy", "smooth fabric", "splash"],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+		fabric: "Linen",
 	},
 	{
 		id: uuidv4(),
@@ -232,6 +298,15 @@ export const allProducts = [
 			"breathable",
 			"elegant dress",
 		],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+
+		fabric: "Cashmere",
 	},
 	{
 		id: uuidv4(),
@@ -243,6 +318,14 @@ export const allProducts = [
 		tag: "New",
 		categories: ["shopAll"],
 		keywords: ["wrap top", "chill top", "turn it up", "olive", "casual top", "new arrival"],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+		fabric: "Cotton",
 	},
 	{
 		id: uuidv4(),
@@ -259,6 +342,14 @@ export const allProducts = [
 		tag: "",
 		categories: ["shopAll"],
 		keywords: ["essential", "t-shirt", "turn it up", "black t-shirt", "sky blue", "casual wear"],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+		fabric: "Linen",
 	},
 	{
 		id: uuidv4(),
@@ -281,6 +372,14 @@ export const allProducts = [
 			"elevated casual",
 			"day dress",
 		],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+		fabric: "Wool",
 	},
 	{
 		id: uuidv4(),
@@ -302,6 +401,14 @@ export const allProducts = [
 			"olive jacket",
 			"outerwear",
 		],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+		fabric: "Cotton",
 	},
 	{
 		id: uuidv4(),
@@ -325,6 +432,14 @@ export const allProducts = [
 			"breathable",
 			"modern trousers",
 		],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+		fabric: "Cashmere",
 	},
 	{
 		id: uuidv4(),
@@ -347,5 +462,13 @@ export const allProducts = [
 			"sweater",
 			"comfortable",
 		],
+		sizes: [
+			{ value: "XS", label: "XS / US (0-4)" },
+			{ value: "S", label: "S / US (4-6)" },
+			{ value: "M", label: "M / US (6-10)" },
+			{ value: "L", label: "L / US (10-14)" },
+			{ value: "XL", label: "XL / US (12-16)" },
+		],
+		fabric: "Cotton",
 	},
 ];

@@ -10,6 +10,7 @@ export type ProductPriceDetailsTypes = {
 	id: string;
 	price: number;
 	quantity: number;
+	size: string;
 };
 
 export type SummaryItem = {

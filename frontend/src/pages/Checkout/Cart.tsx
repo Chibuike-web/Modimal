@@ -50,8 +50,8 @@ const DesktopCart = ({ total }: { total: number }) => {
 				</div>
 				<div className="w-full max-w-[496px]">
 					<div className="flex flex-col gap-6">
-						{cartItems.map(({ id, price, quantity }) => (
-							<ProductPriceDetails key={id} id={id} price={price} quantity={quantity} />
+						{cartItems.map(({ id, price, quantity, size }) => (
+							<ProductPriceDetails key={id} id={id} price={price} quantity={quantity} size={size} />
 						))}
 					</div>
 					<span className="bg-gray-200 w-full h-[1px] block mt-16" />
@@ -110,16 +110,20 @@ const ProductInfo = ({ id, image, name, size, color, quantity }: ProductInfoType
 	const { removeItemFromCart } = useCartItem();
 	return (
 		<div className="flex gap-[8px] w-full">
-			<figure className="relative">
+			<figure className="relative w-full h-full max-w-[142px] max-h-[163px]">
 				<span className="bg-white absolute flex items-center justify-center w-6 h-6 left-2 top-2 text-sm">
 					{quantity}
 				</span>
-				<img src={image} alt={`Image of a woman wearing ${name} `} />
+				<img
+					src={image}
+					alt={`Image of a woman wearing ${name} `}
+					className="w-full h-full object-cover"
+				/>
 			</figure>
 			<div className="w-full flex flex-col justify-between">
 				<div className="flex items-center justify-between w-full">
 					<p className="font-bold leading-[1.4]">{name}</p>
-					<button type="button" onClick={() => removeItemFromCart(id)}>
+					<button type="button" onClick={() => removeItemFromCart(id, size)}>
 						<CancelIcon />
 					</button>
 				</div>
@@ -130,18 +134,18 @@ const ProductInfo = ({ id, image, name, size, color, quantity }: ProductInfoType
 	);
 };
 
-const ProductPriceDetails = ({ id, price, quantity }: ProductPriceDetailsTypes) => {
+const ProductPriceDetails = ({ id, price, quantity, size }: ProductPriceDetailsTypes) => {
 	const subtotal = price * quantity;
 	const { increaseItemQuantity, decreaseItemQuantity } = useCartItem();
 	return (
 		<div className="flex justify-between items-center">
 			<p className="w-[88px]">${price}</p>
 			<div className="flex items-center bg-primary-50 gap-[8px] w-[88px]">
-				<button className="p-[4px]" onClick={() => increaseItemQuantity(id)}>
+				<button className="p-[4px]" onClick={() => increaseItemQuantity(id, size)}>
 					<AddIcon fill="#404E3E" />
 				</button>
 				<p className="text-[#404E3E] w-[88px]">{quantity}</p>
-				<button className="p-[4px]" onClick={() => decreaseItemQuantity(id)}>
+				<button className="p-[4px]" onClick={() => decreaseItemQuantity(id, size)}>
 					<MinusIcon fill="#404E3E" />
 				</button>
 			</div>{" "}
@@ -181,7 +185,7 @@ export const CartItem = ({ id, image, name, size, price, color, quantity }: Cart
 			<div className="w-full flex flex-col justify-between">
 				<div className="flex items-center justify-between w-full">
 					<p className="font-bold leading-[1.4]">{name}</p>
-					<button type="button" onClick={() => removeItemFromCart(id)}>
+					<button type="button" onClick={() => removeItemFromCart(id, size)}>
 						<CancelIcon />
 					</button>
 				</div>
@@ -190,11 +194,11 @@ export const CartItem = ({ id, image, name, size, price, color, quantity }: Cart
 				<div className="flex items-center justify-between w-full">
 					<p className="font-semibold">${price} </p>
 					<div className="flex items-center bg-primary-50 gap-[8px]">
-						<button className="p-[4px]" onClick={() => increaseItemQuantity(id)}>
+						<button className="p-[4px]" onClick={() => increaseItemQuantity(id, size)}>
 							<AddIcon fill="#404E3E" />
 						</button>
 						<p className="text-[#404E3E]">{quantity}</p>
-						<button className="p-[4px]" onClick={() => decreaseItemQuantity(id)}>
+						<button className="p-[4px]" onClick={() => decreaseItemQuantity(id, size)}>
 							<MinusIcon fill="#404E3E" />
 						</button>
 					</div>
