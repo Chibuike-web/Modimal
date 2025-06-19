@@ -42,16 +42,16 @@ export const filterList = [
 		id: uuidv4(),
 		title: "Color",
 		list: [
-			{ id: uuidv4(), label: "Black", colorCode: "#000000" },
-			{ id: uuidv4(), label: "Red", colorCode: "#FF0000" },
-			{ id: uuidv4(), label: "Green", colorCode: "#00FF00" },
-			{ id: uuidv4(), label: "Yellow", colorCode: "#FFFF00" },
-			{ id: uuidv4(), label: "Dark Blue", colorCode: "#00008B" },
-			{ id: uuidv4(), label: "Purple", colorCode: "#800080" },
-			{ id: uuidv4(), label: "Pink", colorCode: "#FFC0CB" },
-			{ id: uuidv4(), label: "Light Blue", colorCode: "#ADD8E6" },
-			{ id: uuidv4(), label: "Orange", colorCode: "#FFA500" },
-			{ id: uuidv4(), label: "White", colorCode: "#FFFFFF" },
+			{ id: uuidv4(), label: "Black", className: "bg-[#000000]" },
+			{ id: uuidv4(), label: "Red", className: "bg-[#FF0000]" },
+			{ id: uuidv4(), label: "Green", className: "bg-[#00FF00]" },
+			{ id: uuidv4(), label: "Yellow", className: "bg-[#FFFF00]" },
+			{ id: uuidv4(), label: "Dark Blue", className: "bg-[#00008B]" },
+			{ id: uuidv4(), label: "Purple", className: "bg-[#800080]" },
+			{ id: uuidv4(), label: "Pink", className: "bg-[#FFC0CB]" },
+			{ id: uuidv4(), label: "Light Blue", className: "bg-[#ADD8E6]" },
+			{ id: uuidv4(), label: "Orange", className: "bg-[#FFA500]" },
+			{ id: uuidv4(), label: "White", className: "bg-[#FFFFFF]" },
 		],
 	},
 	{
@@ -83,7 +83,7 @@ export const allProducts: Product[] = [
 		image: ProductImage1,
 		price: 110,
 		colors: [
-			{ id: uuidv4(), label: "Sky Blue", className: "bg-[#7DC3EB]" },
+			{ id: uuidv4(), label: "Dark Blue", className: "bg-[#7DC3EB]" },
 			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
 		],
 		keywords: [
@@ -129,7 +129,7 @@ export const allProducts: Product[] = [
 		price: 140,
 		colors: [
 			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
-			{ id: uuidv4(), label: "Crimson", className: "bg-[#CA2929]" },
+			{ id: uuidv4(), label: "Red", className: "bg-[#CA2929]" },
 			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
 		],
 		keywords: [
@@ -157,7 +157,7 @@ export const allProducts: Product[] = [
 		price: 110,
 		colors: [
 			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
-			{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" },
+			{ id: uuidv4(), label: "Green", className: "bg-[#909225]" },
 			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
 		],
 		keywords: [
@@ -232,7 +232,7 @@ export const allProducts: Product[] = [
 		price: 180,
 		colors: [
 			{ id: uuidv4(), label: "Dark Grey", className: "bg-[#0C0C0C]" },
-			{ id: uuidv4(), label: "Sky Blue", className: "bg-[#7DC3EB]" },
+			{ id: uuidv4(), label: "Dark Blue", className: "bg-[#7DC3EB]" },
 			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
 		],
 		categories: ["Best Seller"],
@@ -262,7 +262,7 @@ export const allProducts: Product[] = [
 
 		price: 120,
 		colors: [
-			{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" },
+			{ id: uuidv4(), label: "Green", className: "bg-[#909225]" },
 			{ id: uuidv4(), label: "Navy", className: "bg-[#19418E]" },
 		],
 		categories: ["Best Seller"],
@@ -285,7 +285,7 @@ export const allProducts: Product[] = [
 		colors: [
 			{ id: uuidv4(), label: "Lavender", className: "bg-[#D0A5EA]" },
 			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
-			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
+			{ id: uuidv4(), label: "Yellow", className: "bg-[#748C70]" },
 		],
 		tag: "",
 		categories: ["Best Seller"],
@@ -314,7 +314,7 @@ export const allProducts: Product[] = [
 		description: "Turn it Up Top",
 		image: ShopAllProductImage1,
 		price: 160,
-		colors: [{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" }],
+		colors: [{ id: uuidv4(), label: "Green", className: "bg-[#909225]" }],
 		tag: "New",
 		categories: ["shopAll"],
 		keywords: ["wrap top", "chill top", "turn it up", "olive", "casual top", "new arrival"],
@@ -336,7 +336,7 @@ export const allProducts: Product[] = [
 
 		colors: [
 			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
-			{ id: uuidv4(), label: "Sky Blue", className: "bg-[#7DC3EB]" },
+			{ id: uuidv4(), label: "Light Blue", className: "bg-[#7DC3EB]" },
 			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
 		],
 		tag: "",
@@ -389,7 +389,7 @@ export const allProducts: Product[] = [
 		price: 199,
 		colors: [
 			{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" },
-			{ id: uuidv4(), label: "Burnt Orange", className: "bg-[#CA6D29]" },
+			{ id: uuidv4(), label: "Orange", className: "bg-[#CA6D29]" },
 		],
 		tag: "",
 		categories: ["shopAll"],

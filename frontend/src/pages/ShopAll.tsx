@@ -1,8 +1,10 @@
 import ShopAllImage from "../assets/ShopAll/ShopAll.png";
+import { CardComponent } from "../components/Card";
+import { DesktopFilter } from "../components/DesktopFilter";
+import { MobileFilter } from "../components/MobileFilter";
 import { useShowFilter } from "../Hooks";
 import { FilterIcon } from "../Icons";
-import { DesktopFilter, MobileFilter, CardComponent } from "../Components";
-import { Product } from "../types";
+
 import { allProducts } from "../utils";
 
 export default function ShopAll() {
@@ -10,7 +12,7 @@ export default function ShopAll() {
 	return (
 		<section>
 			<div className="w-full max-w-[76.5rem] mx-auto my-10">
-				<p className="flex gap-4">
+				<p className="flex px-6 xl:px-0 gap-4">
 					<span>Home</span> / <span>Shop All</span>
 				</p>
 			</div>

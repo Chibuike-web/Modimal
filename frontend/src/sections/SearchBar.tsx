@@ -1,30 +1,20 @@
 import { motion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 import { useSearch } from "../store/useSearch";
 
 export const SearchBar = () => {
 	const inputRef = useRef<HTMLInputElement>(null);
-	const [searchTerm, setSearchTerm] = useState("");
-	const [searchParams, setSearchParams] = useSearchParams();
+	const [, setSearchParams] = useSearchParams();
 	const { setIsSearch } = useSearch();
 	const navigate = useNavigate();
 
-	interface SearchEvent extends React.ChangeEvent<HTMLInputElement> {}
-
-	const handleSearch = (e: SearchEvent) => {
-		const value = e.target.value;
-		setSearchTerm(value);
-	};
-
-	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		if (e.key === "Enter") {
-			const trimmed = searchTerm.trim().toLowerCase();
-			if (trimmed) {
-				setSearchParams({ q: trimmed });
-				navigate(`/search/results/?q=${trimmed}`);
-				setIsSearch();
-			}
+	const handleSubmit = (formData: FormData) => {
+		const query = formData.get("search-input")?.toString().trim().toLowerCase();
+		if (query) {
+			setSearchParams({ q: query });
+			navigate(`/search/results/?q=${query}`);
+			setIsSearch();
 		}
 	};
 
@@ -39,9 +29,7 @@ export const SearchBar = () => {
 			exit={{ opacity: 0, y: -20 }}
 			transition={{ duration: 0.2 }}
 			className="fixed top-[8rem] max-lg:top-[5rem] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full"
-			onClick={(e) => {
-				setIsSearch();
-			}}
+			onClick={() => setIsSearch()}
 		>
 			<motion.div
 				initial={{ opacity: 0, height: 0 }}
@@ -51,16 +39,21 @@ export const SearchBar = () => {
 				className="justify-items-center content-center w-full pt-8 pb-16 max-lg:px-6 bg-white overflow-hidden"
 				onClick={(e) => e.stopPropagation()}
 			>
-				<input
-					type="text"
-					ref={inputRef}
-					value={searchTerm}
-					name="search-input"
-					onChange={handleSearch}
-					onKeyDown={handleKeyDown}
-					placeholder="Search"
-					className="block w-full max-w-[76.5rem] border-b"
-				/>{" "}
+				<form
+					onSubmit={(e) => {
+						e.preventDefault();
+						handleSubmit(new FormData(e.currentTarget));
+					}}
+					className="w-full  max-w-[76.5rem]"
+				>
+					<input
+						type="text"
+						ref={inputRef}
+						name="search-input"
+						placeholder="Search"
+						className="block w-full border-b"
+					/>
+				</form>
 			</motion.div>
 		</motion.div>
 	);

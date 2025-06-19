@@ -1,7 +1,7 @@
-import { motion } from "motion/react";
-import { LikeButton } from "../Components";
+import { motion, Variants } from "motion/react";
 import { cardData } from "./utils";
 import { CardProps } from "./types";
+import { LikeIcon } from "../Icons";
 
 export default function Modiweek() {
 	return (
@@ -20,7 +20,7 @@ type CardProps2 = CardProps & {
 	index: number;
 };
 
-const fadeIn = {
+const fadeIn: Variants = {
 	initial: { opacity: 0, x: 100 },
 	animate: (i: number) => ({
 		opacity: 1,
@@ -44,7 +44,7 @@ const Card = ({ image, text, index }: CardProps2) => {
 		>
 			<figure className="relative w-full min-w-[288px] flex">
 				<img src={image} alt="" className="w-full" />
-				<LikeButton />
+				<LikeIcon className="absolute top-[1rem] right-[1rem] z-100" />
 			</figure>
 			<p className="font-bold pt-[38px]">{text}</p>
 		</motion.div>

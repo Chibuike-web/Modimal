@@ -13,7 +13,7 @@ import { collectionContent, newInContent, plusSizeContent, sustainContent } from
 import { DropdownType, DropdownProps } from "./types";
 import { useDropdownHover, useWindowWidth } from "../../Hooks";
 import { useState } from "react";
-import { DownArrowButton } from "../../Components";
+import { DownArrowButton } from "../../components/DownArrowButton";
 import { motion, AnimatePresence } from "motion/react";
 import { useSearch } from "../../store/useSearch";
 import { useSignedIn } from "../../store/useSignIn";

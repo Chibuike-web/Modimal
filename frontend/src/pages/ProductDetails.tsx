@@ -5,7 +5,7 @@ import { JSX } from "react";
 import { Product } from "../types";
 import { allProducts } from "../utils";
 import { useWindowWidth } from "../Hooks";
-import { LikeButton } from "../Components";
+import { LikeButton } from "../components/LikeButton";
 import { useFavourites } from "../store/useFavourites";
 import clsx from "clsx";
 import { useCartItem } from "../store/useCartItems";
@@ -48,7 +48,7 @@ export default function ProductDetails() {
 
 	return (
 		<main className="w-full max-w-[76.5rem] mx-auto my-10">
-			<div className="flex gap-4">
+			<div className="flex gap-4 px-6 xl:px-0 ">
 				<p>Collection</p>
 				<span>/</span> <p>Top + Blouses</p> <span>/</span>
 				<p>{product.name}</p>
@@ -213,7 +213,7 @@ const DropDown = ({ title, subtitle, content, productDetail }: DropDownProps): J
 				<div className=" p-6 ">
 					<button
 						type="button"
-						className="flex w-full justify-between items-center text-[20px] font-bold text-primary"
+						className="flex w-full justify-between text-left items-center text-[20px] font-bold text-primary"
 						onClick={() => setIsShow(false)}
 					>
 						{subtitle} <MinusIcon />

@@ -1,6 +1,6 @@
-import { CardComponent } from "../Components";
 import { motion, Variants } from "motion/react";
 import { allProducts } from "../utils";
+import { CardComponent } from "../components/Card";
 
 const fadeUp = {
 	initial: { opacity: 0, y: 100 },

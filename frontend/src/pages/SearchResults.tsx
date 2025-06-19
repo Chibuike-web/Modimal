@@ -1,11 +1,12 @@
 import { useSearchParams } from "react-router-dom";
-import { CardComponent } from "../Components";
 import { AnimatePresence, motion, Variants } from "motion/react";
 import { FilterIcon } from "../Icons";
-import { DesktopFilter, MobileFilter } from "../Components";
 import { allProducts } from "../utils";
 import { Product } from "../types";
 import { useShowFilter } from "../Hooks";
+import { DesktopFilter } from "../components/DesktopFilter";
+import { MobileFilter } from "../components/MobileFilter";
+import { CardComponent } from "../components/Card";
 
 export default function SearchResults() {
 	const { isShowFilter, setIsShowFilter } = useShowFilter();
@@ -57,7 +58,7 @@ const CardContainer = () => {
 	const [searchParams] = useSearchParams();
 	const query = searchParams.get("q");
 	const searchResults = allProducts.filter((item) =>
-		item.keywords.some((keyword) => keyword.includes(`${query}`))
+		item.keywords?.some((keyword) => keyword.includes(`${query}`))
 	);
 	return (
 		<div className="grid grid-cols-2 max-w-[808px] xl:px-0 xl:w-full gap-6 w-full">

@@ -7,9 +7,9 @@ export interface Product {
 	colors: { id: string; label: string; className: string }[];
 	tag?: string;
 	categories?: string[];
-	keywords: string[];
+	keywords?: string[];
 	sizes: { value: string; label: string }[];
-	fabric: string;
+	fabric?: string;
 }
 
 export type Color = {
@@ -21,7 +21,7 @@ export type Color = {
 export interface List {
 	id: string;
 	label: string;
-	colorCode?: string;
+	className?: string;
 }
 
 export interface SelectButtonProps extends List {
