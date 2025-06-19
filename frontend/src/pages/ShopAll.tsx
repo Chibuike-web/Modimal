@@ -4,11 +4,11 @@ import { DesktopFilter } from "../components/DesktopFilter";
 import { MobileFilter } from "../components/MobileFilter";
 import { useShowFilter } from "../Hooks";
 import { FilterIcon } from "../Icons";
-
-import { allProducts } from "../utils";
+import { useFilterItem } from "../store/useFilterItem";
 
 export default function ShopAll() {
 	const { isShowFilter, setIsShowFilter } = useShowFilter();
+
 	return (
 		<section>
 			<div className="w-full max-w-[76.5rem] mx-auto my-10">
@@ -39,10 +39,12 @@ export default function ShopAll() {
 }
 
 const CardContainer = () => {
+	const { filteredList } = useFilterItem();
+
 	return (
 		<section className="flex flex-col items-center gap-12">
 			<div className="grid grid-cols-2 max-w-[808px] xl:px-0 xl:w-full gap-6 w-full">
-				{allProducts
+				{filteredList
 					.filter((item) => item.categories?.includes("shopAll"))
 					.map((item) => (
 						<CardComponent key={item.id} {...item} />

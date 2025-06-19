@@ -187,6 +187,7 @@ export const allProducts: Product[] = [
 			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
 			{ id: uuidv4(), label: "Sage", className: "bg-[#748C70]" },
 		],
+		categories: ["Featured"],
 		keywords: ["casual pants", "wide leg", "wild leg", "turn it up", "black pants", "sage pants"],
 		sizes: [
 			{ value: "XS", label: "XS / US (0-4)" },
