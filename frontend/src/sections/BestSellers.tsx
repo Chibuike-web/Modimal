@@ -34,7 +34,7 @@ export default function BestSellers() {
 							whileInView="animate"
 							viewport={{ once: true, amount: 0.3 }}
 						>
-							<CardComponent {...item} />
+							<CardComponent item={item} className="min-w-[168px]" />
 						</motion.div>
 					))}
 			</div>

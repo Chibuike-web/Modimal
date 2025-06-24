@@ -9,6 +9,7 @@ import { LikeButton } from "../components/LikeButton";
 import { useFavourites } from "../store/useFavourites";
 import clsx from "clsx";
 import { useCartItem } from "../store/useCartItems";
+import { CardComponent } from "../components/Card";
 
 interface DropDownProps {
 	title: string;
@@ -189,6 +190,7 @@ export default function ProductDetails() {
 					</div>
 				</aside>
 			</section>
+			<YouMayAlsoLike content={product} />
 		</main>
 	);
 }
@@ -248,6 +250,19 @@ const MobileProductImages = ({ image, name }: { image: string; name: string }) =
 				<span></span>
 				<span></span>
 			</div>
+		</div>
+	);
+};
+
+const YouMayAlsoLike = ({ content }: { content: Product }) => {
+	const list = allProducts.filter((item) =>
+		item.keywords?.some((i) => content.keywords?.some((kw) => i.includes(kw)))
+	);
+	return (
+		<div>
+			{list.map((i) => (
+				<CardComponent key={i.id} item={i} />
+			))}
 		</div>
 	);
 };

@@ -61,7 +61,7 @@ const CardContainer = () => {
 		item.keywords?.some((keyword) => keyword.includes(`${query}`))
 	);
 	return (
-		<div className="grid grid-cols-2 max-w-[808px] xl:px-0 xl:w-full gap-6 w-full">
+		<div className="grid grid-cols-2 max-w-[808px] xl:px-0 xl:w-full gap-4 md:gap-6 w-full">
 			{searchResults.map((item: Product, index) => (
 				<motion.div
 					key={item.id}
@@ -71,7 +71,7 @@ const CardContainer = () => {
 					whileInView="animate"
 					viewport={{ once: true, amount: 0.3 }}
 				>
-					<CardComponent {...item} />
+					<CardComponent item={item} />
 				</motion.div>
 			))}
 		</div>
