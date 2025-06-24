@@ -1,4 +1,3 @@
-import { motion, Variants } from "motion/react";
 import { cardData } from "./utils";
 import { CardProps } from "./types";
 import { LikeIcon } from "../Icons";
@@ -20,33 +19,14 @@ type CardProps2 = CardProps & {
 	index: number;
 };
 
-const fadeIn: Variants = {
-	initial: { opacity: 0, x: 100 },
-	animate: (i: number) => ({
-		opacity: 1,
-		x: 0,
-		transition: {
-			delay: i * 0.5,
-			duration: 1,
-			ease: "easeOut",
-		},
-	}),
-};
-
-const Card = ({ image, text, index }: CardProps2) => {
+const Card = ({ image, text }: CardProps2) => {
 	return (
-		<motion.div
-			variants={fadeIn}
-			custom={index}
-			initial="initial"
-			whileInView="animate"
-			viewport={{ once: true, amount: 0.3 }}
-		>
+		<div>
 			<figure className="relative w-full min-w-[288px] flex">
 				<img src={image} alt="" className="w-full" />
 				<LikeIcon className="absolute top-[1rem] right-[1rem] z-100" />
 			</figure>
 			<p className="font-bold pt-[38px]">{text}</p>
-		</motion.div>
+		</div>
 	);
 };

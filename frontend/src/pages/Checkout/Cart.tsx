@@ -2,7 +2,7 @@ import { useWindowWidth } from "../../Hooks";
 import { AddIcon, CancelIcon, MinusIcon } from "../../Icons";
 import type { ProductInfoTypes, ProductPriceDetailsTypes, OrderSummaryProps } from "./types";
 import { summaryItems } from "./utils";
-import type { CartItemsTypes } from "../../sections/Navbar/types";
+import type { CartItemsTypes } from "../../sections/navbar/types";
 import { useCartItem } from "../../store/useCartItems";
 import { Link } from "react-router";
 

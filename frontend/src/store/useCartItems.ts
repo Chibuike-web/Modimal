@@ -1,6 +1,6 @@
 import { create } from "zustand";
 // import { cartItems as initialItems } from "../sections/Navbar/utils";
-import { CartItemsTypes } from "../sections/Navbar/types";
+import { CartItemsTypes } from "../sections/navbar/types";
 
 interface CartState {
 	cartItems: CartItemsTypes[];

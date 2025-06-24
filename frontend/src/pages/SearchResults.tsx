@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 import { AnimatePresence, motion, Variants } from "motion/react";
 import { FilterIcon } from "../Icons";
 import { allProducts } from "../utils";

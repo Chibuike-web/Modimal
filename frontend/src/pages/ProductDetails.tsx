@@ -1,5 +1,5 @@
 import { useState, ReactNode } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { AddIcon, BusIcon, LikeIcon, MinusIcon } from "../Icons";
 import { JSX } from "react";
 import { Product } from "../types";
@@ -49,7 +49,7 @@ export default function ProductDetails() {
 
 	return (
 		<main className="w-full max-w-[76.5rem] mx-auto my-10">
-			<div className="flex gap-4 px-6 xl:px-0 ">
+			<div className="flex gap-4 px-6 xl:px-0 text-[12px] md:text-[16px]">
 				<p>Collection</p>
 				<span>/</span> <p>Top + Blouses</p> <span>/</span>
 				<p>{product.name}</p>
@@ -64,12 +64,14 @@ export default function ProductDetails() {
 					)}
 				</aside>
 				<aside className="w-full md:max-w-[600px]">
-					<h1 className="text-[32px] font-semibold leading-[1.4] mb-8">{product.name}</h1>
+					<h1 className="text-[20px] md:text-[32px] font-semibold leading-[1.4] mb-4 md:mb-8">
+						{product.name}
+					</h1>
 					<p className="text-[18px mb-6]">
 						Versatile and universally flattering, our wrap blouse can be tied, draped, snapped and
 						wrapped multiple ways.
 					</p>
-					<div className="flex flex-col gap-[12px] mb-6">
+					<div className="flex flex-col gap-[12px] my-6">
 						<p>Colours</p>
 						<div className="flex gap-[8px]">
 							{product.colors?.map((color) => (
@@ -255,14 +257,21 @@ const MobileProductImages = ({ image, name }: { image: string; name: string }) =
 };
 
 const YouMayAlsoLike = ({ content }: { content: Product }) => {
-	const list = allProducts.filter((item) =>
-		item.keywords?.some((i) => content.keywords?.some((kw) => i.includes(kw)))
-	);
+	const relatedProducts = allProducts
+		.filter((product) => product.keywords?.some((kw) => content.keywords?.includes(kw)))
+		.filter((product) => product.id !== content.id);
 	return (
-		<div>
-			{list.map((i) => (
-				<CardComponent key={i.id} item={i} />
-			))}
-		</div>
+		<section className="mx-auto w-full max-w-[76.5rem] px-6 xl:px-0 mt-8">
+			<h2 className="text-[20px] font-bold mb-4 md:mb-8">You May Also Like</h2>
+			<div className="flex gap-4 md:gap-6 overflow-x-auto pr-10">
+				{relatedProducts.map((product) => (
+					<CardComponent
+						key={product.id}
+						item={product}
+						className="min-w-[168px] md:min-w-[392px]"
+					/>
+				))}
+			</div>
+		</section>
 	);
 };

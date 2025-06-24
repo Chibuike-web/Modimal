@@ -81,7 +81,7 @@ const footerLinks: FooterLinkSection[] = [
 	},
 ];
 
-const FooterLinks = ({ id, title, links }: FooterLinkSection) => {
+const FooterLinks = ({ title, links }: FooterLinkSection) => {
 	return (
 		<div className="flex flex-col gap-6">
 			<h3 className="text-[20px] font-bold">{title}</h3>

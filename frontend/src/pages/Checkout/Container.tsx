@@ -2,7 +2,7 @@ import { Outlet } from "react-router";
 import { useLocation } from "react-router";
 import clsx from "clsx";
 import { useCartItem } from "../../store/useCartItems";
-import { CartItemsTypes } from "../../sections/Navbar/types";
+import { CartItemsTypes } from "../../sections/navbar/types";
 import { CartItem, OrderSummary } from "./Cart";
 import { summaryItems } from "./utils";
 import { useWindowWidth } from "../../Hooks";
