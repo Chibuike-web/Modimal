@@ -12,7 +12,7 @@ export default function ShopAll() {
 	return (
 		<section>
 			<div className="w-full max-w-[76.5rem] mx-auto my-10">
-				<p className="flex px-6 xl:px-0 gap-4">
+				<p className="flex px-6 xl:px-0 gap-4 text-[12px] md:text-[16px]">
 					<span>Home</span> / <span>Shop All</span>
 				</p>
 			</div>
@@ -40,15 +40,21 @@ export default function ShopAll() {
 
 const CardContainer = () => {
 	const { filteredList } = useFilterItem();
+	const shopItems = filteredList.filter((item) => item.categories?.includes("shopAll"));
 
+	if (shopItems.length === 0) {
+		return (
+			<div className="w-full max-w-[808px] grid h-[27vh] place-items-center">
+				<p className="text-muted-foreground text-lg">No results found</p>
+			</div>
+		);
+	}
 	return (
 		<section className="flex flex-col items-center gap-12">
 			<div className="grid grid-cols-2 max-w-[808px] xl:px-0 xl:w-full gap-4 md:gap-6 w-full">
-				{filteredList
-					.filter((item) => item.categories?.includes("shopAll"))
-					.map((item) => (
-						<CardComponent key={item.id} item={item} />
-					))}
+				{shopItems.map((item) => (
+					<CardComponent key={item.id} item={item} />
+				))}
 			</div>
 			<button className="border border-primary text-primary h-[40px] w-[184px]">Load More</button>
 		</section>

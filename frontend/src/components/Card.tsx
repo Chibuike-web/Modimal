@@ -20,13 +20,13 @@ export const CardComponent = ({ item, className = "" }: CardProps) => {
 				<img src={item.image} alt="" className="w-full h-full" />
 				<LikeButton product={item}>
 					<LikeIcon
-						className="absolute top-6 right-6 max-lg:top-[8px] max-lg:right-[8px] cursor-pointer"
+						className="absolute top-2 right-2 lg:top-[24px] lg:right-[24px] w-4 h-4 md:w-6 md:h-6 cursor-pointer"
 						fill={isClicked(item.id) ? "red" : "white"}
 						stroke={isClicked(item.id) ? "" : "#0C0C0C"}
 					/>
 				</LikeButton>
 				{item.tag && (
-					<span className="w-[43px] h-[16px] md:w-[86px] md:h-[32px] absolute left-3 top-3 md:left-6 md:top-6 text-[12px] md:text-[1rem] flex items-center justify-center bg-white">
+					<span className="w-[40px] h-[16px] md:w-[86px] md:h-[32px] absolute left-2 top-2 md:left-6 md:top-6 text-[10px] md:text-[1rem] flex items-center justify-center bg-white">
 						{item.tag}
 					</span>
 				)}
