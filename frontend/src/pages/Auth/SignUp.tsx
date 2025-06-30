@@ -41,7 +41,7 @@ export default function SignUp() {
 			});
 			if (!res.ok) {
 				const errorData = await res.json();
-				setRegistrationError(errorData.message || "Issue creating account");
+				setRegistrationError(errorData.error || "Issue creating account");
 			} else {
 				const result = await res.json();
 				setRegistrationSuccess(result.message || "Successfull account creation");
