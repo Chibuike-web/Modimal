@@ -5,12 +5,12 @@ import { useCartItem } from "../../store/useCartItems";
 import { CartItemsTypes } from "../../sections/navbar/types";
 import { CartItem, OrderSummary } from "./Cart";
 import { summaryItems } from "./utils";
-import { useWindowWidth } from "../../Hooks";
+import { useMediaQuery } from "../../Hooks";
 
 export default function Container() {
 	const location = useLocation();
 	const pathname = location.pathname;
-	const windowWidth = useWindowWidth();
+	const isMobile = useMediaQuery("(max-width: 1100px)");
 
 	const steps = [
 		{ label: "Cart", path: "/checkout/cart" },
@@ -43,7 +43,7 @@ export default function Container() {
 				</aside>
 				{pathname === "/checkout/payment" ? (
 					""
-				) : pathname === "/checkout/shipping" && windowWidth < 1100 ? (
+				) : pathname === "/checkout/shipping" && isMobile ? (
 					""
 				) : (
 					<CartItems />

@@ -1,17 +1,16 @@
 import clsx from "clsx";
 import { twMerge } from "tailwind-merge";
-import { useWindowWidth } from "../../Hooks";
 import { useCart } from "../../store/useCart";
 import { AddIcon, CancelIcon, MinusIcon } from "../../Icons";
 import type { CartItemsTypes } from "./types";
 import { useCartItem } from "../../store/useCartItems";
 import { Link } from "react-router";
+import { useMediaQuery } from "../../Hooks";
 
 export const CartModal = () => {
-	const windowSize = useWindowWidth();
+	const isMobile = useMediaQuery("(max-width: 1100px)");
 	const { cartItems } = useCartItem();
 	const { setShowCart } = useCart();
-	const isMobile = windowSize < 1100;
 	const hasItems = cartItems.length > 0;
 	const styles = twMerge(
 		"absolute bg-white flex flex-col items-center py-8 px-6 overflow-y-auto",
@@ -106,20 +105,15 @@ const CartItem = ({ id, image, name, size, price, color, quantity }: CartItemsTy
 
 const EmptyCart = () => {
 	const { setShowCart } = useCart();
-	const windowSize = useWindowWidth();
+	const isMobile = useMediaQuery("(max-width: 1100px)");
 
-	const isMobile = windowSize < 1100;
 	const styles = twMerge(
 		"absolute bg-white flex flex-col py-8 px-6",
 		isMobile ? "w-full h-screen" : "right-0 w-[392px] h-[660px]"
 	);
 	return (
 		<div className={styles}>
-			<button
-				type="button"
-				className={clsx(windowSize < 1100 ? "" : "flex self-end")}
-				onClick={setShowCart}
-			>
+			<button type="button" className={clsx(isMobile ? "" : "flex self-end")} onClick={setShowCart}>
 				<CancelIcon />
 			</button>
 			<div className="flex items-center flex-col text-center mt-[96px]">

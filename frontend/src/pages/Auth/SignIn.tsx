@@ -1,4 +1,4 @@
-import { useForm } from "../../Hooks";
+import { useState } from "react";
 import {
 	AppleIcon,
 	ColouredFacebookIcon,
@@ -7,9 +7,13 @@ import {
 	VisibilityOnIcon,
 } from "../../Icons";
 import Image from "../../assets/SignUp/SignUp.png";
+import { Link } from "react-router";
 
 export default function SignIn() {
-	const { email, password, handleChange, isShowPassword, handleShowPassword } = useForm();
+	const [isShowPassword, setIsShowPassword] = useState(false);
+	const handleShowPassword = () => {
+		setIsShowPassword((prev) => !prev);
+	};
 	return (
 		<section className="w-full max-w-[76.5rem] mx-auto flex flex-col gap-6 lg:gap-[128px] pt-8 lg:flex-row items-center ">
 			<aside className="w-full lg:max-w-[600px] lg:h-full h-[218px] sm-[250px] md:h-[500px]">
@@ -24,18 +28,14 @@ export default function SignIn() {
 							id="email"
 							type="email"
 							placeholder="Email"
-							value={email}
 							className="border border-[#606060] h-10 w-full px-4"
-							onChange={(e) => handleChange(e)}
 						/>
 						<fieldset className="relative">
 							<input
 								id="password"
 								type={isShowPassword ? "text" : "password"}
 								placeholder="Password"
-								value={password}
 								className="border border-[#606060] h-10 w-full px-4"
-								onChange={(e) => handleChange(e)}
 							/>
 
 							<button
@@ -64,7 +64,9 @@ export default function SignIn() {
 
 				<p className="flex items-center gap-[4px] leading-[1.8] mb-6">
 					New to modimal?
-					<span className="text-primary">Create An Account</span>
+					<Link to="/signup" className="text-primary">
+						Create An Account
+					</Link>
 				</p>
 			</aside>
 		</section>

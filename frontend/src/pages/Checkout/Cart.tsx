@@ -1,14 +1,15 @@
-import { useWindowWidth } from "../../Hooks";
+// import { useWindowWidth } from "../../Hooks";
 import { AddIcon, CancelIcon, MinusIcon } from "../../Icons";
 import type { ProductInfoTypes, ProductPriceDetailsTypes, OrderSummaryProps } from "./types";
 import { summaryItems } from "./utils";
 import type { CartItemsTypes } from "../../sections/navbar/types";
 import { useCartItem } from "../../store/useCartItems";
 import { Link } from "react-router";
+import { useMediaQuery } from "../../Hooks";
 
 export default function Cart() {
 	const total = 523.8;
-	const windowSize = useWindowWidth();
+	const isMobile = useMediaQuery("(max-width: 900px)");
 	return (
 		<section className="mx-auto max-w-[76.5rem] mt-8 max-lg:px-6">
 			<img src="/Logo.svg" alt="Brand Logo" />
@@ -16,7 +17,7 @@ export default function Cart() {
 				<p>Back</p>
 				<h1 className="text-[2rem] font-semibold leading-[1.4]">Your Cart</h1>
 			</div>
-			{windowSize < 900 ? <MobileCart total={total} /> : <DesktopCart total={total} />}
+			{isMobile ? <MobileCart total={total} /> : <DesktopCart total={total} />}
 		</section>
 	);
 }

@@ -4,12 +4,12 @@ import { AddIcon, BusIcon, LikeIcon, MinusIcon } from "../Icons";
 import { JSX } from "react";
 import { Product } from "../types";
 import { allProducts } from "../utils";
-import { useWindowWidth } from "../Hooks";
 import { LikeButton } from "../components/LikeButton";
 import { useFavourites } from "../store/useFavourites";
 import clsx from "clsx";
 import { useCartItem } from "../store/useCartItems";
 import { CardComponent } from "../components/Card";
+import { useMediaQuery } from "../Hooks";
 
 interface DropDownProps {
 	title: string;
@@ -20,7 +20,7 @@ interface DropDownProps {
 
 export default function ProductDetails() {
 	const { id } = useParams<{ id: string }>();
-	const windowSize = useWindowWidth();
+	const isDesktop = useMediaQuery("(min-width: 768px)");
 	const product = allProducts.find((p: Product) => p.id === id);
 	const { isClicked } = useFavourites();
 	const { updateCartItems } = useCartItem();
@@ -57,7 +57,7 @@ export default function ProductDetails() {
 
 			<section className="flex flex-col px-6 gap-6 mt-12 md:flex-row xl:px-0">
 				<aside className="w-full md:max-w-[600px] md:flex gap-4">
-					{windowSize > 768 ? (
+					{isDesktop ? (
 						<DesktopProductImages image={product.image} name={product.name} />
 					) : (
 						<MobileProductImages image={product.image} name={product.name} />

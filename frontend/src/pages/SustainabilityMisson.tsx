@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import HeroImage from "../assets/Sustainability1.png";
-import { useAccordion, useWindowWidth } from "../Hooks";
+import { useAccordion, useMediaQuery } from "../Hooks";
 import { CardType, Principle } from "./types";
 import { CardItems, principles, sustainabilityPeople } from "./utils";
 import { AddIcon, MinusIcon } from "../Icons";
@@ -83,14 +83,14 @@ export default function SustainabilityMisson() {
 
 const Layout = () => {
 	const { expandedId, toggleExpand } = useAccordion();
-	const windowSize = useWindowWidth();
+	const isDesktop = useMediaQuery("(min-width: 768px)");
 
-	const gridStyle = twMerge("grid w-full", windowSize > 768 ? "grid-cols-2 gap-12" : "gap-6");
+	const gridStyle = twMerge("grid w-full", isDesktop ? "grid-cols-2 gap-12" : "gap-6");
 	return (
 		<div className={gridStyle}>
 			{principles.map((item) => (
 				<>
-					{windowSize > 768 ? (
+					{isDesktop ? (
 						<DesktopCard {...item} />
 					) : (
 						<MobileCard

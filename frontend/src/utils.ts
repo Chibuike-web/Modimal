@@ -77,7 +77,7 @@ export const filterList = [
 
 export const allProducts: Product[] = [
 	{
-		id: uuidv4(),
+		id: "3efa71cb-24ab-4fd5-a40c-8960bed3d87c",
 		name: "Elastic Waist",
 		description: "Turn it Up Pants",
 		image: ProductImage1,
@@ -105,7 +105,7 @@ export const allProducts: Product[] = [
 		fabric: "Cotton",
 	},
 	{
-		id: uuidv4(),
+		id: "e580fee8-648d-47c3-b5fa-00f29b98c75d",
 		name: "Tailored Stretch",
 		description: "Make A Splash",
 		image: ProductImage2,
@@ -122,7 +122,7 @@ export const allProducts: Product[] = [
 		fabric: "Cotton",
 	},
 	{
-		id: uuidv4(),
+		id: "30bfc28c-66ae-4ba1-a1ce-411cb4d1a6fd",
 		name: "Tailored Stretch",
 		description: "Turn It Up Pants",
 		image: ProductImage3,
@@ -150,7 +150,7 @@ export const allProducts: Product[] = [
 		fabric: "Cashmere",
 	},
 	{
-		id: uuidv4(),
+		id: "e9a710a2-1944-4556-9a04-9c0219d9a5f3",
 		name: "High Tillie",
 		description: "Turn It Up Pants",
 		image: ProductImage4,
@@ -178,7 +178,7 @@ export const allProducts: Product[] = [
 		fabric: "Silk",
 	},
 	{
-		id: uuidv4(),
+		id: "8ae87533-faaf-481b-966c-9a50539748df",
 		name: "Casual Wild Leg",
 		description: "Turn It Up Pants",
 		image: ProductImage5,
@@ -199,7 +199,7 @@ export const allProducts: Product[] = [
 		fabric: "Wool",
 	},
 	{
-		id: uuidv4(),
+		id: "fa29542c-848b-4ac7-b8f5-12d2352401ed",
 		name: "Linen Wide Leg",
 		description: "Turn It Up Pants",
 		image: ProductImage6,
@@ -226,7 +226,7 @@ export const allProducts: Product[] = [
 		fabric: "Linen",
 	},
 	{
-		id: uuidv4(),
+		id: "55a221c7-cc46-47c3-8453-554140dd9805",
 		name: "Tailored Stretch",
 		description: "Turn it Up Pants",
 		image: BestSellers1,
@@ -256,7 +256,7 @@ export const allProducts: Product[] = [
 		fabric: "Wool",
 	},
 	{
-		id: uuidv4(),
+		id: "c68975d5-0b9c-4dc4-8a06-a5af2cc9f4d9",
 		name: "Technical Silk",
 		description: "Make A Splash",
 		image: BestSellers2,
@@ -278,7 +278,7 @@ export const allProducts: Product[] = [
 		fabric: "Linen",
 	},
 	{
-		id: uuidv4(),
+		id: "0c247359-e970-4fff-89dd-ed93b47dfec6",
 		name: "Cool Weave",
 		description: "Anywhere Dress",
 		image: BestSellers3,
@@ -310,7 +310,7 @@ export const allProducts: Product[] = [
 		fabric: "Cashmere",
 	},
 	{
-		id: uuidv4(),
+		id: "c605510e-8bfd-41b7-97af-282f0a15e426",
 		name: "Chill Wrap Top",
 		description: "Turn it Up Top",
 		image: ShopAllProductImage1,
@@ -329,7 +329,7 @@ export const allProducts: Product[] = [
 		fabric: "Cotton",
 	},
 	{
-		id: uuidv4(),
+		id: "bec640cd-7cb4-4d7b-88cd-fccedb661169",
 		name: "Essential T-shirt",
 		description: "Turn it Up T-Shirt",
 		image: ShopAllProductImage2,
@@ -353,7 +353,7 @@ export const allProducts: Product[] = [
 		fabric: "Linen",
 	},
 	{
-		id: uuidv4(),
+		id: "cdd2169d-25c8-4ef2-8b5f-fdce7bb7976e",
 		name: "Shirt Dress",
 		description: "Turn It Up Dress",
 		image: ShopAllProductImage3,
@@ -383,7 +383,7 @@ export const allProducts: Product[] = [
 		fabric: "Wool",
 	},
 	{
-		id: uuidv4(),
+		id: "88d82e1f-d4eb-446e-af86-c34691b683af",
 		name: "Rule Zip Jacket",
 		description: "Turn It Up Jacket",
 		image: ShopAllProductImage4,
@@ -412,7 +412,7 @@ export const allProducts: Product[] = [
 		fabric: "Cotton",
 	},
 	{
-		id: uuidv4(),
+		id: "6c882520-c71b-44bb-8759-30a27554d2c5",
 		name: "New Age Linen",
 		description: "Turn It Up Pants",
 		image: ShopAllProductImage5,
@@ -443,7 +443,7 @@ export const allProducts: Product[] = [
 		fabric: "Cashmere",
 	},
 	{
-		id: uuidv4(),
+		id: "12ac6bc4-b61b-458a-b874-3cff9f02f4e7",
 		name: "Boss Pullover",
 		description: "Turn It Up Pullover",
 		image: ShopAllProductImage6,

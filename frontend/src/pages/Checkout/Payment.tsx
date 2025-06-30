@@ -1,10 +1,10 @@
 import { Link } from "react-router";
 import { AmexLogo, HelpIcon, MasterCardLogo, PayPalLogo, VisaLogo } from "../../Icons";
-import { useWindowWidth } from "../../Hooks";
+import { useMediaQuery } from "../../Hooks";
 
 export default function Payment() {
-	const windowSize = useWindowWidth();
-	return <>{windowSize < 950 ? <MobilePayment /> : <DesktopPayment />}</>;
+	const isMobile = useMediaQuery("(max-width: 950px)");
+	return <>{isMobile ? <MobilePayment /> : <DesktopPayment />}</>;
 }
 
 const DesktopPayment = () => {

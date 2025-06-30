@@ -11,7 +11,7 @@ import SustainImage1 from "../../assets/Navbar/SustainImage1.png";
 import SustainImage2 from "../../assets/Navbar/SustainImage2.png";
 import { collectionContent, newInContent, plusSizeContent, sustainContent } from "./utils";
 import { DropdownType, DropdownProps } from "./types";
-import { useDropdownHover, useWindowWidth } from "../../Hooks";
+import { useDropdownHover, useMediaQuery } from "../../Hooks";
 import { useState } from "react";
 import { DownArrowButton } from "../../components/DownArrowButton";
 import { motion, AnimatePresence } from "motion/react";
@@ -23,14 +23,14 @@ import { CartModal } from "./CartModal";
 import { SearchBar } from "../SearchBar";
 
 export default function Navbar() {
-	const windowSize = useWindowWidth();
+	const isDesktop = useMediaQuery("(min-width: 1100px)");
 
 	return (
 		<section className="sticky top-0 z-[100]">
 			<div className="bg-primary text-off-white text-center text-[0.75rem] font-semibold py-[0.5rem]">
 				<p>Enjoy Free Shipping On All Orders</p>
 			</div>
-			{windowSize < 1100 ? <MobileNavbar /> : <DesktopNavbar />}
+			{isDesktop ? <DesktopNavbar /> : <MobileNavbar />}
 			<WelcomeModal />
 		</section>
 	);
@@ -195,9 +195,9 @@ const DesktopNavbar = () => {
 					<button type="button" onClick={() => !showCart && setIsSearch()}>
 						{isSearch ? <CancelIcon /> : <SearchIcon />}
 					</button>
-					<button type="button">
+					<Link to={"/signup"}>
 						<ProfileIcon />
-					</button>
+					</Link>
 					<Link to="/favourites" className="flex items-center">
 						<HeartIcon />
 					</Link>
