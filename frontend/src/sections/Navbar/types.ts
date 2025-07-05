@@ -1,5 +1,5 @@
 export type DropdownType = {
-	id: number;
+	id: string;
 	heading: string;
 	subheading: string[];
 };

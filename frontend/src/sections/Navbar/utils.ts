@@ -1,12 +1,9 @@
 import type { DropdownType } from "./types";
 import { v4 as uuidv4 } from "uuid";
-import Bag1 from "../../assets/Bags/Bag1.png";
-import Bag2 from "../../assets/Bags/Bag2.png";
-import Bag3 from "../../assets/Bags/Bag3.png";
 
 export const collectionContent: DropdownType[] = [
 	{
-		id: 1,
+		id: uuidv4(),
 		heading: "Category",
 		subheading: [
 			"Shop all",
@@ -21,13 +18,13 @@ export const collectionContent: DropdownType[] = [
 	},
 
 	{
-		id: 2,
+		id: uuidv4(),
 		heading: "Featured",
 		subheading: ["New in", "Modiweek", "Plus Size", "Best Seller"],
 	},
 
 	{
-		id: 3,
+		id: uuidv4(),
 		heading: "More",
 		subheading: ["Bundles", "Occasion Wear", "Matching Set", "Suiting"],
 	},
@@ -35,7 +32,7 @@ export const collectionContent: DropdownType[] = [
 
 export const newInContent: DropdownType[] = [
 	{
-		id: 1,
+		id: uuidv4(),
 		heading: "Category",
 		subheading: [
 			"Shop all",
@@ -50,7 +47,7 @@ export const newInContent: DropdownType[] = [
 	},
 
 	{
-		id: 2,
+		id: uuidv4(),
 		heading: "Trending",
 		subheading: ["Plus Size", "Fall Collection", "Modiweek"],
 	},
@@ -58,7 +55,7 @@ export const newInContent: DropdownType[] = [
 
 export const plusSizeContent: DropdownType[] = [
 	{
-		id: 1,
+		id: uuidv4(),
 		heading: "Category",
 		subheading: [
 			"Shop all",
@@ -75,7 +72,7 @@ export const plusSizeContent: DropdownType[] = [
 
 export const sustainContent: DropdownType[] = [
 	{
-		id: 1,
+		id: uuidv4(),
 		heading: "Sustainability",
 		subheading: [
 			"Mission",

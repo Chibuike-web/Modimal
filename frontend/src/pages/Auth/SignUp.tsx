@@ -115,37 +115,41 @@ export default function SignUp() {
 							/>
 							{errors.email && <p className="text-red-500">{errors.email.message?.toString()}</p>}
 						</fieldset>
-						<fieldset className="relative">
-							<input
-								id="password"
-								type={isShowPassword ? "text" : "password"}
-								placeholder="Password"
-								className="border border-[#606060] h-10 w-full px-4"
-								{...register("password", {
-									required: {
-										value: true,
-										message: "Password is required",
-									},
-									validate: {
-										hasNumber: (v: string) => /\d/.test(v) || "Must include a number",
-										hasUpper: (v: string) => /[A-Z]/.test(v) || "Must include an uppercase letter",
-										hasLower: (v: string) => /[a-z]/.test(v) || "Must include a lower case letter",
-										hasSpecialChar: (v: string) =>
-											/[-!@#$%^&*(),.?":{}|_<>]/.test(v) || "Must include a special character",
-									},
-								})}
-							/>
+						<fieldset>
+							<div className="relative">
+								<input
+									id="password"
+									type={isShowPassword ? "text" : "password"}
+									placeholder="Password"
+									className="border border-[#606060] h-10 w-full px-4"
+									{...register("password", {
+										required: {
+											value: true,
+											message: "Password is required",
+										},
+										validate: {
+											hasNumber: (v: string) => /\d/.test(v) || "Must include a number",
+											hasUpper: (v: string) =>
+												/[A-Z]/.test(v) || "Must include an uppercase letter",
+											hasLower: (v: string) =>
+												/[a-z]/.test(v) || "Must include a lower case letter",
+											hasSpecialChar: (v: string) =>
+												/[-!@#$%^&*(),.?":{}|_<>]/.test(v) || "Must include a special character",
+										},
+									})}
+								/>
+								<button
+									type="button"
+									onClick={handleShowPassword}
+									aria-label={isShowPassword ? "Hide password" : "Show password"}
+									className="absolute right-4 top-1/2 -translate-y-1/2"
+								>
+									{isShowPassword ? <VisibilityOffIcon /> : <VisibilityOnIcon />}
+								</button>
+							</div>
 							{errors.password && (
 								<p className="text-red-500">{errors.password.message?.toString()}</p>
 							)}
-							<button
-								type="button"
-								onClick={handleShowPassword}
-								aria-label={isShowPassword ? "Hide password" : "Show password"}
-								className="absolute right-4 top-1/2 -translate-y-1/2"
-							>
-								{isShowPassword ? <VisibilityOffIcon /> : <VisibilityOnIcon />}
-							</button>
 						</fieldset>
 					</legend>
 					<button

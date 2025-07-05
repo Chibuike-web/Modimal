@@ -1,7 +1,7 @@
 import styles from "./Hero.module.css";
-import { motion } from "motion/react";
+import { motion, Variants } from "motion/react";
 
-const fadeIn = {
+const fadeIn: Variants = {
 	initial: { opacity: 0, x: -100 },
 	animate: (i: number) => ({
 		opacity: 1,
