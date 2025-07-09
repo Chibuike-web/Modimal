@@ -28,7 +28,7 @@ export const SearchBar = () => {
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0, y: -20 }}
 			transition={{ duration: 0.2 }}
-			className="fixed top-[8rem] max-lg:top-[5rem] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full"
+			className="fixed top-[81.2px] lg:top-[126.74px] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full"
 			onClick={() => setIsSearch()}
 		>
 			<motion.div
@@ -44,7 +44,7 @@ export const SearchBar = () => {
 						e.preventDefault();
 						handleSubmit(new FormData(e.currentTarget));
 					}}
-					className="w-full  max-w-[76.5rem]"
+					className="w-full max-w-[76.5rem]"
 				>
 					<input
 						type="text"

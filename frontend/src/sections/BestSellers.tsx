@@ -12,7 +12,7 @@ export default function BestSellers() {
 				{allProducts
 					.filter((item) => item.categories?.includes("Best Seller"))
 					.map((item) => (
-						<div>
+						<div key={item.id}>
 							<CardComponent item={item} className="min-w-[168px]" />
 						</div>
 					))}

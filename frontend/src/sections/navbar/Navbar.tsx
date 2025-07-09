@@ -189,7 +189,9 @@ const DesktopNavbar = () => {
 	return (
 		<nav className="w-full flex items-center justify-center py-6 bg-white relative px-6 xl:px-0">
 			<header className="flex items-center justify-between w-full max-w-[76.5rem]">
-				<img src="/Logo.svg" alt="Brand Logo" />
+				<Link to="/">
+					<img src="/Logo.svg" alt="Brand Logo" />
+				</Link>
 				<ListItems />
 				<div className="flex gap-6">
 					<button type="button" onClick={() => !showCart && setIsSearch()}>

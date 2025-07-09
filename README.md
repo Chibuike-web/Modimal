@@ -10,7 +10,6 @@ A fully responsive and modern eCommerce platform tailored for women's fashion. T
 - Shopping cart with persistent state management
 - User-friendly checkout experience
 - **Custom authentication** for secure user access and session handling
-- Backend integration for product data and order handling
 
 ## 🔧 Tech Stack
 
@@ -19,22 +18,16 @@ A fully responsive and modern eCommerce platform tailored for women's fashion. T
 - **React** – Component-driven UI development
 - **Vite** – Fast and modern build tool
 - **Tailwind CSS** – Utility-first styling for rapid, responsive design
+- **TypeScript** – Static typing for better developer experience
+- **React Router** – Client-side routing
 - **Zustand** – Lightweight global state management
+- **React-Hook-Form** - Client-side form handling
 
 ### Backend
 
 - **Node.js** – JavaScript runtime for building scalable backend logic
-- **Express.js** – Minimal and flexible Node.js framework for RESTful APIs
-- **Custom Authentication** – User signup, login, and protected routes with session/token handling
-
-## 🧠 Key Highlights
-
-- Seamless state management using **Zustand**
-- Optimized styling and layout using **Tailwind CSS**
-- Fast and developer-friendly DX with **Vite**
-- Scalable backend with **Express** for handling products, users, and orders
-- Secure, flexible **custom authentication** system
-- Designed for mobile-first experience and accessibility
+- **Express.js** – Minimal and flexible framework for RESTful APIs
+- **Custom Authentication** – Manual implementation of signup, login, verification, and session/token handling
 
 ## 💡 Goal
 

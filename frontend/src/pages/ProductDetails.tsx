@@ -36,7 +36,7 @@ export default function ProductDetails() {
 
 		updateCartItems({
 			id: product.id,
-			image: product.image,
+			image: product.images[0],
 			name: product.name,
 			size: selectedSize,
 			price: product.price,
@@ -58,9 +58,9 @@ export default function ProductDetails() {
 			<section className="flex flex-col px-6 gap-6 mt-12 md:flex-row xl:px-0">
 				<aside className="w-full md:max-w-[600px] md:flex gap-4">
 					{isDesktop ? (
-						<DesktopProductImages image={product.image} name={product.name} />
+						<DesktopProductImages images={product.images} name={product.name} />
 					) : (
-						<MobileProductImages image={product.image} name={product.name} />
+						<MobileProductImages images={product.images} name={product.name} />
 					)}
 				</aside>
 				<aside className="w-full md:max-w-[600px]">
@@ -229,28 +229,56 @@ const DropDown = ({ title, subtitle, content, productDetail }: DropDownProps): J
 	);
 };
 
-const DesktopProductImages = ({ image, name }: { image: string; name: string }) => {
+const DesktopProductImages = ({ images, name }: { images: string[]; name: string }) => {
+	const [imageIndex, setImageIndex] = useState(0);
+
+	function handleCarousel(index: number) {
+		setImageIndex(index);
+	}
 	return (
 		<>
-			<div className="w-full max-w-[157px] h-[512px] bg-primary"></div>
+			<div className=" scroll-container w-full max-w-[157px] h-[512px] flex flex-col gap-4 overflow-auto">
+				{images.length > 0 &&
+					images.map((image, index) => (
+						<button
+							key={index}
+							className={`block w-full h-[160px] cursor-pointer ${
+								index !== imageIndex && "opacity-25"
+							}`}
+							onClick={() => handleCarousel(index)}
+						>
+							<img src={image} alt="" className="w-full h-full object-cover" />
+						</button>
+					))}
+			</div>
 			<figure className="h-[512px] w-full max-w-[427px] ">
-				<img src={image} alt={name} className="w-full h-full object-cover" />
+				<img src={images[imageIndex]} alt={name} className="w-full h-full object-cover" />
 			</figure>
 		</>
 	);
 };
 
-const MobileProductImages = ({ image, name }: { image: string; name: string }) => {
+const MobileProductImages = ({ images, name }: { images: string[]; name: string }) => {
+	const [imageIndex, setImageIndex] = useState(0);
+
+	function handleCarousel(index: number) {
+		setImageIndex(index);
+	}
 	return (
-		<div className="flex flex-col">
+		<div className="flex flex-col items-center ">
 			<figure className="w-full">
-				<img src={image} alt={name} className="w-full h-full object-cover" />
+				<img src={images[imageIndex]} alt={name} className="w-full h-full object-cover" />
 			</figure>
-			<div>
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
+			<div className="flex gap-[6px] mt-[8px] items-center">
+				{images.map((_, index) => (
+					<button
+						key={index}
+						className={`block rounded-full ${
+							index === imageIndex ? "bg-gray-400 size-[12px]" : "bg-gray-600 size-[8px] "
+						}`}
+						onClick={() => handleCarousel(index)}
+					/>
+				))}
 			</div>
 		</div>
 	);

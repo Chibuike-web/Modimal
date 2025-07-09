@@ -17,7 +17,7 @@ export const CardComponent = ({ item, className = "" }: CardProps) => {
 	return (
 		<article id={`card-${item.id}`} className={twMerge(defaultStyle, className)}>
 			<figure className="relative w-full flex">
-				<img src={item.image} alt="" className="w-full h-full" />
+				<img src={item.images[0]} alt="" className="w-full h-full" />
 				<LikeButton product={item}>
 					<LikeIcon
 						className="absolute top-2 right-2 lg:top-[24px] lg:right-[24px] w-4 h-4 md:w-6 md:h-6 cursor-pointer"
