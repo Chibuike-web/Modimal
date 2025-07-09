@@ -266,7 +266,7 @@ export const allProducts: Product[] = [
 		id: "c68975d5-0b9c-4dc4-8a06-a5af2cc9f4d9",
 		name: "Technical Silk",
 		description: "Make A Splash",
-		images: [BestSellers2],
+		images: [BestSellers2, BestSellers3, BestSellers1],
 
 		price: 120,
 		colors: [
@@ -320,7 +320,14 @@ export const allProducts: Product[] = [
 		id: "c605510e-8bfd-41b7-97af-282f0a15e426",
 		name: "Chill Wrap Top",
 		description: "Turn it Up Top",
-		images: [ShopAllProductImage1],
+		images: [
+			ShopAllProductImage1,
+			ShopAllProductImage2,
+			ShopAllProductImage3,
+			ShopAllProductImage4,
+			ShopAllProductImage5,
+			ShopAllProductImage6,
+		],
 		price: 160,
 		colors: [{ id: uuidv4(), label: "Green", className: "bg-[#909225]" }],
 		tag: "New",
@@ -339,7 +346,14 @@ export const allProducts: Product[] = [
 		id: "bec640cd-7cb4-4d7b-88cd-fccedb661169",
 		name: "Essential T-shirt",
 		description: "Turn it Up T-Shirt",
-		images: [ShopAllProductImage2],
+		images: [
+			ShopAllProductImage2,
+			ShopAllProductImage3,
+			ShopAllProductImage4,
+			ShopAllProductImage5,
+			ShopAllProductImage6,
+			ShopAllProductImage1,
+		],
 		price: 95,
 
 		colors: [
@@ -363,7 +377,14 @@ export const allProducts: Product[] = [
 		id: "cdd2169d-25c8-4ef2-8b5f-fdce7bb7976e",
 		name: "Shirt Dress",
 		description: "Turn It Up Dress",
-		images: [ShopAllProductImage3],
+		images: [
+			ShopAllProductImage3,
+			ShopAllProductImage4,
+			ShopAllProductImage5,
+			ShopAllProductImage6,
+			ShopAllProductImage1,
+			ShopAllProductImage2,
+		],
 		price: 245,
 		colors: [
 			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
@@ -393,7 +414,14 @@ export const allProducts: Product[] = [
 		id: "88d82e1f-d4eb-446e-af86-c34691b683af",
 		name: "Rule Zip Jacket",
 		description: "Turn It Up Jacket",
-		images: [ShopAllProductImage4],
+		images: [
+			ShopAllProductImage4,
+			ShopAllProductImage5,
+			ShopAllProductImage6,
+			ShopAllProductImage1,
+			ShopAllProductImage2,
+			ShopAllProductImage3,
+		],
 		price: 199,
 		colors: [
 			{ id: uuidv4(), label: "Olive", className: "bg-[#909225]" },
@@ -422,7 +450,14 @@ export const allProducts: Product[] = [
 		id: "6c882520-c71b-44bb-8759-30a27554d2c5",
 		name: "New Age Linen",
 		description: "Turn It Up Pants",
-		images: [ShopAllProductImage5],
+		images: [
+			ShopAllProductImage5,
+			ShopAllProductImage6,
+			ShopAllProductImage1,
+			ShopAllProductImage2,
+			ShopAllProductImage3,
+			ShopAllProductImage4,
+		],
 		price: 180,
 		colors: [
 			{ id: uuidv4(), label: "Black", className: "bg-[#0C0C0C]" },
@@ -453,7 +488,14 @@ export const allProducts: Product[] = [
 		id: "12ac6bc4-b61b-458a-b874-3cff9f02f4e7",
 		name: "Boss Pullover",
 		description: "Turn It Up Pullover",
-		images: [ShopAllProductImage6],
+		images: [
+			ShopAllProductImage6,
+			ShopAllProductImage1,
+			ShopAllProductImage2,
+			ShopAllProductImage3,
+			ShopAllProductImage4,
+			ShopAllProductImage5,
+		],
 		price: 280,
 		tag: "New",
 		colors: [
