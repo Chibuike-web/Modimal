@@ -49,7 +49,7 @@ const CardContainer = () => {
 	return (
 		<div className="grid grid-cols-2 max-w-[808px] xl:px-0 xl:w-full gap-4 md:gap-6 w-full">
 			{searchResults.map((item: Product) => (
-				<div>
+				<div key={item.id}>
 					<CardComponent item={item} />
 				</div>
 			))}
