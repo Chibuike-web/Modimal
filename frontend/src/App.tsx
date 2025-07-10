@@ -20,10 +20,12 @@ import ContactUs from "./pages/ContactUs";
 import SustainabilityMission from "./pages/SustainabilityMisson";
 import SustainabilityMaterials from "./pages/SustainabilityMaterials";
 import ProductDetails from "./pages/ProductDetails";
+import ScrollToTop from "./ScrollToTop";
 
 export default function App() {
 	return (
 		<Router>
+			<ScrollToTop />
 			<Routes>
 				<Route element={<Layout />}>
 					<Route path="/" element={<Landing />} />
